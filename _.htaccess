@@ -1,0 +1,33 @@
+AddType text/css .less
+RewriteEngine On
+
+#contact
+RewriteRule ^about/$ about.php [NC,L]
+RewriteRule ^about$ about.php [NC,L]
+
+#contact
+RewriteRule ^buy/$ buy.php [NC,L]
+RewriteRule ^buy$ buy.php [NC,L]
+
+#contact
+RewriteRule ^sell/$ sell.php [NC,L]
+RewriteRule ^sell$ sell.php [NC,L]
+
+#projects
+RewriteRule ^details/(.*)$ ./details.php?name=$1 [NC,L]
+RewriteRule ^details/(.*)/$ ./details.php?name=$1 [NC,L]
+
+
+#SetEnvIf Request_URI "^/$" allow=yes
+#SetEnvIf Request_URI "^/index.html$" allow=yes
+
+#AuthType Basic
+#AuthName "Password Required"
+#AuthUserFile /home/rchias3wkbb0/public_html/leonamunro/.htpasswd
+#Options +FollowSymLinks
+#Order Deny,Allow
+#Satisfy any
+#Deny from All
+#Require valid-user
+#Allow from env=allow
+
