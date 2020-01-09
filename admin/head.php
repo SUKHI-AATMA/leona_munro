@@ -296,7 +296,7 @@
 
         <a class="navbar-brand" href="<?php echo $path; ?>">
 
-          <img src="../images/svg/Leona-munro.svg" alt=""> </a>
+          <img src="../images/Leona-munro.png" alt=""> </a>
 
       </div>
 

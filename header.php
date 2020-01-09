@@ -2,7 +2,7 @@
 <header>
   <div class="logo">
     <a href="<?php echo http_Site; ?>">
-      <img src="<?php echo http_Site; ?>images/svg/Leona-munro.svg" alt=""> </a>
+      <img src="<?php echo http_Site; ?>images/Leona-munro.png" alt=""> </a>
   </div>
   <nav>
     <div class="hamburger">
