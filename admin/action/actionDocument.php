@@ -4,8 +4,7 @@
  if($_POST){
     $response = array();
     
-    //print_r($_POST);exit();
-    
+ 
     $projectname = $_POST['projectname'];
     $doc = $_POST['doc'];
     $txt = $_POST['txt'];
@@ -25,6 +24,8 @@
                 "docName"=>$txt[$i],
                 "description"=>$descp[$i]
             );
+            
+            
             Model_Base::insert_row("project_document", $columnvalue);
         }
     }

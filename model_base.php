@@ -16,9 +16,9 @@ Class Model_Base {
 
     
 
-     public function __construct($servername = "148.72.232.172:3306", $username = "leona", $password = "Jug8#0z9", $dbname = "leonamunro") {
+    // public function __construct($servername = "148.72.232.172:3306", $username = "leona", $password = "Jug8#0z9", $dbname = "leonamunro") {
      //public function __construct($servername = "localhost", $username = "Leonamunro", $password = "Vipers11!!", $dbname = "leonamunro") {
-     // public function __construct($servername = "localhost", $username = "root", $password = "", $dbname = "leonamunro") {
+      public function __construct($servername = "localhost", $username = "root", $password = "", $dbname = "leonmunro") {
         $dbObject = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
         $this->db = $dbObject;
     }
@@ -57,10 +57,10 @@ Class Model_Base {
     }
 
 
-    public static function connectdb($servername = "148.72.232.172:3306", $username = "leona", $password = "Jug8#0z9", $dbname = "leonamunro") {
+  //  public static function connectdb($servername = "148.72.232.172:3306", $username = "leona", $password = "Jug8#0z9", $dbname = "leonamunro") {
     //public static function connectdb($servername = "localhost", $username = "Leonamunro", $password = "Vipers11!!", $dbname = "leonamunro") {
 
-    // public static function connectdb($servername = "localhost", $username = "root", $password = "", $dbname = "leonamunro") {
+    public static function connectdb($servername = "localhost", $username = "root", $password = "", $dbname = "leonmunro") {
         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
         return $conn;
 
@@ -152,9 +152,8 @@ Class Model_Base {
         $keys = array_keys($columnvalue);
 
         $assignment = array_values($columnvalue);
-
-
-
+        
+       
         $mark = array();
 
         for ($i = 0; $i < count($columnvalue); $i++) {
@@ -164,22 +163,22 @@ Class Model_Base {
         }
 
 $r = "";
-        try {
+     //   try {
         $q = "INSERT INTO `%s` (%s) VALUES (%s)";
 
         $q = sprintf($q, $tablename, implode(", ", $keys), implode(", ", $mark));
+       
+                $q = self::checkconnection()->prepare($q);
 
-        $q = self::checkconnection()->prepare($q);
-        
 
         $r = $q->execute($assignment);
 
         $q = null;
-    }
-catch(PDOException $e)
-    {
-    $r = $e->getMessage();
-    }
+   // }
+//catch(PDOException $e)
+//    {
+//    $r = $e->getMessage();
+//    }
 
 
 

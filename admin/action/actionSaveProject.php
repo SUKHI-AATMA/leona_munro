@@ -45,7 +45,7 @@
             "featured"=>$featured,
             "project_map"=>$project_map,
             "sold"=>$check_sold,
-            "draft"=>(int)$draft,
+            "draft"=> $draft,
             "images"=>$arr,
             "status"=>(int)$status,
             "small_images"=>$resize_arr

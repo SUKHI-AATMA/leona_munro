@@ -562,7 +562,7 @@ var project_map = $("#project_map").val();
 
           $.ajax({
 
-            "url": urlpath + "admin/action/actionSaveProject.php",
+            "url": "/admin/action/actionSaveProject.php",
 
             "type": "POST",
 
@@ -603,7 +603,7 @@ var project_map = $("#project_map").val();
 
             "success": function(data) {
 
-              console.log(data)
+             // console.log(data)
 
               var data = JSON.parse(data);
 

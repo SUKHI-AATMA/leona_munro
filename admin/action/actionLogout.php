@@ -1,1 +1,9 @@
-<?phpsession_start();include 'sitename.php';session_destroy();header("Location:".site_name);?>
+<?php
+session_start();
+if(session_destroy())
+{
+    echo "successfully logout";
+   header("Location: /admin");
+}
+
+?>

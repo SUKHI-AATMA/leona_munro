@@ -125,7 +125,7 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
           });
           if (doc.length > 0 && txt.length > 0 && descp.length > 0) {
             $.ajax({
-              "url": urlpath + "admin/action/actionDocument.php",
+              "url": "/admin/action/actionDocument.php",
               "type": "POST",
               "async": false,
               "data": {
@@ -136,9 +136,12 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
                 count: count
               },
               "success": function(data) {
-                var data = JSON.parse(data);
+               var data = JSON.parse(data);
                 alert(data.msg);
-                window.location.href = urlpath + "admin/projects.php";
+                window.location.href = "/admin/projects.php";
+              },
+              error: function(data) {
+                  alert(data);
               }
             });
           } else {
@@ -169,7 +172,7 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
           //     } else {
           //       console.log(2);
                 $.ajax({
-                  url: urlpath + "admin/action/uploadDocumentPrj.php",
+                  url:  "/admin/action/uploadDocumentPrj.php",
                   type: "POST",
                   cache: false,
                   contentType: false, // important

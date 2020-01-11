@@ -1,9 +1,9 @@
 <?php
  include '../../model_base.php';
  
+ 
  if($_POST){
-    $response = array();
-    
+    $response = array();    
     $project_name = $_POST['project_name'];
     $description = $_POST['description'];
     $project_beds = $_POST['project_beds'];
@@ -24,7 +24,6 @@
     $project_map = $_POST['project_map'];
     $arr = (!empty($_POST['arr']))?implode(",",$_POST['arr']):"";
     $resize_arr = (!empty($_POST['resize_arr']))?implode(",",$_POST['resize_arr']):"";
-    
     
     if($project_name !=''){
         $data = Model_Base::query("Select id from projects where project_name = '{$project_name}'");
@@ -48,12 +47,11 @@
                 "featured"=>$featured,
                 "project_map"=>$project_map,
                 "sold"=>$check_sold,
-                "draft"=>(int)$draft,
+                "draft"=>$draft,
                 "images"=>$arr,
                 "status"=>(int)$status,
                 "small_images"=>$resize_arr
             );
-
             $resultValue = Model_Base::insert_row("projects", $columnvalue);
             if($resultValue) {
              $response["status"] = "success";
