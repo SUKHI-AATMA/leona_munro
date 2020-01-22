@@ -63,7 +63,7 @@ include '../model_base.php';  if(!empty($_SESSION) && array_key_exists("username
 </div>
 <script>
 $(document).ready(function() { $('#example').DataTable();
-  $(document).on('click', ".deleteProject", function(e) { e.preventDefault(); var uniquename = $(this).data("uniquename"); var check = confirm("Are you sure to delete this project?"); if (check) { if (uniquename != '') { $.ajax({ "url": urlpath + "admin/action/actionDeleteProject.php", "type": "POST", "async": false, "data": { uniquename: uniquename }, "success": function(data) { var data = JSON.parse(data); if (data.status == "success") { alert(data.msg);
+  $(document).on('click', ".deleteProject", function(e) { e.preventDefault(); var uniquename = $(this).data("uniquename"); var check = confirm("Are you sure to delete this project?"); if (check) { if (uniquename != '') { $.ajax({ "url": "/admin/action/actionDeleteProject.php", "type": "POST", "async": false, "data": { uniquename: uniquename }, "success": function(data) { var data = JSON.parse(data); if (data.status == "success") { alert(data.msg);
               window.location.href = urlpath + "admin/projects.php"; } else { alert(data.msg); } } }); } } }); });
 </script>
 <?php else: header("Location:".http_Site); ?>

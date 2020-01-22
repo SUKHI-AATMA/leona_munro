@@ -236,7 +236,15 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
             </div>
         </div>
 
-        
+        <div class="form-group">
+    <label class="control-label col-sm-2" for="email">Show Interest:</label>
+        <div class="col-sm-8">
+            <input type="radio" name="interest" value="negotiation"> negotiation<br>
+            <input type="radio" name="interest" value="auction"> auction <br>
+            <input type="radio" name="interest" value="tender"> tender <br>  
+            <input type="radio" name="interest" value="deadline"> deadline   
+        </div>
+ </div>
 
         <div class="form-group"> 
 
@@ -296,7 +304,7 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
 
                 $.ajax({
 
-                    url: urlpath + "admin/action/uploadImg.php",
+                    url:  "/admin/action/uploadImg.php",
 
                     type: "POST",
 
@@ -317,13 +325,14 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
                     success: function (data) {
                         
                         var data = JSON.parse(data);
+
                         if (data.status == "success") {
 
                             $("#imgLoaderProfile").hide();
 
                             $("#divProfileImg").html('');
 
-                            $("#divProfileImg").html('<img src="<?php echo http_Site; ?>admin/upload/profileImage/'+data.msg+'" width="50" height="50" id="profileImgView" data-smaller="'+data.smallimg+'"/>');
+                            $("#divProfileImg").html('<img src="<?php echo http_Site; ?>admin/upload/profileImage/'+data.msg+'" width="50" height="50" id="profileImgView" data-smaller="'+data.msg+'"/>');
 
                         } else {
 
@@ -441,13 +450,16 @@ var project_map = $("#project_map").val();
                 sold = 1;
 
             }
+             if ($("input[name='interest']").is(":checked")){
+                var interest = $("input[name='interest']:checked").val();
+
+            }
 
             if (!error) {
-                
 
                 $.ajax({
 
-                    "url": urlpath + "admin/action/actionCreateProject.php",
+                    "url": "/admin/action/actionCreateProject.php",
 
                     "type": "POST",
 
@@ -481,11 +493,13 @@ var project_map = $("#project_map").val();
 
                         resize_arr:resize_arr,
 
-                        featured:featured
+                        featured:featured,
+                        interest:interest
 
                     },
 
                     "success": function (data) {
+                       // console.log(data);
 
                         var data = JSON.parse(data);
 
@@ -493,7 +507,7 @@ var project_map = $("#project_map").val();
 
                             alert(data.msg)
 
-                            window.location.href = urlpath+"/admin/documents.php?name="+data.link;
+                            window.location.href = "/admin/documents.php?name="+data.link;
 
                         } else {
 
@@ -573,7 +587,7 @@ var project_map = $("#project_map").val();
 
             $.ajax({
 
-                url: urlpath + "admin/action/resizedMultiImages.php",
+                url: "/admin/action/resizedMultiImages.php",
 
                 dataType: 'text',
 
@@ -621,7 +635,7 @@ var project_map = $("#project_map").val();
 
             $.ajax({
 
-                url: urlpath + "admin/action/imagemulti.php",
+                url: "/admin/action/imagemulti.php",
 
                 dataType: 'text',
 

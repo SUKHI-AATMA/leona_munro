@@ -25,6 +25,8 @@
     if($draft) {
        $status = 0; 
     }
+    $interest = $_POST['interest'];
+
     if($project_name !=''){
         $string = str_replace(" ", "-", $project_name);
         $string = preg_replace("/[^A-Za-z0-9\-]/", "", $string);
@@ -45,10 +47,11 @@
             "featured"=>$featured,
             "project_map"=>$project_map,
             "sold"=>$check_sold,
-            "draft"=>(int)$draft,
+            "draft"=> $draft,
             "images"=>$arr,
             "status"=>(int)$status,
-            "small_images"=>$resize_arr
+            "small_images"=>$resize_arr,
+            "interest" => $interest
         );
         $arraycolumn = array(array("colm" => "uniquename", "condtn" => "=", "val" => $project_uniquename, "optr" => ""));
         Model_Base::update_rows("projects", $columnvalue, $arraycolumn);
