@@ -358,6 +358,16 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
             </div>
         </div>
 
+
+        <div class="form-group">
+    <label class="control-label col-sm-2" for="email">Show Interest:</label>
+        <div class="col-sm-8">
+            <input type="radio" name="interest" value="negotiation" <?php  echo ($data[0]->interest)=='negotiation' ?  "checked" : ""; ?>> negotiation<br>
+            <input type="radio" name="interest" value="auction" <?php  echo ($data[0]->interest)=='auction' ?  "checked" : ""; ?>> auction <br>
+            <input type="radio" name="interest" value="tender" <?php  echo ($data[0]->interest)=='tender' ?  "checked" : ""; ?>> tender <br>  
+            <input type="radio" name="interest" value="deadline" <?php  echo ($data[0]->interest)=='deadline' ?  "checked" : ""; ?>> deadline   
+        </div>
+ </div>
       <div class="form-group">
 
         <div class="col-sm-offset-2 col-sm-10">
@@ -558,11 +568,15 @@ var project_map = $("#project_map").val();
             sold = 1;
 
         }
+        if ($("input[name='interest']").is(":checked")){
+                var interest = $("input[name='interest']:checked").val();
+
+            }
         if (!error) {
 
           $.ajax({
 
-            "url": urlpath + "admin/action/actionSaveProject.php",
+            "url": "/admin/action/actionSaveProject.php",
 
             "type": "POST",
 
@@ -598,12 +612,13 @@ var project_map = $("#project_map").val();
 
               featured: featured,
               draft: draft,
-              check_sold: sold
+              check_sold: sold,
+              interest: interest
             },
 
             "success": function(data) {
 
-              console.log(data)
+             // console.log(data)
 
               var data = JSON.parse(data);
 
