@@ -1,11 +1,12 @@
 <?php   include 'head.php';
 include '../model_base.php';  if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):       $data = Model_Base::query("Select project_name, uniquename, beds, area, featured, date_added, status from projects");?>
 <div class="container">
-  <h3 class="title">
-    <span>Projects</span>
-    <a href="<?php echo http_Site.'admin/create.php' ?>" class="btn btn-default" role="button">Add new project</a>
-  </h3>
-  <p></p>
+  <div class="title-wrap">
+    <h3 class="title">
+      <span>Projects</span>
+      <a href="<?php echo http_Site.'admin/create.php' ?>" class="btn btn-default" role="button">Add new project</a>
+    </h3>
+  </div>
   <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
     <thead>
       <tr>
@@ -46,13 +47,13 @@ include '../model_base.php';  if(!empty($_SESSION) && array_key_exists("username
         <td>
           <?php echo date('d-m-Y',strtotime($value->date_added)); ?> </td>
         <td>
-          <a href="<?php echo http_Site.'admin/edit.php?name='.$value->uniquename; ?>" style=" font-size: 16px;">
+          <a href="<?php echo http_Site.'admin/edit.php?name='.$value->uniquename; ?>" style=" font-size: 16px;"  data-toggle="tooltip" data-placement="top" title="Edit">
             <span class="far fa-edit"></span>
           </a>
-          <a href="#" class="deleteProject" style="float: right; font-size: 16px;" data-uniquename="<?php echo $value->uniquename; ?>">
+          <a href="#" class="deleteProject" style="float: right; font-size: 16px;" data-toggle="tooltip" data-placement="top" title="Delete" data-uniquename="<?php echo $value->uniquename; ?>">
             <span class="far fa-trash-alt"></span>
           </a>
-          <a href="<?php echo http_Site.'admin/documents.php?name='.$value->uniquename; ?>" style=" font-size: 16px;" class="" data-uniquename="<?php echo $value->uniquename; ?>">
+          <a href="<?php echo http_Site.'admin/documents.php?name='.$value->uniquename; ?>"  style=" font-size: 16px;" data-toggle="tooltip" data-placement="top" title="PDF" class="" data-uniquename="<?php echo $value->uniquename; ?>">
             <span class="far fa-file-pdf"></span>
           </a>
         </td>
@@ -65,6 +66,12 @@ include '../model_base.php';  if(!empty($_SESSION) && array_key_exists("username
 $(document).ready(function() { $('#example').DataTable();
   $(document).on('click', ".deleteProject", function(e) { e.preventDefault(); var uniquename = $(this).data("uniquename"); var check = confirm("Are you sure to delete this project?"); if (check) { if (uniquename != '') { $.ajax({ "url": "/admin/action/actionDeleteProject.php", "type": "POST", "async": false, "data": { uniquename: uniquename }, "success": function(data) { var data = JSON.parse(data); if (data.status == "success") { alert(data.msg);
               window.location.href = urlpath + "admin/projects.php"; } else { alert(data.msg); } } }); } } }); });
+
+
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+    
 </script>
 <?php else: header("Location:".http_Site); ?>
 <?php endif; ?> </body>

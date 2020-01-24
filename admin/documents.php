@@ -45,22 +45,26 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
 
 ?>
   <div class="container">
-    <h3>Project Documents :
-      <?php echo ucwords($data[0]->project_name); ?> </h3>
-    <p></p>
+    <div class="title-wrap">    
+      <h3>Project Documents :<?php echo ucwords($data[0]->project_name); ?> </h3>
+    </div>
     <form class="form-horizontal">
       <input type="hidden" name="count" id="countForm" value="1" data-projectname="<?php echo $data[0]->uniquename; ?>" />
       <?php if(empty($documentData)): ?>
-      <div class="form-group docs">
-        <div class="col-sm-3">
-          <input type="file" class="form-control documentUpload">
-          <input type="hidden" class="linkFile" id="docFileVal_0" id="docFileVal_0" value=""> </div>
-        <div class="col-sm-3">
-          <input type="text" class="form-control txtFile" id="docText_0" placeholder="Enter Document name"> </div>
-        <div class="col-sm-3">
-          <textarea class="form-control descpFile" id="docDescp_0" placeholder="Enter short description" rows="1"></textarea>
+        
+        <div class="form-row">
+          <div class="form-roww docs">
+            <div class="col-sm-4">
+              <input type="file" class="form-control documentUpload">
+              <input type="hidden" class="linkFile" id="docFileVal_0" id="docFileVal_0" value=""> </div>
+            <div class="col-sm-4">
+              <input type="text" class="form-control txtFile" id="docText_0" placeholder="Enter Document name"> </div>
+            <div class="col-sm-4">
+              <textarea class="form-control descpFile" id="docDescp_0" placeholder="Enter short description" rows="1"></textarea>
+            </div>
+          </div>
         </div>
-      </div>
+
       <?php else: ?>
       <?php foreach ($documentData as $key => $value) : ?>
       <div class="form-group docs">

@@ -8,25 +8,29 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
 <script src="js/jquery.js"></script>
 <script src="js/jquery.datetimepicker.full.min.js"></script>
   <div class="container">
-    <h3 class="title"><span>Open house sessions</span></h3>
-    <p></p>
+    <div class="title-wrap">
+        <h3>Open house sessions</h3>
+    </div>
+
     <form class="form-horizontal">
         <input type="hidden" name="count" id="countForm" value="1"/>
         
         <?php if(empty($data)): ?>
-            <div class="form-group docs">
-                <input type="hidden" class="docId" value="0"/>
-                <div class="col-sm-3">
-                  <input type="text" class="form-control datePicker sessionDate"  placeholder="Select date">
-                </div>
-                <div class="col-sm-3">
-                  <input type="text" class="form-control datetimepicker sessionFromtime" id="email" placeholder="From time">
-                </div>
-                <div class="col-sm-3">
-                  <input type="text" class="form-control datetimepicker sessionTotime" id="email" placeholder="To time">
-                </div>
-                <div class="col-sm-3">
-                    <a href="#" class="removeImg far fa-trash-alt" style="font-size: 17px; margin: 8px;"></a>
+            <div class="form-row">
+                <div class="form-roww">
+                    <input type="hidden" class="docId" value="0"/>
+                    <div class="col-sm-3">
+                    <input type="text" class="form-control datePicker sessionDate"  placeholder="Select date">
+                    </div>
+                    <div class="col-sm-3">
+                    <input type="text" class="form-control datetimepicker sessionFromtime" id="email" placeholder="From time">
+                    </div>
+                    <div class="col-sm-3">
+                    <input type="text" class="form-control datetimepicker sessionTotime" id="email" placeholder="To time">
+                    </div>
+                    <div class="col-sm-3">
+                        <a href="#" class="removeImg far fa-trash-alt" style="padding:18px"></a>
+                    </div>
                 </div>
             </div>
         <?php else: ?>
@@ -55,11 +59,14 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
             </div>
         </div>
         
-        <div class="form-group"> 
-          <div class="col-sm-3">
-              <button type="submit" class="btn btn-praimary" id="btnSaveTime">Save</button>
-          </div>
+
+        <div class="form-group form-btn">
+            <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary" id="btnSaveTime">Save</button>
+            </div>
         </div>
+
+
     </form>
   </div>
   <script>

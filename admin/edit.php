@@ -46,50 +46,45 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
 
   <div class="container">
 
-    <h3>Edit Project</h3>
-
-    <p></p>
+    <div class="title-wrap">
+      <h3>Edit Project</h3>
+    </div>
 
     <form class="form-horizontal">
 
-      <div class="form-group">
-
-        <label class="control-label col-sm-2" for="email">Project name:</label>
-
-        <div class="col-sm-8">
-
-          <input type="text" class="form-control" id="project_name" value="<?php echo $data[0]->project_name; ?>">
-
-          <input type="hidden" id="project_uniquename" value="<?php echo $data[0]->uniquename; ?>"> </div>
-
+      <div class="form-row">
+        <div class="form-group">
+          <div class="col-sm-6">
+            <label class="control-label" for="email">Project name:</label>
+            <input type="text" class="form-control" id="project_name" value="<?php echo $data[0]->project_name; ?>">
+            <input type="hidden" id="project_uniquename" value="<?php echo $data[0]->uniquename; ?>">
+          </div>
+        </div>
       </div>
 
+      <div class="form-row">   
         <div class="form-group">
-
-            <label class="control-label col-sm-2" for="pwd">Profile Image:</label>
-
-            <div class="col-sm-4">
-
-                <input type="file" class="form-control" id="singleprofileImg">(Dimension:350 * 250)
-
-            </div>
-
-            <div class="col-sm-4" id="imgLoaderProfile"><img src="../images/loader.svg" alt=""></div>
-
+          <div class="col-sm-6">
+              <label class="control-label" for="pwd">Profile Image:</label>
+          </div>
+          <div class="flex col-m-12">
+              <div class="col-sm-6">
+                <input type="file" class="form-control" id="singleprofileImg">
+                <span class="caption">(Dimension:350 * 250)</span>
+              </div>
+              <div class="col-sm-6" id="imgLoaderProfile"><img src="../images/loader.svg" alt=""></div>
+          </div>
         </div>
+      </div>
 <?php
         if($data[0]->project_img != "") {
 ?>
         <div class="form-group">
-
             <div class="col-sm-2"></div>
-
             <div class="col-sm-10" id="divProfileImg">
-
-                <img src="<?php echo http_Site."admin/upload/profileImage/".$data[0]->project_img; ?>" width="50" height="50" id="profileImgView" data-smaller="<?php echo http_Site."".$data[0]->project_img_small; ?>" />
+                <img src="<?php echo http_Site."admin/upload/profileImage/".$data[0]->project_img; ?>" width="150" height="150" id="profileImgView" data-smaller="<?php echo http_Site."".$data[0]->project_img_small; ?>" />
 
             </div>
-
         </div>
 <?php
 }
@@ -97,285 +92,213 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
 
         <input type="hidden" id='existingProfileImage' value="<?php echo $data[0]->project_img; ?>" />
 
-        <div class="form-group">
-
-            <label class="control-label col-sm-2" for="pwd">Large image:</label>
-
-            <div class="col-sm-4">
-
-              <input type="file" class="form-control" id="uploadProfileImg" name="file[]" multiple="multiple">(Dimension:1900 * 1000)
-
+        <div class="form-row"> 
+          <div class="form-group">
+            <div class="col-sm-6">
+                <label class="control-label" for="pwd">Large Image:</label>
             </div>
-
-            <div class="col-sm-4" id="imgLoaderMulti">
-
-                <img src="../images/loader.svg" alt="">
-
+            <div class="flex col-m-12">
+                <div class="col-sm-6">          
+                  <input type="file" class="form-control" id="uploadProfileImg" name="file[]" multiple="multiple">
+                  <span class="caption">(Dimension:1900 * 1000)</span>
+                </div>
+                <div class="col-sm-6" id="imgLoaderMulti">
+                    <img src="../images/loader.svg" alt="">
+                </div>
             </div>
-
+          </div>
         </div>
+
         <input type="hidden" id='existingAdditionalImage' value="<?php echo $data[0]->images; ?>" />
 
-
         <div class="form-group">
-
             <div class="col-sm-2"></div>
-
-            <div class="col-sm-10" id="profileImgProject">
-
+            <div class="col-sm-8" id="profileImgProject">
                 <?php if($data[0]->images !=""): ?>
-
                 <?php
-
                     $imageData = explode(',', $data[0]->images);
-
                     $resize_imageData = explode(',', $data[0]->small_images);
-
                     for($i=0; $i<count($imageData); $i++):
-
                 ?>
-
-                <div class="col-sm-2">
-
-                  <img src="<?php echo http_Site."admin/upload/additionalImages/".$imageData[$i]; ?>" class="locationImgView" data-resize="<?php echo $imageData[$i]; ?>" width="50" height="50" />
-
-                  <a href="#" class="removeImg">
-
-                    <span class="far fa-trash-alt"></span>
-
-                  </a>
-
+                <div class="col-sm-3">
+                  <div class="edit-img-wrap">
+                    <img src="<?php echo http_Site."admin/upload/additionalImages/".$imageData[$i]; ?>" class="locationImgView" data-resize="<?php echo $imageData[$i]; ?>" width="150" height="150" />
+                    <a href="#" class="removeImg" data-toggle="tooltip" data-placement="top" title="Delete">
+                      <span class="far fa-trash-alt"></span>
+                    </a>
+                  </div>
                 </div>
-
                 <?php endfor; ?>
-
                 <?php endif; ?>
-
             </div>
-
         </div>
 
-
-        <div class="form-group">
-
-            <label class="control-label col-sm-2" for="pwd">Thumbnail Images:</label>
-
-            <div class="col-sm-4">
-
-              <input type="file" class="form-control" id="resizedUploadProfileImg" name="file[]" multiple="multiple">(Dimension:350 * 200)
-
+        <div class="form-row">
+          <div class="form-group">
+            <div class="col-sm-6">
+              <label class="control-label" for="pwd">Thumbnail Images:</label>
             </div>
-
-            <div class="col-sm-4" id="resizedImgLoaderMulti">
-
-                <img src="../images/loader.svg" alt="">
-
+            <div class="flex col-m-12">
+                <div class="col-sm-6">          
+                <input type="file" class="form-control" id="resizedUploadProfileImg" name="file[]" multiple="multiple">
+                <span class="caption">(Dimension:350 * 200)</span>
+                </div>
+                <div class="col-sm-6" id="resizedImgLoaderMulti">
+                    <img src="../images/loader.svg" alt="">
+                </div>
             </div>
-
+          </div>
         </div>
-
+        
         <input type="hidden" id='existingResizedAdditionalImage' value="<?php echo $data[0]->small_images; ?>" />
 
-        <div class="form-group">
+        <div class="form-row">
+          <div class="form-group" style="margin:0">
+            <div class="col-sm-6"></div>
+            <div class="col-sm-6" id="resizedProfileImgProject"></div>
+          </div>
+        </div>
 
-            <div class="col-sm-2"></div>
+        <div class="form-row">
+          <div class="form-group">
+              <div class="col-sm-2"></div>
+              <div class="col-sm-8" id="resizedMoreImages">
+                  <?php if($data[0]->small_images !=""): ?>
+                  <?php
+                      $resize_imageData = explode(',', $data[0]->small_images);
+                      for($i=0; $i<count($resize_imageData); $i++):
+                  ?>
+                  <div class="col-sm-3">
+                    <div class="edit-img-wrap">
+                      <img src="<?php echo http_Site."admin/upload/resizedAdditionalImages/".$resize_imageData[$i]; ?>" class="resizedImgView" data-resize="<?php echo $resize_imageData[$i]; ?>" width="150" height="150" />
+                      <a href="#" class="removeImg" data-toggle="tooltip" data-placement="top" title="Delete">
+                        <span class="far fa-trash-alt"></span>
+                      </a>
+                    </div>
+                  </div>
+                  <?php endfor; ?>
+                  <?php endif; ?>
+              </div>
+          </div>
+        </div>
 
-            <div class="col-sm-10" id="resizedProfileImgProject"></div>
+        <div class="form-row">
+          <div class="form-roww">
+            <div class="col-md-6">
+              <label class="control-label col-sm-12" for="email">Beds:</label>
+              <input type="number" class="form-control" id="project_beds" value="<?php echo $data[0]->beds; ?>">
+            </div>
+            <div class="col-md-6">
+              <label class="control-label col-sm-12" for="email">Toilet:</label>
+              <input type="number" class="form-control" id="project_toilet" value="<?php echo $data[0]->toilet; ?>">
+            </div>
+          </div>
+        </div>
 
+        <div class="form-row">
+          <div class="form-roww">
+            <div class="col-md-6">
+              <label class="control-label col-sm-12" for="email">Area:</label>
+              <input type="number" class="form-control" id="project_area" value="<?php echo $data[0]->area; ?>">
+            </div>
+            <div class="col-md-6">
+              <label class="control-label col-sm-12" for="email">Carpet area:</label>
+              <input type="number" class="form-control" id="project_carpet_area" value="<?php echo $data[0]->carpet_area; ?>">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-roww">
+            <div class="col-md-6">
+              <label class="control-label col-sm-12" for="email">Living:</label>
+              <input type="number" class="form-control" id="project_living" value="<?php echo $data[0]->seating; ?>"> 
+            </div>
+            <div class="col-md-6">
+              <label class="control-label col-sm-12" for="email">Parking:</label>
+              <input type="number" class="form-control" id="project_parking" value="<?php echo $data[0]->parking; ?>">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">  
+          <div class="form-group">
+            <div class="col-sm-12">
+              <label class="control-label" for="pwd">Description:</label>
+              <textarea class="form-control" name="description" rows="10" id="description">
+                <?php echo $data[0]->description; ?>
+              </textarea>
+            </div>
+          </div>
         </div>
 
 
-        <div class="form-group">
-
-            <div class="col-sm-2"></div>
-
-            <div class="col-sm-10" id="resizedMoreImages">
-
-                <?php if($data[0]->small_images !=""): ?>
-
+        <div class="form-row">
+          <div class="form-roww">
+            <div class="checkbox col-sm-4">
+                <label>
+                  <input type="checkbox" value="<?php echo $data[0]->featured; ?>" id="check_featured" <?php echo ($data[0]->featured == 1)?"checked":""; ?> >
+                  <span></span>Featured listing
+                </label>
+            </div>
+            <div class="checkbox col-sm-4">
+                <label>
+                  <input type="checkbox" value="<?php echo $data[0]->sold; ?>" id="check_sold" <?php echo ($data[0]->sold == 1)?"checked":""; ?> ><span></span>Sold out
+                </label>
+            </div>
+            <div class="checkbox col-sm-4">
+              <?php
+              $isDraft = false;
+              if($data[0]->draft == 1 || $data[0]->draft == "1") {
+                  ?>
+              <label><input type="checkbox" checked="true" id="draft"><span></span>Keep in draft</label>
                 <?php
+              } else {
+                  ?>
+              <label><input type="checkbox" id="draft"><span></span>Keep in draft</label>
+                <?php
+              }
+              ?>
+            </div>
+          </div>
+        </div>
 
-                    $resize_imageData = explode(',', $data[0]->small_images);
+        <div class="form-group">
+          <div class="col-sm-6">
+            <label class="control-label col-sm-12" for="email">Map location:</label>
+            <input type="text" class="form-control" id="project_map" value="<?php echo $data[0]->project_map; ?>">
+          </div>
+        </div>
 
-                    for($i=0; $i<count($resize_imageData); $i++):
 
-                ?>
-
-                <div class="col-sm-2">
-
-                  <img src="<?php echo http_Site."admin/upload/resizedAdditionalImages/".$resize_imageData[$i]; ?>" class="resizedImgView" data-resize="<?php echo $resize_imageData[$i]; ?>" width="50" height="50" />
-
-                  <a href="#" class="removeImg">
-
-                    <span class="far fa-trash-alt"></span>
-
-                  </a>
-
+        <div class="form-row">
+          <div class="form-group">
+            <div class="col-sm-12">
+              <label class="control-label" for="email">Show Interest:</label>
+                <div class="radio-wrap flexwrap">
+                  <label for="">
+                    <input type="radio" name="interest" value="negotiation" <?php  echo ($data[0]->interest)=='negotiation' ?  "checked" : ""; ?>> <span></span> Negotiation
+                  </label>
+                  <label for="">
+                    <input type="radio" name="interest" value="auction" <?php  echo ($data[0]->interest)=='auction' ?  "checked" : ""; ?>><span></span>Auction
+                  </label>
+                  <label for="">
+                    <input type="radio" name="interest" value="tender" <?php  echo ($data[0]->interest)=='tender' ?  "checked" : ""; ?>><span></span>Tender 
+                  </label>
+                  <label for="">
+                    <input type="radio" name="interest" value="deadline" <?php  echo ($data[0]->interest)=='deadline' ?  "checked" : ""; ?>><span></span>Deadline 
+                  </label>  
                 </div>
-
-                <?php endfor; ?>
-
-                <?php endif; ?>
-
             </div>
-        </div>
-
-
-      <div class="form-group">
-
-        <label class="control-label col-sm-2" for="email">Beds:</label>
-
-        <div class="col-sm-3">
-
-          <input type="number" class="form-control" id="project_beds" value="<?php echo $data[0]->beds; ?>"> </div>
-
-        <label class="control-label col-sm-2" for="email">Toilet:</label>
-
-        <div class="col-sm-3">
-
-          <input type="number" class="form-control" id="project_toilet" value="<?php echo $data[0]->toilet; ?>"> </div>
-
-      </div>
-
-      <div class="form-group">
-
-        <label class="control-label col-sm-2" for="email">Area:</label>
-
-        <div class="col-sm-3">
-
-          <input type="number" class="form-control" id="project_area" value="<?php echo $data[0]->area; ?>"> </div>
-
-        <label class="control-label col-sm-2" for="email">Carpet area:</label>
-
-        <div class="col-sm-3">
-
-          <input type="number" class="form-control" id="project_carpet_area" value="<?php echo $data[0]->carpet_area; ?>"> </div>
-
-      </div>
-
-      <div class="form-group">
-
-        <label class="control-label col-sm-2" for="email">Living:</label>
-
-        <div class="col-sm-3">
-
-          <input type="number" class="form-control" id="project_living" value="<?php echo $data[0]->seating; ?>"> </div>
-
-
-
-          <label class="control-label col-sm-2" for="email">Parking:</label>
-
-        <div class="col-sm-3">
-
-          <input type="number" class="form-control" id="project_parking" value="<?php echo $data[0]->parking; ?>"> </div>
-
-      </div>
-
-      <div class="form-group">
-
-        <label class="control-label col-sm-2" for="pwd">Description:</label>
-
-        <div class="col-sm-6">
-
-          <textarea class="form-control" name="description" rows="10" id="description">
-
-            <?php echo $data[0]->description; ?>
-
-          </textarea>
-
-        </div>
-
-      </div>
-
-      <div class="form-group">
-
-        <div class="col-sm-offset-2 col-sm-10">
-
-          <div class="checkbox">
-
-            <label>
-
-              <input type="checkbox" value="<?php echo $data[0]->featured; ?>" id="check_featured" <?php echo ($data[0]->featured == 1)?"checked":""; ?> >
-
-              <span>Featured listing</span>
-
-            </label>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-
-        <div class="form-group">
-
-        <div class="col-sm-offset-2 col-sm-10">
-
-          <div class="checkbox">
-
-            <label>
-
-              <input type="checkbox" value="<?php echo $data[0]->sold; ?>" id="check_sold" <?php echo ($data[0]->sold == 1)?"checked":""; ?> >
-
-              <span>Sold out</span>
-
-            </label>
-
-          </div>
-
-        </div>
-
-      </div>
-
-      <div class="form-group">
-
-        <div class="col-sm-offset-2 col-sm-10">
-          <div class="checkbox">
-            <?php
-            $isDraft = false;
-            if($data[0]->draft == 1 || $data[0]->draft == "1") {
-                ?>
-            <label><input type="checkbox" checked="true" id="draft"><span>Keep in draft</span></label>
-              <?php
-            } else {
-                ?>
-            <label><input type="checkbox" id="draft"><span>Keep in draft</span></label>
-              <?php
-            }
-            ?>
-
           </div>
         </div>
 
-      </div>
-
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="email">Map location:</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" id="project_map" value="<?php echo $data[0]->project_map; ?>">
-            </div>
-        </div>
 
 
-        <div class="form-group">
-    <label class="control-label col-sm-2" for="email">Show Interest:</label>
-        <div class="col-sm-8">
-            <input type="radio" name="interest" value="negotiation" <?php  echo ($data[0]->interest)=='negotiation' ?  "checked" : ""; ?>> negotiation<br>
-            <input type="radio" name="interest" value="auction" <?php  echo ($data[0]->interest)=='auction' ?  "checked" : ""; ?>> auction <br>
-            <input type="radio" name="interest" value="tender" <?php  echo ($data[0]->interest)=='tender' ?  "checked" : ""; ?>> tender <br>  
-            <input type="radio" name="interest" value="deadline" <?php  echo ($data[0]->interest)=='deadline' ?  "checked" : ""; ?>> deadline   
-        </div>
- </div>
-      <div class="form-group">
-
-        <div class="col-sm-offset-2 col-sm-10">
-
+      <div class="form-group form-btn">
+        <div class="col-sm-10">
           <button type="submit" class="btn btn-primary" id="btnCreateProject">Save</button>
-
         </div>
-
       </div>
 
     </form>
@@ -790,6 +713,11 @@ $("#resizedUploadProfileImg").change(function(){
       });
 
     });
+
+
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
 
     </script>
 

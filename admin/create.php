@@ -10,255 +10,191 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
 
 <div class="container">
 
-    <h3>Create Project</h3>
-
-    <p></p>
+    <div class="title-wrap">
+        <h3>Create Project</h3>
+    </div>
 
     <form class="form-horizontal">
 
-        <div class="form-group">
-
-            <label class="control-label col-sm-2" for="email">Project name:</label>
-
-            <div class="col-sm-8">
-
-              <input type="text" class="form-control" id="project_name" accept="image/*" placeholder="Enter Project name">
-
+        <div class="form-row">  
+            <div class="form-group">        
+                <div class="col-sm-6">
+                    <label class="control-label" for="email">Project name:</label>
+                    <input type="text" class="form-control" id="project_name" accept="image/*" placeholder="Enter Project name">
+                </div>
             </div>
-
         </div>
 
-        
-
-        <div class="form-group">
-
-            <label class="control-label col-sm-2" for="pwd">Profile Image:</label>
-
-            <div class="col-sm-4">          
-
-                <input type="file" class="form-control" accept="image/*" id="singleprofileImg">(Dimension:350 * 250)
-
-            </div>
-
-            <div class="col-sm-4" id="imgLoaderProfile"><img src="../images/loader.svg" alt=""></div>
-
+        <div class="form-row">   
+            <div class="form-group">
+                <div class="col-sm-6">
+                    <label class="control-label" for="pwd">Profile Image:</label>
+                </div>
+                <div class="flex col-m-12">
+                    <div class="col-sm-6">
+                        <input type="file" class="form-control" accept="image/*" id="singleprofileImg">
+                        (Dimension:350 * 250)
+                    </div>
+                    <div class="col-sm-6" id="imgLoaderProfile"><img src="../images/loader.svg" alt=""></div>
+                </div>
+            </div> 
         </div>
 
-                
-
-        <div class="form-group">
-
-            <div class="col-sm-2"></div>
-
-            <div class="col-sm-10" id="divProfileImg"></div>
-
+        <div class="form-row"> 
+            <div class="form-group">
+                <div class="col-sm-6"></div>
+                <div class="col-sm-6" id="divProfileImg"></div>
+            </div>
         </div>
 
-
-
-        <div class="form-group">
-
-            <label class="control-label col-sm-2" for="pwd">Large Images:</label>
-
-            <div class="col-sm-4">          
-
-                <input type="file" class="form-control" id="uploadProfileImg" accept="image/*" name="file[]" multiple="multiple">(Dimension:1900 * 1000)
-
+        <div class="form-row"> 
+            <div class="form-group">
+                <div class="col-sm-6">
+                    <label class="control-label" for="pwd">Large Image:</label>
+                </div>
+                <div class="flex col-m-12">
+                    <div class="col-sm-6">          
+                        <input type="file" class="form-control" id="uploadProfileImg" accept="image/*" name="file[]" multiple="multiple">(Dimension:1900 * 1000)
+                    </div>
+                    <div class="col-sm-6" id="imgLoaderMulti">
+                        <img src="../images/loader.svg" alt="">
+                    </div>
+                </div>
             </div>
-
-            <div class="col-sm-4" id="imgLoaderMulti">
-
-                <img src="../images/loader.svg" alt="">
-
-            </div>
-
         </div>
-        
-        <div class="form-group">
-
-            <div class="col-sm-2"></div>
-
-            <div class="col-sm-10" id="profileImgProject"></div>
-
-        </div>
-
-        <div class="form-group">
-
-            <label class="control-label col-sm-2" for="pwd">Thumbnail images:</label>
-
-            <div class="col-sm-4">          
-
-                <input type="file" class="form-control" id="resizedUploadProfileImg" accept="image/*" name="file[]" multiple="multiple">
-                (Dimension:350 * 200)
-
-            </div>
-
-            <div class="col-sm-4" id="resizedImgLoaderMulti">
-
-                <img src="../images/loader.svg" alt="">
-
-            </div>
-
-        </div>
-
-        <div class="form-group">
-
-            <div class="col-sm-2"></div>
-
-            <div class="col-sm-10" id="resizedProfileImgProject"></div>
-
-        </div>
-
-        
-
-        <div class="form-group">
-
-            <label class="control-label col-sm-2" for="email">Beds:</label>
-
-            <div class="col-sm-3">
-
-              <input type="number" class="form-control" id="project_beds" placeholder="Enter number of beds">
-
-            </div>
-
-            <label class="control-label col-sm-2" for="email">Toilet:</label>
-
-            <div class="col-sm-3">
-
-              <input type="number" class="form-control" id="project_toilet" placeholder="Enter number of toilets">
-
-            </div>
-
-        </div>
-
-        
-
-        <div class="form-group">
-
-            <label class="control-label col-sm-2" for="email">Area:</label>
-
-            <div class="col-sm-3">
-
-              <input type="number" class="form-control" id="project_area" placeholder="Enter project area">
-
-            </div>
-
             
-            
-            <label class="control-label col-sm-2" for="email">Carpet Area:</label>
-
-            <div class="col-sm-3">
-
-              <input type="number" class="form-control" id="project_carpet_area" placeholder="Enter Carpet area">
-
+        <div class="form-row">
+            <div class="form-group">
+                <div class="col-sm-6"></div>
+                <div class="col-sm-6" id="profileImgProject"></div>
             </div>
+        </div>
 
+        <div class="form-row">
+            <div class="form-group">
+                <div class="col-sm-6">
+                    <label class="control-label" for="pwd">Thumbnail images:</label>
+                </div>
+                <div class="flex col-m-12">
+                    <div class="col-sm-6">          
+                        <input type="file" class="form-control" id="resizedUploadProfileImg" accept="image/*" name="file[]" multiple="multiple">
+                        (Dimension:350 * 200)
+                    </div>
+                    <div class="col-sm-6" id="resizedImgLoaderMulti">
+                        <img src="../images/loader.svg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <div class="col-sm-6"></div>
+                <div class="col-sm-6" id="resizedProfileImgProject"></div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-roww">
+                <div class="col-md-6">
+                    <label class="control-label col-sm-12" for="email">Beds:</label>
+                    <input type="number" class="form-control" id="project_beds" placeholder="Enter number of beds">
+                </div>
+                <div class="col-md-6"> 
+                    <label class="control-label col-sm-12" for="email">Toilet:</label>
+                    <input type="number" class="form-control" id="project_toilet" placeholder="Enter number of toilets">
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-roww">
+                <div class="col-md-6">
+                    <label class="control-label" for="email">Area:</label>
+                    <input type="number" class="form-control" id="project_area" placeholder="Enter project area">
+                </div> 
+                <div class="col-md-6">
+                    <label class="control-label col-sm-2" for="email">Carpet Area:</label>
+                    <input type="number" class="form-control" id="project_carpet_area" placeholder="Enter Carpet area">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-roww">
+                <div class="col-md-6">
+                    <label class="control-label" for="email">Living:</label>
+                    <input type="number" class="form-control" id="project_living" placeholder="Enter number of Living area">
+                </div> 
+                <div class="col-md-6">
+                    <label class="control-label col-sm-2" for="email">Parking:</label>
+                    <input type="number" class="form-control" id="project_parking" placeholder="Enter number of parkings">
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-row">
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <label class="control-label" for="pwd">Description:</label>
+                    <textarea class="form-control" name="description" rows="10" id="description"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-roww">
+                <div class="checkbox col-sm-4">
+                    <label><input type="checkbox" value="1" id="check_featured"><span></span>Featured listing</label>
+                </div>
+                <div class="checkbox col-sm-4">
+                    <label><input type="checkbox" value="" id="check_sold"><span></span>Sold out</label>
+                </div>
+                <div class="checkbox col-sm-4">
+                    <label><input type="checkbox" value="" id="draft"><span></span>Keep in draft</label>
+                </div>
+            </div>
         </div>
 
         
-
         <div class="form-group">
-
-            <label class="control-label col-sm-2" for="email">Living:</label>
-
-            <div class="col-sm-3">
-
-              <input type="number" class="form-control" id="project_living" placeholder="Enter number of Living area">
-
-            </div>
-            
-            <label class="control-label col-sm-2" for="email">Parking:</label>
-
-            <div class="col-sm-3">
-
-              <input type="number" class="form-control" id="project_parking" placeholder="Enter number of parkings">
-
-            </div>
-            
-            
-
-        </div>
-
-        
-
-        <div class="form-group">
-
-            <label class="control-label col-sm-2" for="pwd">Description:</label>
-
-            <div class="col-sm-6">          
-
-                <textarea class="form-control" name="description" rows="10" id="description"></textarea>
-
-            </div>
-
-        </div>
-
-
-
-        <div class="form-group"> 
-
-          <div class="col-sm-offset-2 col-sm-10">
-
-            <div class="checkbox">
-
-                <label><input type="checkbox" value="1" id="check_featured"><span>Featured listing</span></label>
-
-            </div>
-
-          </div>
-
-        </div>
-        
-        <div class="form-group">
-
-        <div class="col-sm-offset-2 col-sm-10">
-          <div class="checkbox">
-            <label><input type="checkbox" value="" id="check_sold"><span>Sold out</span></label>
-          </div>
-        </div>
-
-      </div>
-        
-        <div class="form-group">
-
-        <div class="col-sm-offset-2 col-sm-10">
-          <div class="checkbox">
-            <label><input type="checkbox" value="" id="draft"><span>Keep in draft</span></label>
-          </div>
-        </div>
-
-      </div>
-        
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="email">Map location:</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" id="project_map" placeholder="Enter project map location url">
+            <div class="col-sm-6">
+                <label class="control-label" for="email">Map location:</label>
+                <input type="text" class="form-control" id="project_map" placeholder="Enter project map location url">
             </div>
         </div>
 
-        <div class="form-group">
-    <label class="control-label col-sm-2" for="email">Show Interest:</label>
-        <div class="col-sm-8">
-            <input type="radio" name="interest" value="negotiation"> negotiation<br>
-            <input type="radio" name="interest" value="auction"> auction <br>
-            <input type="radio" name="interest" value="tender"> tender <br>  
-            <input type="radio" name="interest" value="deadline"> deadline   
+        <div class="form-row">
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <label class="control-label" for="email">Show Interest:</label>
+                    <div class="radio-wrap flexwrap">
+                        <label for="">
+                            <input type="radio" name="interest" value="negotiation"><span></span>negotiation
+                        </label>
+                        <label for="">
+                            <input type="radio" name="interest" value="auction"><span></span>auction 
+                        </label>
+                        <label for="">
+                            <input type="radio" name="interest" value="tender"><span></span>tender
+                        </label> 
+                        <label for="">
+                            <input type="radio" name="interest" value="deadline"><span></span>deadline
+                        </label>   
+                    </div>
+                </div>
+            </div>
         </div>
- </div>
 
-        <div class="form-group"> 
-
-          <div class="col-sm-offset-2 col-sm-10">
-
-              <button type="submit" class="btn btn-default" id="btnCreateProject">Submit</button>
-
-          </div>
-
+        <div class="form-group form-btn"> 
+            <div class="col-sm-12">
+                <button type="submit" class="btn btn-default" id="btnCreateProject">Submit</button>
+            </div>
         </div>
 
     </form>
 
-    
 
     <script>
 
@@ -618,6 +554,7 @@ var project_map = $("#project_map").val();
             });
 
         });
+
 
         $("#uploadProfileImg").change(function(){
 
