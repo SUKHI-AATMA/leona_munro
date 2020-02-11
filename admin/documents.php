@@ -55,7 +55,7 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
         <div class="form-row">
           <div class="form-roww docs">
             <div class="col-sm-4">
-              <input type="file" class="form-control documentUpload">
+              <input type="file" id="videoUploadFile" class="form-control documentUpload">
               <input type="hidden" class="linkFile" id="docFileVal_0" id="docFileVal_0" value=""> </div>
             <div class="col-sm-4">
               <input type="text" class="form-control txtFile" id="docText_0" placeholder="Enter Document name"> </div>
@@ -108,6 +108,8 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
         var doc = [];
         var txt = [];
         var descp = [];
+       // var vidFileLength = $("#videoUploadFile")[0].files.length;
+
         if (count > 0) {
           var $linkFile = $('.linkFile');
           $linkFile.each(function() {
@@ -127,9 +129,10 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
               descp.push($(this).val());
             }
           });
+
           if (doc.length > 0 && txt.length > 0 && descp.length > 0) {
             $.ajax({
-              "url": urlpath + "admin/action/actionDocument.php",
+              "url":   "/admin/action/actionDocument.php",
               "type": "POST",
               "async": false,
               "data": {
@@ -142,7 +145,7 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
               "success": function(data) {
                 var data = JSON.parse(data);
                 alert(data.msg);
-                window.location.href = urlpath + "admin/projects.php";
+                window.location.href = "/admin/projects.php";
               }
             });
           } else {
@@ -173,17 +176,16 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
           //     } else {
           //       console.log(2);
                 $.ajax({
-                  url: urlpath + "admin/action/uploadDocumentPrj.php",
+                  url: "/admin/action/uploadDocumentPrj.php",
                   type: "POST",
                   cache: false,
                   contentType: false, // important
                   processData: false, // important
                   data: form,
                   success: function(data) {
-                    //console.log(data);
                     var data = JSON.parse(data);
                     if (data.status == "success") {
-                      $("#docFileVal_" + count).val(urlpath + "admin/documents/" + data.msg);
+                      $("#docFileVal_" + count).val("/admin/documents/" + data.msg);
                     } else {
                       alert(data.msg)
                     }

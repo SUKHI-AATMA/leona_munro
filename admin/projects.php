@@ -47,13 +47,13 @@ include '../model_base.php';  if(!empty($_SESSION) && array_key_exists("username
         <td>
           <?php echo date('d-m-Y',strtotime($value->date_added)); ?> </td>
         <td>
-          <a href="<?php echo http_Site.'admin/edit.php?name='.$value->uniquename; ?>" style=" font-size: 16px;"  data-toggle="tooltip" data-placement="top" title="Edit">
+          <a href="<?php echo '/admin/edit.php?name='.$value->uniquename; ?>" style=" font-size: 16px;"  data-toggle="tooltip" data-placement="top" title="Edit">
             <span class="far fa-edit"></span>
           </a>
           <a href="#" class="deleteProject" style="float: right; font-size: 16px;" data-toggle="tooltip" data-placement="top" title="Delete" data-uniquename="<?php echo $value->uniquename; ?>">
             <span class="far fa-trash-alt"></span>
           </a>
-          <a href="<?php echo http_Site.'admin/documents.php?name='.$value->uniquename; ?>"  style=" font-size: 16px;" data-toggle="tooltip" data-placement="top" title="PDF" class="" data-uniquename="<?php echo $value->uniquename; ?>">
+          <a href="<?php echo '/admin/documents.php?name='.$value->uniquename; ?>"  style=" font-size: 16px;" data-toggle="tooltip" data-placement="top" title="PDF" class="" data-uniquename="<?php echo $value->uniquename; ?>">
             <span class="far fa-file-pdf"></span>
           </a>
         </td>
@@ -65,7 +65,7 @@ include '../model_base.php';  if(!empty($_SESSION) && array_key_exists("username
 <script>
 $(document).ready(function() { $('#example').DataTable();
   $(document).on('click', ".deleteProject", function(e) { e.preventDefault(); var uniquename = $(this).data("uniquename"); var check = confirm("Are you sure to delete this project?"); if (check) { if (uniquename != '') { $.ajax({ "url": "/admin/action/actionDeleteProject.php", "type": "POST", "async": false, "data": { uniquename: uniquename }, "success": function(data) { var data = JSON.parse(data); if (data.status == "success") { alert(data.msg);
-              window.location.href = urlpath + "admin/projects.php"; } else { alert(data.msg); } } }); } } }); });
+              window.location.href = "/admin/projects.php"; } else { alert(data.msg); } } }); } } }); });
 
 
     $(function () {
