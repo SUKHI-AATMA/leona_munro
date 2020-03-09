@@ -11,7 +11,7 @@
   <style type="text/css">
   * { margin: 0; padding: 0; }
   html, body {font-family: 'Open Sans', sans-serif; height: 100%; width: 100%;}
-  body { background: url(images/bg-comingsoon.jpg) no-repeat center; background-size: cover; display: table; height: 100%; width: 100%; }
+  body { /*background: url(images/bg-comingsoon.jpg) no-repeat center;*/ background-size: cover; display: table; height: 100%; width: 100%; }
   .content { display: table-row;  height: 100%; width: 100%;}
   .cell { display: table-cell;  height: 100%; text-align: center; vertical-align: middle; width: 100%;}
 

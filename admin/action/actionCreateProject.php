@@ -68,7 +68,7 @@
             
         }else{
             $response["status"] = "error";
-            $response["msg"] = "Project name already exists";
+            $response["msg"] = "Project name already exists 123";
         }
     }else{
         $response["status"] = "error";
