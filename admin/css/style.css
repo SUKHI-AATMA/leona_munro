@@ -295,7 +295,8 @@ span .fg-button.ui-state-disabled,
 #addMore{
    border:1px solid #7CB342;
    color: #7CB342;
-   padding: 10px 16px;
+   display: inline-block;
+   /*padding: 10px 16px;*/
    border-radius: 4px;
 }
 #addMore:hover{

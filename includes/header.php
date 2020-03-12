@@ -4,10 +4,10 @@
   //location.href = location.href.replace(/^http:\/\/www./, 'https:')
 </script><!-- HEADER -->
 <header>
-  <div class="logo">
+  <!-- <div class="logo">
     <a href="<?php echo http_Site; ?>">
       <img src="<?php echo http_Site; ?>images/Leona-munro.png" alt=""> </a>
-  </div>
+  </div> -->
   <nav>
     <div class="hamburger">
       <div class="hamburger-box">
@@ -15,10 +15,10 @@
       </div>
     </div>
     <ul>
-      <li>
+      <!-- <li>
         <a href="tel:0279291174">027 929 1174</a>
         <a href="mailto:Leonam@metrorealty.co.nz">Leonam@metrorealty.co.nz</a>
-      </li>
+      </li> -->
       <li>
         <a href="<?php echo http_Site; ?>">
           <img src="<?php echo http_Site; ?>images/svg/home.svg" alt="">

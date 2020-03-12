@@ -33,6 +33,10 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
 
     endif;
 
+
+
+
+
     if($check == 1):
 
         header('Location:'.http_Site);
@@ -41,29 +45,25 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
 
 ?>
   <div class="container">
-    <div class="title-wrap">    
-      <h3>Project Documents :<?php echo ucwords($data[0]->project_name); ?> </h3>
-    </div>
+    <h3>Project Documents :
+      <?php echo ucwords($data[0]->project_name); ?> </h3>
+    <p></p>
     <form class="form-horizontal">
       <input type="hidden" name="count" id="countForm" value="1" data-projectname="<?php echo $data[0]->uniquename; ?>" />
       <?php if(empty($documentData)): ?>
-        
-        <div class="form-row">
-          <div class="form-roww docs">
-            <div class="col-sm-3">
-              <input type="file" id="videoUploadFile" class="form-control documentUpload">
-              <input type="hidden" class="linkFile" id="docFileVal_0" id="docFileVal_0" value=""> </div>
-            <div class="col-sm-3">
-              <input type="text" class="form-control txtFile" id="docText_0" placeholder="Enter Document name"> </div>
-            <div class="col-sm-5">
-              <textarea class="form-control descpFile" id="docDescp_0" placeholder="Enter short description" rows="1"></textarea>
-            </div>
-          </div>
+      <div class="form-group docs">
+        <div class="col-sm-3">
+          <input type="file" class="form-control documentUpload">
+          <input type="hidden" class="linkFile" id="docFileVal_0" id="docFileVal_0" value=""> </div>
+        <div class="col-sm-3">
+          <input type="text" class="form-control txtFile" id="docText_0" placeholder="Enter Document name"> </div>
+        <div class="col-sm-3">
+          <textarea class="form-control descpFile" id="docDescp_0" placeholder="Enter short description" rows="1"></textarea>
         </div>
-
+      </div>
       <?php else: ?>
       <?php foreach ($documentData as $key => $value) : ?>
-      <div class="form-row docs">
+      <div class="form-group docs">
         <div class="col-sm-3">
           <input type="file" class="form-control documentUpload">
           <input type="hidden" class="linkFile" id="docFileVal_<?php echo $key; ?>" value="<?php echo $value->link; ?>"> </div>
@@ -71,22 +71,25 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
           <input type="text" class="form-control txtFile" value="<?php echo $value->docName; ?>">
 
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
           <textarea class="form-control descpFile" rows="1">
             <?php echo $value->description; ?> </textarea>
         </div>
-        <div class="col-sm-2">
-          <a href='<?php echo $value->link; ?>' target="_blank">[ DOCUMENT ]</a> 
+        <div class="col-sm-3">
+          <a href='<?php echo $value->link; ?>'>[ DOCUMENT ]</a> 
           <a href="#" class="removeImg far fa-trash-alt">Remove</a>
         </div>
       </div>
       <?php endforeach; ?>
       <?php endif; ?>
-      
       <div class="form-group" id="addDivMore">
+        <div class="col-sm-3">
+          <a href="#" id="addMore">
+            <span class="far fa-plus-square"></span>&nbsp;&nbsp;&nbsp;Add more</a>
+        </div>
+      </div>
+      <div class="form-group">
         <div class="col-sm-12">
-          <a href="#" id="addMore" class="btn btn-primary">
-            <span class="far fa-plus-square"></span>&nbsp;&nbsp;&nbsp;Add more</a>&nbsp;&nbsp;&nbsp;
           <button type="submit" class="btn btn-primary" id="btnSaveDocs">Save</button>&nbsp;&nbsp;&nbsp;
           <a href="<?php echo http_Site.'admin/projects.php'; ?>" class="btn btn-info" role="button">Upload document later</a>
         </div>
@@ -101,8 +104,6 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
         var doc = [];
         var txt = [];
         var descp = [];
-       // var vidFileLength = $("#videoUploadFile")[0].files.length;
-
         if (count > 0) {
           var $linkFile = $('.linkFile');
           $linkFile.each(function() {
@@ -122,10 +123,9 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
               descp.push($(this).val());
             }
           });
-
           if (doc.length > 0 && txt.length > 0 && descp.length > 0) {
             $.ajax({
-              "url":   "/admin/action/actionDocument.php",
+              "url": urlpath + "admin/action/actionDocument.php",
               "type": "POST",
               "async": false,
               "data": {
@@ -138,7 +138,7 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
               "success": function(data) {
                 var data = JSON.parse(data);
                 alert(data.msg);
-                window.location.href = "/admin/projects.php";
+                window.location.href = urlpath + "admin/projects.php";
               }
             });
           } else {
@@ -169,16 +169,17 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
           //     } else {
           //       console.log(2);
                 $.ajax({
-                  url: "/admin/action/uploadDocumentPrj.php",
+                  url: urlpath + "admin/action/uploadDocumentPrj.php",
                   type: "POST",
                   cache: false,
                   contentType: false, // important
                   processData: false, // important
                   data: form,
                   success: function(data) {
+                    //console.log(data);
                     var data = JSON.parse(data);
                     if (data.status == "success") {
-                      $("#docFileVal_" + count).val("/admin/documents/" + data.msg);
+                      $("#docFileVal_" + count).val(urlpath + "admin/documents/" + data.msg);
                     } else {
                       alert(data.msg)
                     }
@@ -193,7 +194,7 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
         var count = $('.docs').length;
         $("#countForm").val(count + 1);
         var formMoreDocs = $('#addDivMore');
-        var html = '   <div class="form-row docs">  ' + '                 <div class="col-sm-3">  ' + '                 <input type="file" class="form-control documentUpload">  ' + '                 <input type="hidden" class="linkFile" name="docFileVal_' + count + '" id="docFileVal_' + count + '" value="">  ' + '               </div>  ' + '               <div class="col-sm-3">  ' + '                 <input type="text" class="form-control txtFile" id="docText_' + count + '" placeholder="Enter Document name">  ' + '               </div>  ' + '               <div class="col-sm-5">  ' + '                   <textarea class="form-control descpFile" id="docDescp_' + count + '" placeholder="Enter short description" rows="1"></textarea>  ' + '               </div>  ' + '               <div class="col-sm-1">  ' + '                   <a href="#" class="removeImg far fa-trash-alt" style="font-size: 17px; margin: 8px;"></a>  ' + '               </div>  ' + '          </div>  ';
+        var html = '   <div class="form-group docs">  ' + '                 <div class="col-sm-3">  ' + '                 <input type="file" class="form-control documentUpload">  ' + '                 <input type="hidden" class="linkFile" name="docFileVal_' + count + '" id="docFileVal_' + count + '" value="">  ' + '               </div>  ' + '               <div class="col-sm-3">  ' + '                 <input type="text" class="form-control txtFile" id="docText_' + count + '" placeholder="Enter Document name">  ' + '               </div>  ' + '               <div class="col-sm-3">  ' + '                   <textarea class="form-control descpFile" id="docDescp_' + count + '" placeholder="Enter short description" rows="1"></textarea>  ' + '               </div>  ' + '               <div class="col-sm-3">  ' + '                   <a href="#" class="removeImg far fa-trash-alt" style="font-size: 17px; margin: 8px;"></a>  ' + '               </div>  ' + '          </div>  ';
         $(html).insertBefore(formMoreDocs);
       });
       $("body").on("click", ".removeImg", function(e) {
