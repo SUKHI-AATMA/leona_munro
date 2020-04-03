@@ -151,7 +151,7 @@ a {
   text-decoration: none;
 }
 a:hover {
-  color: #c2af74;
+  color: #788787;
 }
 .logo {
   float: left;
@@ -201,7 +201,7 @@ nav>ul li:nth-child(2) {
   width: 30px;
 }
 nav li a {
-  color: #c2af74;
+  color: #788787;
   font-weight: 400;
 }
 footer {
@@ -337,7 +337,7 @@ section.listing .box .amenities span.area:before, section.listing .boxSold .amen
   background: url(../images/svg/landarea.svg) no-repeat 0 0;
 }
 section.listing .loadMore {
-  background-color: #c2af74;
+  background-color: #788787;
   color: #ffffff;
   float: left;
   font-family: 'Bebas Neue';
@@ -656,10 +656,10 @@ section.form .propertyId {
   color: #d9ab28;
 }
 .is-error .mat-label {
-  color: #c2af74;
+  color: #788787;
 }
 .is-error::after {
-  background-color: #c2af74;
+  background-color: #788787;
   transform: scaleX(1);
 }
 .is-completed .mat-label {
@@ -675,7 +675,7 @@ section.form .propertyId {
   width: 100%;
 }
 button, .button {
-  background-color: #c2af74;
+  background-color: #788787;
   border: none;
   display: block;
   margin: 35px auto 0;
@@ -714,7 +714,7 @@ button#submit {
   width: 100%;
 }
 .listing.carou .box a .sold, .listing.carou .boxSold a .sold {
-  background-color: #c2af74;
+  background-color: #788787;
   float: left;
   color: #ffffff;
   font-family: Montserrat;
@@ -728,7 +728,7 @@ button#submit {
   width: 100%;
 }
 .listing.carou .box>span, .listing.carou .boxSold>span {
-  background: #c2af74;
+  background: #788787;
   color: #fff;
   float: left;
   font-size: 16px;
@@ -749,7 +749,7 @@ section.listing .box:hover {
   cursor: pointer;
 }
 section.listing .box:hover .cont {
-  background: #c2af74;
+  background: #788787;
 }
 section.listing .box:hover .stName {}
 section.listing .box:hover .amenities {}
@@ -846,7 +846,7 @@ section.Leona {
   position: relative;
 }
 .Leona h1:after {
-  background: #c2af74;
+  background: #788787;
   bottom: 0;
   content: '';
   float: left;
@@ -870,7 +870,7 @@ section.Leona {
 }
 .Leona .cont a, .button {
   float: right;
-  background-color: #c2af74;
+  background-color: #788787;
   border: none;
   display: block;
   margin: 35px auto 0;
@@ -924,13 +924,13 @@ section.listing.featured h2 {
   letter-spacing: 4px;
   position: relative;
   text-align: center;
-  border: 1px solid #c2af74;
+  border: 1px solid #788787;
   padding: 21px 0;
   width: 361px;
   margin: 0 calc((100% - 361px) / 2);
 }
 section.listing.featured h2:after {
-  background: #c2af74;
+  background: #788787;
   bottom: -10px;
   float: left;
   height: 2px;
@@ -958,7 +958,7 @@ section.listing.featured .box:hover {
   cursor: pointer;
 }
 section.listing.featured .box:hover .cont {
-  background-color: #c2af74;
+  background-color: #788787;
 }
 section.listing.featured .box:hover .stName {
   color: #000;
@@ -977,7 +977,7 @@ section.whyMe {
   width: 100%;
 }
 .whyMe h2 {
-  border-bottom: 1px solid #c2af74;
+  border-bottom: 1px solid #788787;
   color: #2f3841;
   font-size: 46px;
   font-weight: 300;
@@ -1102,7 +1102,7 @@ section.contactForm .title {
   letter-spacing: 4px;
   position: relative;
   text-align: center;
-  border: 1px solid #c2af74;
+  border: 1px solid #788787;
   padding: 21px 0;
   width: 361px;
   margin: 0 calc((100% - 361px) / 2) 50px;
@@ -1119,14 +1119,14 @@ section.contactForm .callon {
   background-color: #373a39;
 }
 .contactForm .is-error::after {
-  background-color: #c2af74;
+  background-color: #788787;
 }
 .contactForm button {
   border: 1px solid #000000;
   background-color: #ffffff;
 }
 section.sell h1 {
-  border-bottom: 1px solid #c2af74;
+  border-bottom: 1px solid #788787;
   color: #000000;
   font-size: 56px;
   font-weight: 300;
@@ -1184,8 +1184,8 @@ section.whyMe.sell {
   display: inline-block;
 }
 .testimonials li.slick-active button {
-  background: #c2af74;
-  border: 2px solid #c2af74;
+  background: #788787;
+  border: 2px solid #788787;
 }
 .testimonials li button {
   background: transparent;
@@ -1274,7 +1274,7 @@ section.instagram {
   letter-spacing: 4px;
   position: relative;
   text-align: center;
-  border: 1px solid #c2af74;
+  border: 1px solid #788787;
   padding: 21px 0;
   width: 361px;
   margin: 0 calc((100% - 361px) / 2) 50px;
@@ -1315,7 +1315,7 @@ section.instagram.sell div#instafeed {
   margin: 0;
 }
 .dropbtn {
-  background-color: #c2af74;
+  background-color: #788787;
   color: white;
   font-weight: 300;
   font-family: 'Bebas Neue';
@@ -1348,7 +1348,7 @@ section.instagram.sell div#instafeed {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #c2af74;
+  background-color: #788787;
   color: #fff;
   min-width: 100%;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
@@ -1370,7 +1370,7 @@ section.instagram.sell div#instafeed {
   display: block;
 }
 .dropdown:hover .dropbtn {
-  background-color: #c2af74;
+  background-color: #788787;
 }
 @keyframes lds-ellipsis1 {
   0% {
@@ -1405,7 +1405,7 @@ section.instagram.sell div#instafeed {
   letter-spacing: 4px;
   position: relative;
   text-align: center;
-  border: 1px solid #c2af74;
+  border: 1px solid #788787;
   padding: 21px 0 16px;
   width: 361px;
   margin: 0 calc((100% - 361px) / 2);
@@ -1491,7 +1491,7 @@ section.packages p {
   width: 100%;
 }
 .packages .row .package {
-  border: 2px solid #c2af74;
+  border: 2px solid #788787;
   float: left;
   margin: 50px 0;
   padding: 30px;
@@ -1558,7 +1558,7 @@ section.banner.about {
   bottom: 30%;
 }
 section.team {
-  border-top: 4px solid #c2af74;
+  border-top: 4px solid #788787;
   display: table;
   float: none;
   margin: 0;
@@ -1593,7 +1593,7 @@ section.team .intro p {
   width: 60%;
 }
 section.team .intro .title:after {
-  background-color: #c2af74;
+  background-color: #788787;
   content: '';
   float: left;
   height: 1px;
@@ -1618,10 +1618,10 @@ section.team .row:first-child {
   margin: 0px 0px 4px;
 }
 section.team .row>div:nth-child(1), section.team .row>div:nth-child(3) {
-  border-right: 4px solid #c2af74;
+  border-right: 4px solid #788787;
 }
 section.team .row>div:nth-child(1), section.team .row>div:nth-child(2) {
-  border-bottom: 4px solid #c2af74;
+  border-bottom: 4px solid #788787;
 }
 section.team .row:nth-child(2)>div:nth-child(2) .title {
   float: right;
@@ -1652,7 +1652,7 @@ section.methods>p {
   margin: 0 10% 20px;
 }
 .methods ul {
-  border-bottom: 1px solid #c2af74;
+  border-bottom: 1px solid #788787;
   float: left;
   margin: 50px 0 0;
   text-align: center;
@@ -1664,13 +1664,13 @@ section.methods>p {
   padding: 10px 50px;
 }
 .methods ul li.active {
-  border-bottom: 3px solid #c2af74;
+  border-bottom: 3px solid #788787;
 }
 .methods ul li a {
   transition: color 0.3s;
 }
 .methods ul li.active a {
-  color: #c2af74;
+  color: #788787;
 }
 .methods .tabCont {
   float: left;
@@ -1753,7 +1753,7 @@ section.methods>p {
   width: calc(100% - 40px);
 }
 .accordian h3 {
-  border-bottom: 1px solid #c2af74;
+  border-bottom: 1px solid #788787;
   cursor: pointer;
   float: left;
   font-weight: bold;
@@ -1769,7 +1769,7 @@ section.methods>p {
   font-size: 15px;
 }
 .accordian h3:before, .accordian h3:after {
-  background: #c2af74;
+  background: #788787;
   content: '';
   height: 2px;
   position: absolute;
@@ -2264,7 +2264,7 @@ section.methods>p {
     font-size: 7vw;
   }
   section.team .row>div {
-    border: 4px solid #c2af74;
+    border: 4px solid #788787;
     display: block;
   }
   section.team {
@@ -2519,7 +2519,7 @@ label.status {
   text-align: left;
 }
 label.success {
-  background: #c2af74;
+  background: #788787;
   color: #fff;
   font-size: 16px;
   float: left;

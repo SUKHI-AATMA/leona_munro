@@ -26,7 +26,7 @@ $reponse['sortby'] = "areaHigh";
         if(!empty($data)){
             foreach ($data as $key => $value) {
                 $str.= '<div class="box">
-                            <a href="details/'.$value->uniquename.'">
+                            <a href="details.php?name='.$value->uniquename.'">
                                 <div class="img">
                                     <img src="'.site_name.'upload/profileImage/'.$value->project_img.'" alt="'.$value->project_name.'">
                                 </div>

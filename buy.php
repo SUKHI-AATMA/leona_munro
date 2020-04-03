@@ -55,7 +55,7 @@
       <?php if(!empty($data)): ?>
       <?php foreach ($data as $key => $value) : ?>
       <div class="box">
-        <a href="<?php echo http_Site.'details/'.$value->uniquename; ?>">
+        <a href="<?php echo http_Site.'details.php?name='.$value->uniquename; ?>">
           <div class="img">
             <img class="lazy" src="images/spacer.gif" data-src="<?php echo http_Site.'admin/upload/profileImage/'.$value->project_img; ?>" alt="<?php echo ucfirst($value->project_name); ?>"> </div>
           <div class="cont">
@@ -91,7 +91,7 @@
       <?php foreach ($moreProducts as $key => $value) : ?>
       <div>
         <div class="boxSold">
-          <a href="<?php echo http_Site.'details/'.$value->uniquename; ?>">
+          <a href="<?php echo http_Site.'details.php?name='.$value->uniquename; ?>">
             <span class="sold">SOLD</span>
             <div class="img">
               <img src="<?php echo http_Site.'admin/upload/profileImage/'.$value->project_img; ?>" alt="<?php echo $value->project_name; ?>"> </div>

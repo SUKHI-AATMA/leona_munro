@@ -66,7 +66,8 @@
     <div class="featuredCarousel">
       <?php foreach ($featured_data as $key => $value) : ?>
       <div>
-        <a href="<?php echo http_Site.'details/'.$value->uniquename; ?>">
+        
+        <a href="<?php echo http_Site.'details.php?name='.$value->uniquename; ?>">
           <div class="box">
             <div class="img">
               <img src="<?php echo http_Site.'admin/upload/profileImage/'.$value->project_img; ?>" alt="<?php echo ucfirst($value->project_name); ?>"> </div>

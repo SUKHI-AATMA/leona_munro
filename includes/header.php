@@ -28,13 +28,13 @@
         <a href="https://Leonamunro.home.blog/" target="_blank">Articles</a>
       </li>
       <li>
-        <a href="<?php echo http_Site; ?>sell">Selling</a>
+        <a href="<?php echo http_Site; ?>sell.php">Selling</a>
       </li>
       <li>
-        <a href="<?php echo http_Site; ?>buy">Properties</a>
+        <a href="<?php echo http_Site; ?>buy.php">Properties</a>
       </li>
       <li>
-        <a href="<?php echo http_Site; ?>about">About us</a>
+        <a href="<?php echo http_Site; ?>about.php">About us</a>
       </li>
     </ul>
     <div class="mobileNav">
@@ -45,13 +45,13 @@
             <a href="<?php echo http_Site; ?>">Home</a>
           </li>
           <li>
-            <a href="<?php echo http_Site; ?>about">About us</a>
+            <a href="<?php echo http_Site; ?>about.php">About us</a>
           </li>
           <li>
-            <a href="<?php echo http_Site; ?>buy">Properties</a>
+            <a href="<?php echo http_Site; ?>buy.php">Properties</a>
           </li>
           <li>
-            <a href="<?php echo http_Site; ?>sell">Selling</a>
+            <a href="<?php echo http_Site; ?>sell.php">Selling</a>
           </li>
           <li>
             <a  href="https://Leonamunro.home.blog/" target="_blank">Articles</a>

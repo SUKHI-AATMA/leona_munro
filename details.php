@@ -1,16 +1,17 @@
-<?php if((!empty($_REQUEST))&& array_key_exists('name', $_REQUEST)): ?>
-<?php if($_REQUEST['name'] != ''): ?>
-<?php include 'core.php'; ?>
-<?php include 'model_base.php'; ?>
-<?php $data = Model_Base::query("select * from projects where uniquename = '{$_REQUEST['name']}'"); ?>
-<?php if(!empty($data)): ?>
-<?php $documentData = Model_Base::query("select * from project_document where uniquename = '{$_REQUEST['name']}'"); ?>
+<?php if((!empty($_REQUEST))&& array_key_exists('name', $_REQUEST)):
+  if($_REQUEST['name'] != ''):
+  include 'core.php';
+  include 'model_base.php';
+  $data = Model_Base::query("select * from projects where uniquename = '{$_REQUEST['name']}'");
+  if(!empty($data)):
+  $documentData = Model_Base::query("select * from project_document where uniquename = '{$_REQUEST['name']}'");
+?>
 <!doctype html>
 <html lang="en">
 
 <head>
   <script type="text/javascript">
-    console.log(<?php $documentData ?>);
+    // console.log(<?php $documentData ?>);
   </script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
@@ -246,7 +247,7 @@
           <?php foreach ($moreProducts as $key => $value) : ?>
           <div>
             <div class="box">
-              <a href="<?php echo http_Site.'details/'.$value->uniquename; ?>">
+              <a href="<?php echo http_Site.'details.php?name='.$value->uniquename; ?>">
                 <div class="img">
                   <img src="<?php echo http_Site.'admin/upload/profileImage/'.$value->project_img; ?>" alt="<?php echo $value->project_name; ?>"> </div>
                 <div class="cont">
