@@ -33,10 +33,10 @@ if (isset($_FILES['files']) && !empty($_FILES['files'])) {
                 move_uploaded_file($_FILES["files"]["tmp_name"][$i], '../upload/resizedAdditionalImages/'.$_FILES["files"]["name"][$i]);
                 
                 
+                // echo $_FILES["files"][$i];
+                // resize_crop_image($max_width, $max_height, $source_file, $quality = 100)
 
-                //resize_crop_image($max_width, $max_height, $source_file, $quality = 100)
-
-                //resize_crop_image $src);
+                // resize_crop_image ($src);
 
                 $str .= "<div class='col-sm-2'><img src='".site_name."upload/resizedAdditionalImages/".$_FILES["files"]["name"][$i]."' data-resize='".$_FILES["files"]["name"][$i]."' width='50' height='50' class='resizedImgView'/><a href='#' class='removeImg' data-imgname='<?php echo $i; ?>'><span class='far fa-trash-alt'></span> </a></div>";   
 

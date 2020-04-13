@@ -235,7 +235,7 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
             } else {
 
                 var form = new FormData();
-
+                // var compressedImg = compress_small(file);
                 form.append("image", file);
 
                 $.ajax({
@@ -335,12 +335,12 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
 
             });
 
-//            for(var i = 0; i < document.getElementById("uploadProfileImg").files.length ; i++) {
-//                arr.push(document.getElementById("uploadProfileImg").files[i]['name']);
-//            }
-//            for(var i = 0; i < document.getElementById("resizedUploadProfileImg").files.length ; i++) {
-//                resize_arr.push(document.getElementById("resizedUploadProfileImg").files[i]['name']);
-//            }
+           // for(var i = 0; i < document.getElementById("uploadProfileImg").files.length ; i++) {
+           //     arr.push(document.getElementById("uploadProfileImg").files[i]['name']);
+           // }
+           // for(var i = 0; i < document.getElementById("resizedUploadProfileImg").files.length ; i++) {
+           //     resize_arr.push(document.getElementById("resizedUploadProfileImg").files[i]['name']);
+           // }
 
             var featured = 0;
             var sold = 0;

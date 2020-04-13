@@ -1,115 +1,220 @@
-<?php include 'core.php'; ?>
 <!doctype html>
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-  <!-- COMMON TAGS -->
-  <title>Leona Munro Property Consultant</title>
-  <!-- Search Engine -->
-  <meta name="description" content="Leona brings a dynamic approach to real estate in Dunedin. Throughout every stage of the sales process, she’ll remain committed to making sure you achieve the absolute best outcome.">
-  <meta name="image" content="https://leonamunro.co.nz/images/hm-banner.jpg">
-  <!-- Schema.org for Google -->
-  <meta itemprop="name" content="Leona Munro Property Consultant">
-  <meta itemprop="description" content="Leona brings a dynamic approach to real estate in Dunedin. Throughout every stage of the sales process, she’ll remain committed to making sure you achieve the absolute best outcome.">
-  <meta itemprop="image" content="https://leonamunro.co.nz/images/hm-banner.jpg">
-  <!-- Open Graph general (Facebook, Pinterest & Google+) -->
-  <meta name="og:title" content="Leona Munro Property Consultant">
-  <meta name="og:description" content="Leona brings a dynamic approach to real estate in Dunedin. Throughout every stage of the sales process, she’ll remain committed to making sure you achieve the absolute best outcome.">
-  <meta name="og:image" content="https://leonamunro.co.nz/images/hm-banner.jpg">
-  <meta name="og:url" content="https://leonamunro.co.nz">
-  <meta name="og:site_name" content="Leona Munro Property Consultant">
-  <meta name="og:type" content="website">
-  <link rel="stylesheet" href="<?php echo http_Site; ?>css/style.css?v=<?php echo version; ?>">
-  <link rel="stylesheet" type="text/css" href="css/vendor/slick.css" />
-  <link rel="shortcut icon" type="image/png" href="images/favicon.png"> </head>
+    <meta charset="utf-8">
+    <title>Leona Munro</title>
+    <meta name="description" content="Leona Munro">
+    <meta name="author" content="Leona Munro">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/tiny-slider.css"> -->
+    <style type="text/css">
+    </style>
+    <link rel="stylesheet" href="css/style.css?v=1.0">
+</head>
 
-<body class="about">
-  <?php include_once("includes/header.php"); ?>
-  <section class="banner about">
-    <div class="cont">
-      <h2> ABOUT US </h2>
-    </div>
-    <div class="dwnArr">
-      <img src="images/ico-arrow.png" alt=""> </div>
-  </section>
-  <section class="Leona">
-    <div class="info">
-      <div class="img">
-        <img src="images/Leona.jpg" alt="Leona Munro"> </div>
-      <div class="cont">
-        <h1>Leona Munro</h1>
-        <p>Leona brings a dynamic approach to real estate in Dunedin. Throughout every stage of the sales process, she’ll remain committed to making sure you achieve the absolute best outcome.</p>
-        <p>Every home and every homeowner is different, so expect a customised marketing strategy that’s a perfect fit for you. As a vendor, you’ll know you’re getting access to the latest proven techniques in real estate from a team of experts, from digital marketing and social media to home staging and design.</p>
-        <p>With a passion and eye for presentation, Leona goes the extra distance towards helping you present your home at its best. First impressions count, and sometimes it’s the little extras that will really wow a potential buyer. Even if you’re only just starting to think of selling, now is a great time to seek Leona’s insider knowledge on what will help you attain a top price for your property.</p>
-        <p>Consistently ranked on the monthly leaderboard for sales at Metro Realty, her track record and outstanding testimonials speak for themselves. In today’s fast market, choose experience and dedication for a stand-out sale and a friendly, seamless sales process. </p>
-
-
-
-<!--         <p>From the moment you meet Leona it will be clear this is someone taking a fresh approach to helping people achieve their goals with property. You quickly realize you have found a consultant who will remain passionate and committed throughout all stages of the real estate process.</p>
-        <p>Leona is a salesperson who thrives on surpassing expectations, her integrity, professionalism and dedication to her clients is unquestionable. Leona’s contagious energy and enthusiasm will give your property an edge throughout the marketing process. Being born and raised in Dunedin gives Leona a sound knowledge and passion for the Dunedin real estate market.</p> -->
-        <p>
-          <img src="images/awards/award1.png" alt="">
-          <img src="images/awards/award2.png" alt=""><br>
-          <img src="images/awards/award7.png" alt="">
-          <img src="images/awards/award3.png" alt="">
-        </p>
-      </div>
-    </div>
-  </section>
-  <section style="float: left; margin: 30px 0; width: 100%;"><iframe src="https://e.issuu.com/anonymous-embed.html?u=lucascarvalho92&d=Leona_munro_-_home_sellers_guide_21" width="100%" height="800" frameborder="0" allowfullscreen="true"></iframe>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo"><a href="/"><img src="<?php echo http_Site; ?>images/leona-munro-logo-rust.png" alt=""></a></div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="listings.php">Listings</a></li>
+                    <li><a href="about.php">About Me</a></li>
+                    <li><a href="contact.php" class="button">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section class="banner aboutBanner">
+        <div class="img"><img src="<?php echo http_Site; ?>images/abt-banner.jpg" alt=""></div>
+        <div class="lftSec">
+            <p>About Me</p>
+            <div>Sub Title</div>
+            <div class="links">
+                <a href="javascript:;" class="button">Read More</a>
+                <a href="contact.php" class="secondaryBtn">Contact Me</a>
+            </div>
+        </div>
     </section>
-  <!-- <section class="team">
-    <div class="row">
-                <div class="intro">
-                  <div class="title">JO</div>
-                  <p>From the moment you meet Leona it will be clear this is someone taking a fresh approach to helping people achieve their goals with property. You quickly realize you have found a consultant who will remain passionate and committed throughout all stages of the real estate process.</p>
+    <section class="about">
+        <div class="container">
+            <div class="lftSec">
+                <div class="title">
+                    About Leona Munro
                 </div>
-                <div class="pic">
-                  <img src="images/jo.jpg" alt=""> </div>
-</div> 
-<div class="row">
-  <div class="pic">
-    <img src="images/dummy.jpg" alt=""> </div>
-  <div class="intro">
-    <div class="title">PLACEHOLDER</div>
-    <p>From the moment you meet Leona it will be clear this is someone taking a fresh approach to helping people achieve their goals with property. You quickly realize you have found a consultant who will remain passionate and committed throughout all stages of the real estate process.</p>
-  </div>
-  <div class="pic mobile">
-    <img src="images/dummy.jpg" alt=""> </div>
-</div>
-  </section>-->
-
-    <section class="contactForm">
-    <div class="title">Contact</div>
-
-    <div class="wrap">
-      <div class="mat-div">
-        <label for="name" class="mat-label">YOUR NAME</label>
-        <input type="text" class="mat-input" id="name">
-        <label for="" class="status"></label>
-      </div>
-      <div class="mat-div">
-        <label for="email" class="mat-label">VALID EMAIL</label>
-        <input type="text" class="mat-input" id="email">
-        <label for="" class="status"></label>
-      </div>
-      <div class="mat-div">
-        <label for="number" class="mat-label">YOUR MESSAGE</label>
-        <textarea class="mat-input" id="message" rows="7"></textarea>
-        <label for="" class="status"></label>
-      </div>
-      <button id="submit">SEND MESSAGE</button>
-      <label for="" class="success"></label>
+                <div class="content">
+                    <p>It's not just about the result. It's how you go about getting it. It's not just about the result. It's how you go about getting it. It's not just about the result.</p>
+                    <p>It's how you go about getting it. It's not just about the result. It's how you go about getting it. I</p>
+                    <p>It's not just about the result. It’s how you go about getting it.</p>
+                </div>
+            </div>
+            <div class="rgtSec">
+                <div class="links"><a href="contact.php" class="button">Contact Me</a>
+                    <p>Make your next move</p>
+                </div>
+                <img src="<?php echo http_Site; ?>images/abt-image.jpg" alt="">
+            </div>
+        </div>
+    </section>
+    <section class="sellHome"><img src="<?php echo http_Site; ?>images/abt-selling.jpg" alt=""></section>
+    <section class="aboutme">
+        <div class="container">
+            <div class="lftSec"><img src="<?php echo http_Site; ?>images/hm-about-me.jpg" alt=""></div>
+            <div class="rgtSec">
+                <div class="title">About Me Leona Munro Title Area</div>
+                <p>Professionalism and integrity are words often bandied around by real estate agents.</p>
+                <p>However, Leona Munro asks to be defined by her actions and her results.</p>
+                <p>Leona’s actions and the sales she achieves for her clients speak louder than mere words.</p>
+            </div>
+        </div>
+    </section>
+    <section class="services">
+        <div class="container">
+            <div class="icons">
+                <div class="icon">
+                    <img src="<?php echo http_Site; ?>images/svg/icon-hand-house.svg" alt="">
+                    <p>Benefits for working with Leona</p>
+                </div>
+                <div class="icon">
+                    <img src="<?php echo http_Site; ?>images/svg/icon-tick-house.svg" alt="">
+                    <p>Lorem lipsum</p>
+                </div>
+                <div class="icon">
+                    <img src="<?php echo http_Site; ?>images/svg/icon-sold-listing-sign.svg" alt="">
+                    <p>Lorem lipsum</p>
+                </div>
+                <div class="icon">
+                    <img src="<?php echo http_Site; ?>images/svg/icon-open-door.svg" alt="">
+                    <p>Lorem lipsum</p>
+                </div>
+                <div class="icon">
+                    <img src="<?php echo http_Site; ?>images/svg/icon-key-sold-house-sign.svg" alt="">
+                    <p>Lorem lipsum</p>
+                </div>
+            </div>
+            <div class="links"><a href="contact.php" class="button">Contact Me</a></div>
+        </div>
+    </section>
+    <div class="steps">
+        <div class="container">
+            <img src="<?php echo http_Site; ?>images/abt-steps.jpg" alt="">
+        </div>
     </div>
-  </section>
-  <?php include_once("includes/footer.html"); ?>
-  <?php include_once("includes/common-scripts.html"); ?>
-  <script type="text/javascript" src="<?php echo http_Site; ?>js/init.js?v=<?php echo version; ?>"></script>
-  <script>
-  DEFAULTVARS.init();
-  </script>
+    <div class="package">
+        <div class="container">
+            <div class="pkg">
+                <p class="pkgTitle">Package Title</p>
+                <p>Lorem lipsum Loreet</p>
+                <p>Lorem lipsum Loreet</p>
+                <p>Lorem lipsum Loreet</p>
+                <p>Lorem lipsum Loreet</p>
+                <p>Lorem lipsum Loreet</p>
+                <div class="links"><a href="javascript:;" class="secondaryBtn">Learn More</a></div>
+            </div>
+            <div class="pkg">
+                <p class="pkgTitle">Package Title</p>
+                <p>Lorem lipsum Loreet</p>
+                <p>Lorem lipsum Loreet</p>
+                <p>Lorem lipsum Loreet</p>
+                <p>Lorem lipsum Loreet</p>
+                <p>Lorem lipsum Loreet</p>
+                <div class="links"><a href="javascript:;" class="secondaryBtn">Learn More</a></div>
+            </div>
+            <div class="pkg">
+                <p class="pkgTitle">Package Title</p>
+                <p>Lorem lipsum Loreet</p>
+                <p>Lorem lipsum Loreet</p>
+                <p>Lorem lipsum Loreet</p>
+                <p>Lorem lipsum Loreet</p>
+                <p>Lorem lipsum Loreet</p>
+                <div class="links"><a href="javascript:;" class="secondaryBtn">Learn More</a></div>
+            </div>
+        </div>
+    </div>
+    <section class="testimonials abt">
+        <div class="container">
+            <div class="title">Testimonials</div>
+            <div class="base" id="testimonial">
+                <div class="item">
+                    <div>
+                        <p>“ We felt Leona communicated well with us like a friend would and was honest. We felt comfortable at all times.”</p>
+                        <p>- Steve & Barb<span>(10 Windsor Place)</span></p>
+                    </div>
+                </div>
+                <div class="item">
+                    <div>
+                        <p>“Third time around the block with Leona. Once as a buyer and twice as a seller. Bends over backwards. goes the extra mile and delivers beyond expectations”</p>
+                        <p>- Paul & Esther<span>(9 Pencorrow Street)</span></p>
+                    </div>
+                </div>
+                <div class="item">
+                    <div>
+                        <p>“ We felt Leona communicated well with us like a friend would and was honest. We felt comfortable at all times.”</p>
+                        <p>- Steve & Barb<span>(10 Windsor Place)</span></p>
+                    </div>
+                </div>
+                <div class="item">
+                    <div>
+                        <p>“Third time around the block with Leona. Once as a buyer and twice as a seller. Bends over backwards. goes the extra mile and delivers beyond expectations”</p>
+                        <p>- Paul & Esther<span>(9 Pencorrow Street)</span></p>
+                    </div>
+                </div>
+                <div class="item">
+                    <div>
+                        <p>“ We felt Leona communicated well with us like a friend would and was honest. We felt comfortable at all times.”</p>
+                        <p>- Steve & Barb<span>(10 Windsor Place)</span></p>
+                    </div>
+                </div>
+                <div class="item">
+                    <div>
+                        <p>“Third time around the block with Leona. Once as a buyer and twice as a seller. Bends over backwards. goes the extra mile and delivers beyond expectations”</p>
+                        <p>- Paul & Esther<span>(9 Pencorrow Street)</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="contactSetion">
+        <div class="container">
+            <div class="lftSec">
+                <h3 class="title">Contact Me</h3>
+                <div class="phNo"><a href="tel:027568123">027 568 123</a></div>
+                <div class="social">
+                    <a href="https://linkedin.com/" class="linkedin"><img src="<?php echo http_Site; ?>images/svg/icon-linkedin.svg" alt=""></a>
+                    <a href="https://www.skype.com/" class="skype"><img src="<?php echo http_Site; ?>images/svg/icon-skype.svg" alt=""></a>
+                    <a href="https://twitter.com/" class="twitter"><img src="<?php echo http_Site; ?>images/svg/icon-twitter.svg" alt=""></a>
+                </div>
+            </div>
+            <div class="rgtSec">
+                <div class="logo"><a href="javascript:;"><img src="<?php echo http_Site; ?>images/leona-munro-logo-gray.png" alt=""></a></div>
+                <div class="form">
+                    <form action="email.php" name="myForm" onsubmit="return(validate());" method="POST">
+                        <p>
+                            <label for="name">Name</label><input name="name" id="name" type="text">
+                        </p>
+                        <p>
+                            <label for="email">Email</label><input name="email" id="email" type="text">
+                        </p>
+                        <p>
+                            <label for="message">Message</label><textarea name="message" id="message" cols="30" rows="5"></textarea>
+                        </p>
+                        <p><input type="submit" class="button" id="submitContactForm" value="Contact Me"><label for="" class="error" id="error"></label></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="copy">© Copyright Leona Munro <script>
+                document.write(new Date().getFullYear())
+                </script>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
+    <script src="js/scripts.js"></script>
 </body>
 
 </html>

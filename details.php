@@ -5,282 +5,162 @@
   $data = Model_Base::query("select * from projects where uniquename = '{$_REQUEST['name']}'");
   if(!empty($data)):
   $documentData = Model_Base::query("select * from project_document where uniquename = '{$_REQUEST['name']}'");
+  $images = ($data[0]->images != '') ? explode(',', $data[0]->images) : "";
+  $featured_data = Model_Base::query("Select * from projects where featured=1 and status = 1 and uniquename != '{$_REQUEST['name']}' LIMIT 10");
+  $reqName = $_REQUEST['name'];
 ?>
 <!doctype html>
 <html lang="en">
 
 <head>
-  <script type="text/javascript">
-    // console.log(<?php $documentData ?>);
-  </script>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-  <!-- COMMON TAGS -->
-  <title>Leona Munro Property Consultant</title>
-  <!-- Search Engine -->
-  <meta name="description" content="Leona brings a dynamic approach to real estate in Dunedin. Throughout every stage of the sales process, she’ll remain committed to making sure you achieve the absolute best outcome.">
-  <meta name="image" content="https://leonamunro.co.nz/images/hm-banner.jpg">
-  <!-- Schema.org for Google -->
-  <meta itemprop="name" content="Leona Munro Property Consultant">
-  <meta itemprop="description" content="Leona brings a dynamic approach to real estate in Dunedin. Throughout every stage of the sales process, she’ll remain committed to making sure you achieve the absolute best outcome.">
-  <meta itemprop="image" content="https://leonamunro.co.nz/images/hm-banner.jpg">
-  <!-- Open Graph general (Facebook, Pinterest & Google+) -->
-  <meta name="og:title" content="Leona Munro Property Consultant">
-  <meta name="og:description" content="Leona brings a dynamic approach to real estate in Dunedin. Throughout every stage of the sales process, she’ll remain committed to making sure you achieve the absolute best outcome.">
-  <meta name="og:image" content="https://leonamunro.co.nz/images/hm-banner.jpg">
-  <meta name="og:url" content="https://leonamunro.co.nz">
-  <meta name="og:site_name" content="Leona Munro Property Consultant">
-  <meta name="og:type" content="website">
+    <meta charset="utf-8">
+    <title>Leona Munro</title>
+    <meta name="description" content="Leona Munro">
+    <meta name="author" content="Leona Munro">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/tiny-slider.css"> -->
+    <style type="text/css">
+    </style>
+    <link rel="stylesheet" href="css/style.css?v=1.0">
+</head>
 
-
-  <link rel="stylesheet" href="<?php echo http_Site; ?>css/style.css?124">
-  <link rel="stylesheet" type="text/css" href="<?php echo http_Site; ?>css/vendor/slick.css" />
-  <link rel="shortcut icon" type="image/png" href="<?php echo http_Site; ?>images/favicon.png"> </head>
-
-<body class="details">
-  <?php include_once("includes/header.php"); ?>
-  <section class="details">
-    <h1>
-      <?php echo ucwords($data[0]->project_name); ?> </h1>
-    <?php $images = ($data[0]->images != '') ? explode(',', $data[0]->images) : ""; ?>
-    <div class="images">
-      <div class="bigImg">
-        <div class="lds-ellipsis">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
+<body class="detailsPg">
+    <header>
+        <div class="container">
+            <div class="logo"><a href="/"><img src="<?php echo http_Site; ?>images/leona-munro-logo-rust.png" alt=""></a></div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="listings.php">Listings</a></li>
+                    <li><a href="about.php">About Me</a></li>
+                    <li><a href="contact.php" class="button">Contact</a></li>
+                </ul>
+            </nav>
         </div>
-        <div class="zoom popup" data-href="<?php echo http_Site.'admin/upload/additionalImages/'.$images[0]; ?>">
-          <span class="span1">
-            <span class="span2"> </span>
-          </span>
-        </div>
-        <img src="<?php echo http_Site.'admin/upload/additionalImages/'.$images[0]; ?>" class="active" alt="<?php echo ucwords($data[0]->project_name); ?>">
-        <img src="" class="dummy" alt="">
-      </div>
-      <div class="carousel">
-        <!--
-        <div>
-          <a href="javascript:;" data-img="<?php echo http_Site.'admin/upload/additionalImages/'.$data[0]->project_img; ?>" class="tabImg">
-            <img src="<?php echo http_Site.'admin/upload/resizedAdditionalImages/'.$data[0]->project_img; ?>" alt="<?php echo ucwords($data[0]->project_name); ?>"> </a>
-        </div>
-        -->
-        <?php if(count($images) > 0): ?>
-        <?php for($i=0;$i<count($images);$i++): ?>
-        <?php $small_images = ($data[0]->small_images != '') ? explode(',', $data[0]->small_images) : ""; //print_r($small_images); exit(); ?>
-        <div>
-          <a href="javascript:;" data-img="<?php echo http_Site.'admin/upload/additionalImages/'.$images[$i]; ?>" class="tabImg">
-            <img src="<?php echo http_Site.'admin/upload/resizedAdditionalImages/'.$small_images[$i]; ?>" alt="<?php echo ucwords($data[0]->project_name); ?>"> </a>
-        </div>
-        <?php endfor; ?>
-        <?php endif; ?> </div>
-    </div>
-    <div class="amenitiesTable mobile">
-      <div class="row">
-        <div class="col">
-          <img src="<?php echo http_Site; ?>images/svg/bed.svg" alt=""> </div>
-        <div class="col">
-          <img src="<?php echo http_Site; ?>images/svg/bathroom.svg" alt=""> </div>
-        <div class="col">
-          <img src="<?php echo http_Site; ?>images/svg/floorarea.svg" alt=""> </div>
-        <div class="col">
-          <img src="<?php echo http_Site; ?>images/svg/landarea.svg" alt=""> </div>
-        <div class="col">
-          <img src="<?php echo http_Site; ?>images/svg/living.svg" alt=""> </div>
-        <div class="col">
-          <img src="<?php echo http_Site; ?>images/svg/car.svg" alt=""> </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <?php echo $data[0]->beds; ?> </div>
-        <div class="col">
-          <?php echo $data[0]->toilet; ?> </div>
-        <div class="col">
-          <?php echo $data[0]->carpet_area; ?> m2</div>
-        <div class="col">
-          <?php echo $data[0]->area; ?> m2</div>
-        <div class="col">
-          <?php echo $data[0]->seating; ?> </div>
-        <div class="col">
-          <?php echo $data[0]->parking; ?> </div>
-      </div>
-    </div>
-    <p class="amenities desktop">
-      <?php
-          if($data[0]->beds != "") {
-              ?>
-        <span class="bed">
-          <span class="img">
-            <img src="<?php echo http_Site; ?>images/svg/bed.svg" alt=""> </span>
-          <span class="txt">
-            <?php echo $data[0]->beds; ?> </span>
-        </span>
-        <?php
-          }
-        ?>
-          <?php
-      if($data[0]->toilet != "") {
-      ?>
-            <span class="toilet">
-              <span class="img">
-                <img src="<?php echo http_Site; ?>images/svg/bathroom.svg" alt=""> </span>
-              <span class="txt">
-                <?php echo $data[0]->toilet; ?> </span>
-            </span>
-            <?php
-       }
-        ?>
-              <?php
-      if($data[0]->carpet_area != "") {
-      ?>
-                <span class="area">
-                  <span class="img">
-                    <img src="<?php echo http_Site; ?>images/svg/floorarea.svg" alt=""> </span>
-                  <span class="txt">
-                    <?php echo $data[0]->carpet_area; ?> m2</span>
-                </span>
-                <?php
-      }
-        ?>
-                  <?php
-      if($data[0]->area != "") {
-      ?>
-                    <span class="area">
-                      <span class="img">
-                        <img src="<?php echo http_Site; ?>images/svg/landarea.svg" alt=""> </span>
-                      <span class="txt">
-                        <?php echo $data[0]->area; ?> m2</span>
-                    </span>
-                    <?php
-      }
-        ?>
-                      <?php
-          if($data[0]->seating != "") {
-              ?>
-                        <span class="living">
-                          <span class="img">
-                            <img src="<?php echo http_Site; ?>images/svg/living.svg" alt=""> </span>
-                          <span class="txt">
-                            <?php echo $data[0]->seating; ?> </span>
-                        </span>
-                        <?php
-}
-?>
-                        <?php
-          if($data[0]->parking != "") {
-              ?>
-                          <span class="parking">
-                            <span class="img">
-                              <img src="<?php echo http_Site; ?>images/svg/car.svg" alt=""> </span>
-                            <span class="txt">
-                              <?php echo $data[0]->parking; ?> </span>
-                          </span>
-                          <?php
-          }
-        ?>
-    </p>
-    <div class="description">
-      <?php echo $data[0]->description; ?> </div>
-    <?php if(!empty($documentData)): ?>
-    <div class="pdf">
-      <?php foreach ($documentData as $key => $value) : ?>
-      <div class="pdfbox">
-        <a href="" data-href="<?php echo $value->link; ?>" class="pdfLink" target="_blank'">
-          <div class="img">
-            <img src="<?php echo http_Site; ?>images/pdf.svg" alt=""> </div>
-          <div class="cont">
-            <div class="title">
-              <?php echo $value->docName; ?> </div>
-            <div class="desc">
-              <?php echo $value->description; ?> </div>
-          </div>
-        </a>
-      </div>
-      <?php endforeach; ?> </div>
-    <?php endif; ?> </section>
-  <?php
-    if($data[0]->project_map != "") {
-        ?>
-    <section class="map">
-      <iframe src="<?php echo $data[0]->project_map; ?>" width="100%" height="500" frameborder="0" style="border:0" allowfullscreen></iframe>
-    </section>
-    <?php
-    }
-  ?>
-      <section class="form">
-        <div class="title">Enquire about this property</div>
-        <div class="propertyId" id="propertyIdval">
-          <?php echo ucwords($data[0]->project_name); ?> </div>
-        <div class="wrap">
-          <div class="mat-div">
-            <label for="name" class="mat-label">YOUR NAME</label>
-            <input type="text" class="mat-input" id="name">
-            <label for="" class="status"></label>
-          </div>
-          <div class="mat-div">
-            <label for="email" class="mat-label">VALID EMAIL</label>
-            <input type="text" class="mat-input" id="email">
-            <label for="" class="status"></label>
-          </div>
-          <div class="mat-div">
-            <label for="number" class="mat-label">PHONE NUMBER</label>
-            <input type="text" class="mat-input" id="number">
-            <label for="" class="status"></label>
-          </div>
-          <div class="mat-div">
-            <label for="number" class="mat-label">YOUR MESSAGE</label>
-            <textarea class="mat-input" id="message" rows="7"></textarea>
-            <label for="" class="status"></label>
-          </div>
-          <button id="submitProp">SEND MESSAGE</button>
-          <label for="" class="success"></label>
-        </div>
-      </section>
-      <section class="listing carou">
-        <div class="carousel">
-          <?php $moreProducts = Model_Base::query("Select * FROM projects where uniquename <> '{$_REQUEST["name"]}' and status = 1 ORDER BY id DESC LIMIT 10"); ?>
-          <?php if(count($moreProducts) < 9): ?>
-          <?php $moreProducts = Model_Base::query("Select * FROM projects where sold = 1 AND uniquename <> '{$_REQUEST["name"]}' and status = 1 ORDER BY id DESC LIMIT 10"); ?>
-          <?php endif; ?>
-          <?php if(!empty($moreProducts)): ?>
-          <?php foreach ($moreProducts as $key => $value) : ?>
-          <div>
-            <div class="box">
-              <a href="<?php echo http_Site.'details.php?name='.$value->uniquename; ?>">
-                <div class="img">
-                  <img src="<?php echo http_Site.'admin/upload/profileImage/'.$value->project_img; ?>" alt="<?php echo $value->project_name; ?>"> </div>
-                <div class="cont">
-                  <div class="stName">
-                    <?php echo ucfirst($value->project_name); ?> </div>
-                  <div class="amenities">
-                    <span class="bed">
-                      <?php echo $value->beds; ?> </span>
-                    <span class="toilet">
-                      <?php echo $value->toilet; ?> </span>
-                    <span class="area">
-                      <?php echo $value->area; ?>sqm </span>
-                  </div>
+    </header>
+    <section class="gallery">
+        <div class="container">
+            <div class="gallery">
+                <div class="bigImage"><img src="<?php echo http_Site.'admin/upload/additionalImages/'.$images[0]; ?>" alt="<?php echo ucwords($data[0]->project_name); ?>" id="bigImg"></div>
+                <div class="thumbs">
+                    <div class="gallery" id="gallery">
+                        <?php if(count($images) > 0): ?>
+                        <?php for($i=0;$i<count($images);$i++): ?>
+                        <?php $small_images = ($data[0]->small_images != '') ? explode(',', $data[0]->small_images) : ""; //print_r($small_images); exit(); ?>
+                        <div class="slide slide-1"><img src="<?php echo http_Site.'admin/upload/resizedAdditionalImages/'.$small_images[$i]; ?>" alt="<?php echo ucwords($data[0]->project_name); ?>" data-img="<?php echo http_Site.'admin/upload/additionalImages/'.$images[$i]; ?>" onclick="openImg(this);"></div>
+                        <?php endfor; ?>
+                        <?php endif; ?>
+                    </div>
                 </div>
-              </a>
             </div>
-          </div>
-          <?php endforeach; ?>
-          <?php endif; ?> </div>
-        <a href="/buy" class="button">SEE MORE</a>
-      </section>
-      <?php include_once("includes/modal.php"); ?>
-
-      <?php include_once("includes/footer.html"); ?>
-      <?php include_once("includes/common-scripts.html"); ?>
-      <script type="text/javascript" src="<?php echo http_Site; ?>js/vendor/slick.min.js?v=<?php echo version; ?>"></script>
-      <script type="text/javascript" src="<?php echo http_Site; ?>js/init.js?v=<?php echo version; ?>"></script>
-      <script>
-      DEFAULTVARS.init();
-      </script>
-      <?php include_once("includes/leadform.php"); ?>
+        </div>
+    </section>
+    <section class="details">
+        <div class="container">
+            <p class="propertySaleType">Auction</p>
+            <p class="propertyTitle"><?php echo ucwords($data[0]->project_name); ?></p>
+            <div class="propertyExtraDetails">
+                <?php if($data[0]->beds != "" && $data[0]->beds != 0) { ?>
+                <p class="bed"><img src="<?php echo http_Site; ?>images/svg/icon-bed.svg" alt=""><span><?php echo $data[0]->beds; ?></span></p>
+                <?php } ?>
+                <?php if($data[0]->toilet != "" && $data[0]->toilet != 0) { ?>
+                <p class="bath"><img src="<?php echo http_Site; ?>images/svg/icon-bath.svg" alt=""><span><?php echo $data[0]->toilet; ?></span></p>
+                <?php } ?>
+                <?php if($data[0]->parking != "" && $data[0]->parking != 0) { ?>
+                <p class="garage"><img src="<?php echo http_Site; ?>images/svg/icon-parking.svg" alt=""><span><?php echo $data[0]->parking; ?></span></p>
+                <?php } ?>
+                <?php if($data[0]->seating != "" && $data[0]->seating != 0) { ?>
+                <p class="living"><img src="<?php echo http_Site; ?>images/svg/icon-living.svg" alt=""><span><?php echo $data[0]->seating; ?></span></p>
+                <?php } ?>
+                <?php if($data[0]->carpet_area != "" && $data[0]->carpet_area != 0) { ?>
+                <p class="area"><img src="<?php echo http_Site; ?>images/svg/icon-floorspace.svg" alt=""><span><?php echo $data[0]->carpet_area; ?>m<sup>2</sup></span></p>
+                <?php } ?>
+                <?php if($data[0]->area != "" && $data[0]->area != 0) { ?>
+                <p class="area"><img src="<?php echo http_Site; ?>images/svg/icon-property-lot-size.svg" alt=""><span><?php echo $data[0]->area; ?>m<sup>2</sup></span></p>
+                <?php } ?>
+            </div>
+            <div class="propertyDesc">
+                <?php echo $data[0]->description; ?>
+            </div>
+            <?php if(!empty($documentData)): ?>
+            <div class="propertyDocuments">
+                <?php foreach ($documentData as $key => $value) : ?>
+                <a href="<?php echo $value->link; ?>" target="_blank" class="document"><img src="<?php echo http_Site; ?>images/svg/icon-pdf-download.svg" alt=""><?php echo $value->docName; ?></a>
+                <?php endforeach; ?>
+            </div>
+            <?php endif; ?>
+        </div>
+    </section>
+    <?php if(!empty($featured_data)): ?>
+    <section class="featured viewMoreProperties">
+        <div class="container">
+            <div class="title">View More Properties</div>
+            <div class="featuredList">
+                <div class="featured" id="featured">
+                    <?php foreach ($featured_data as $key => $value) : ?>
+                    <div class="slide">
+                        <a href="<?php echo http_Site.'details.php?name='.$value->uniquename; ?>">
+                            <div class="propertyBox">
+                                <div class="propertyImage"><img src="<?php echo http_Site.'admin/upload/profileImage/'.$value->project_img; ?>" alt="<?php echo ucfirst($value->project_name); ?>"></div>
+                                <div class="propertySaleType"><?php echo ucwords($value->interest); ?></div>
+                                <div class="propertyTitle"><?php echo ucwords($value->project_name); ?></div>
+                                <div class="propertyExtraDetails">
+                                    <p class="bed"><img src="<?php echo http_Site; ?>images/svg/icon-bed.svg" alt=""><span><?php echo $value->beds; ?></span></p>
+                                    <p class="bath"><img src="<?php echo http_Site; ?>images/svg/icon-bath.svg" alt=""><span><?php echo $value->toilet; ?></span></p>
+                                    <p class="garage"><img src="<?php echo http_Site; ?>images/svg/icon-parking.svg" alt=""><span><?php echo $value->parking; ?></span></p>
+                                    <p class="living"><img src="<?php echo http_Site; ?>images/svg/icon-living.svg" alt=""><span><?php echo $value->seating; ?></span></p>
+                                    <!-- <p class="area"><img src="<?php echo http_Site; ?>images/svg/icon-property-lot-size.svg" alt=""><span>1</span></p> -->
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <?php endforeach; ?>
+                </div>
+                <div class="links"><a href="listings.php" class="button">View All Properties</a></div>
+            </div>
+        </div>
+    </section>
+    <?php endif; ?>
+    <section class="contactSetion">
+        <div class="container">
+            <div class="lftSec">
+                <h3 class="title">Contact Me</h3>
+                <div class="phNo"><a href="tel:027568123">027 568 123</a></div>
+                <div class="social">
+                    <a href="https://linkedin.com/" class="linkedin"><img src="<?php echo http_Site; ?>images/svg/icon-linkedin.svg" alt=""></a>
+                    <a href="https://www.skype.com/" class="skype"><img src="<?php echo http_Site; ?>images/svg/icon-skype.svg" alt=""></a>
+                    <a href="https://twitter.com/" class="twitter"><img src="<?php echo http_Site; ?>images/svg/icon-twitter.svg" alt=""></a>
+                </div>
+            </div>
+            <div class="rgtSec">
+                <div class="logo"><a href="javascript:;"><img src="<?php echo http_Site; ?>images/leona-munro-logo-gray.png" alt=""></a></div>
+                <div class="form">
+                    <form action="email.php" name="myForm" onsubmit="return(validate());" method="POST">
+                        <p>
+                            <label for="name">Name</label><input name="name" id="name" type="text">
+                        </p>
+                        <p>
+                            <label for="email">Email</label><input name="email" id="email" type="text">
+                        </p>
+                        <p>
+                            <label for="message">Message</label><textarea name="message" id="message" cols="30" rows="5"></textarea>
+                        </p>
+                        <p><input type="submit" class="button" id="submitContactForm" value="Contact Me"><label for="" class="error" id="error"></label></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="copy">© Copyright Leona Munro <script>
+                document.write(new Date().getFullYear())
+                </script>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
+    <script src="js/scripts.js"></script>
 </body>
-
 </html>
 <?php endif; ?>
 <?php endif; ?>

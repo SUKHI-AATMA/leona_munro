@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FileZilla3 version="3.47.1" platform="windows">
+	<Servers>
+		<Server>
+			<Host>182.50.151.89</Host>
+			<Port>21</Port>
+			<Protocol>6</Protocol>
+			<Type>0</Type>
+			<User>leonamunro</User>
+			<Pass encoding="base64">aFc5MWUkOWI=</Pass>
+			<Logontype>1</Logontype>
+			<PasvMode>MODE_DEFAULT</PasvMode>
+			<EncodingType>Auto</EncodingType>
+			<BypassProxy>0</BypassProxy>
+			<Name>Leona Munro</Name>
+			<SyncBrowsing>0</SyncBrowsing>
+			<DirectoryComparison>0</DirectoryComparison>
+		</Server>
+	</Servers>
+</FileZilla3>
+Qpe2l2%3

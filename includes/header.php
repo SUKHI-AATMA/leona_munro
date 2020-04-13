@@ -1,64 +1,13 @@
-<script>
-//if (location.protocol == 'http:')
-  //location.href = location.href.replace(/^http:\/\/www./, 'http:')
-  //location.href = location.href.replace(/^http:\/\/www./, 'https:')
-</script><!-- HEADER -->
 <header>
-  <!-- <div class="logo">
-    <a href="<?php echo http_Site; ?>">
-      <img src="<?php echo http_Site; ?>images/Leona-munro.png" alt=""> </a>
-  </div> -->
-  <nav>
-    <div class="hamburger">
-      <div class="hamburger-box">
-        <div class="hamburger-inner"></div>
-      </div>
+    <div class="container">
+        <div class="logo"><a href="/"><img src="images/leona-munro-logo-rust.png" alt=""></a></div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="listings.html">Listings</a></li>
+                <li><a href="about.html">About Me</a></li>
+                <li><a href="contact.html" class="button">Contact</a></li>
+            </ul>
+        </nav>
     </div>
-    <ul>
-      <!-- <li>
-        <a href="tel:0279291174">027 929 1174</a>
-        <a href="mailto:Leonam@metrorealty.co.nz">Leonam@metrorealty.co.nz</a>
-      </li> -->
-      <li>
-        <a href="<?php echo http_Site; ?>">
-          <img src="<?php echo http_Site; ?>images/svg/home.svg" alt="">
-        </a>
-      </li>
-      <li>
-        <a href="https://Leonamunro.home.blog/" target="_blank">Articles</a>
-      </li>
-      <li>
-        <a href="<?php echo http_Site; ?>sell.php">Selling</a>
-      </li>
-      <li>
-        <a href="<?php echo http_Site; ?>buy.php">Properties</a>
-      </li>
-      <li>
-        <a href="<?php echo http_Site; ?>about.php">About us</a>
-      </li>
-    </ul>
-    <div class="mobileNav">
-      <div class="close"></div>
-      <div class="nav">
-        <ul>
-          <li>
-            <a href="<?php echo http_Site; ?>">Home</a>
-          </li>
-          <li>
-            <a href="<?php echo http_Site; ?>about.php">About us</a>
-          </li>
-          <li>
-            <a href="<?php echo http_Site; ?>buy.php">Properties</a>
-          </li>
-          <li>
-            <a href="<?php echo http_Site; ?>sell.php">Selling</a>
-          </li>
-          <li>
-            <a  href="https://Leonamunro.home.blog/" target="_blank">Articles</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
 </header>
-<!-- HEADER -->

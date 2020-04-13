@@ -21,11 +21,8 @@
 <body>
   <div class="content">
     <div class="cell">
-      <img src="images/Leona-munro.png">
-      <h2 style="color: #b8a25f;
-    font-size: 20px;
-    margin: 10px 0 0;
-    text-align: center;">Website Coming Soon</h2>
+      <img src="<?php echo http_Site; ?>images/leona-munro-logo-rust.png" style="margin: 20px; width: 20%;">
+      <h2 style="color: #AB776A; font-size: 20px; margin: 10px 0 0; text-align: center;">Website Coming Soon</h2>
     </div>
   </div>
 </body>

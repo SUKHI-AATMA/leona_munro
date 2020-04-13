@@ -1,7 +1,16 @@
 <?php include 'head.php'; ?>
 <?php include '../model_base.php'; ?>
 <?php if(empty($_SESSION)): ?>
-<style> form.form-horizontal {    background: #ccc;    border-radius: 5px;    float: left;    margin: 0 calc((100% - 400px) / 2);    padding: 30px;    width: 400px;  }</style>
+<style> 
+    form.form-horizontal {
+        background: #ccc;
+        border-radius: 5px;
+        float: left;
+        margin: 0 calc((100% - 400px) / 2);
+        padding: 30px;
+        width: 400px;
+    }
+</style>
 <div class="container">
     <!-- <h2>Login</h2> -->
     <form class="form-horizontal">
