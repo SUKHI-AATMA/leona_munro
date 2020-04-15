@@ -1,3 +1,4 @@
+<?php include 'core.php'; ?>
 <!DOCTYPE html>
 <html class="cspio">
 

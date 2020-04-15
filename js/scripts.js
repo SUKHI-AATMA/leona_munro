@@ -6,6 +6,9 @@ var mobile = 'false',
     initFns = {},
     sliders = new Object(),
     bodyTag = document.getElementsByTagName('body')[0];
+var path = window.location.pathname;
+var pgName = path.split("/").pop();
+// console.log( page );
 
 function getFW(width) {
     var sm = 400,
@@ -117,129 +120,224 @@ function scrollToListing() {
     });
 }
 
-function loadPropertyBox() {
+function loadPropertyBox(dataList) {
     var listContent = '';
     var listIndex = 1;
-    listingsData.forEach(function(key, value) {
-        // console.log(key.id)
-        if (listId.indexOf(key.id) == -1 && listIndex < 10) {
+    // console.log(JSON.parse(dataList));
+    if (dataList.length > 0) {
+        dataList.forEach(function(key, value) {
+            // console.log(key.id)
+            if (listId.indexOf(key.id) == -1 && listIndex < 10) {
 
-            listContent += `<a href="details.php?name=` + key.uniquename + `" data-interest="` + key.interest + `" data-bed="` + key.beds + `" data-bath="` + key.toilet + `" data-living="` + key.seating + `" data-garage="` + key.parking + `" class="activeProp">
-                    <div class="propertyBox">
-                        <div class="propertyImage"><img src="admin/upload/profileImage/` + key.project_img + `" alt="` + key.project_name + `"></div>
-                        <div class="propertySaleType">` + key.interest + `</div>
-                        <div class="propertyTitle">` + key.project_name + `</div>
-                        <div class="propertyExtraDetails">
-                            <p class="bed"><img src="images/svg/icon-bed.svg" alt=""><span>` + key.beds + `</span></p>
-                            <p class="bath"><img src="images/svg/icon-bath.svg" alt=""><span>` + key.toilet + `</span></p>
-                            <p class="garage"><img src="images/svg/icon-parking.svg" alt=""><span>` + key.parking + `</span></p>
-                            <p class="living"><img src="images/svg/icon-living.svg" alt=""><span>` + key.seating + `</span></p>
+                listContent += `<a href="details.php?name=` + key.uniquename + `" data-interest="` + key.interest + `" data-bed="` + key.beds + `" data-bath="` + key.toilet + `" data-living="` + key.seating + `" data-garage="` + key.parking + `" class="activeProp">
+                        <div class="propertyBox">
+                            <div class="propertyImage"><img src="admin/upload/profileImage/` + key.project_img + `" alt="` + key.project_name + `"></div>
+                            <div class="propertySaleType">` + key.interest + `</div>
+                            <div class="propertyTitle">` + key.project_name + `</div>
+                            <div class="propertyExtraDetails">
+                                <p class="bed"><img src="images/svg/icon-bed.svg" alt=""><span>` + key.beds + `</span></p>
+                                <p class="bath"><img src="images/svg/icon-bath.svg" alt=""><span>` + key.toilet + `</span></p>
+                                <p class="garage"><img src="images/svg/icon-parking.svg" alt=""><span>` + key.parking + `</span></p>
+                                <p class="living"><img src="images/svg/icon-living.svg" alt=""><span>` + key.seating + `</span></p>
+                            </div>
                         </div>
-                    </div>
-                </a>`
-            listId.push(key.id)
-            listIndex++;
+                    </a>`
+                listId.push(key.id)
+                listIndex++;
+            }
+        });
+        if (listId.length == dataList.length) {
+            document.getElementById('loadMore').classList.add("hide");
         }
-    });
-    if (listId.length == listingsData.length) {
+        document.getElementById('contentList').insertAdjacentHTML('beforeend', listContent);
+    } else {
+        document.getElementById('noProperty').classList.add('show');
         document.getElementById('loadMore').classList.add("hide");
     }
-    document.getElementById('contentList').insertAdjacentHTML('beforeend', listContent);
+}
+
+function clearSearch() {
+    document.getElementById('bed').value = 0;
+    document.getElementById('bed').style.background = 'rgb(233, 233, 233)';
+    document.getElementById('bath').value = 0;
+    document.getElementById('bath').style.background = 'rgb(233, 233, 233)';
+    document.getElementById('living').value = 0;
+    document.getElementById('living').style.background = 'rgb(233, 233, 233)';
+    document.getElementById('garage').value = 0;
+    document.getElementById('garage').style.background = 'rgb(233, 233, 233)';
+    listId = [];
+    document.getElementById('contentList').innerHTML = '';
+    document.getElementById('loadMore').classList.remove("hide");
+    document.getElementById('noProperty').classList.remove('show')
+    loadPropertyBox(listingsData)
 }
 
 function sortBySaleType(sortType) {
     var activeProps = document.querySelectorAll('.activeProp');
-    var beds = document.getElementById('bed').value;
-    var baths = document.getElementById('bath').value;
-    var livings = document.getElementById('living').value;
-    var garages = document.getElementById('garage').value;
-    
+    var beds = parseInt(document.getElementById('bed').value);
+    var baths = parseInt(document.getElementById('bath').value);
+    var livings = parseInt(document.getElementById('living').value);
+    var garages = parseInt(document.getElementById('garage').value);
+    var propName = document.getElementById('autoComp').value;
+
     // listingsData contains all data
-
+    // console.log(beds +' - '+ baths)
     var sortedList = [];
-
-    listingsData.forEach(function(index, value){
-        console.log(index);
-        // if(index)
-    });
-    
-    // var e = document.getElementById("sort");
-    // var sortVal = e.options[e.selectedIndex].value;
-    console.log(sortVal +' - '+ beds +' - '+ baths +' - '+ livings +' - '+ garages)
-    // var restElems = document.querySelectorAll('[data-interest]');
-    // switch (sortType) {
-    //     case 'sort':
-    //         var e = document.getElementById("sort");
-    //         var sortVal = e.options[e.selectedIndex].value;
-    //         // var elems = activeProps.querySelectorAll('[data-interest="' + sortVal + '"]');
-    //         // restElems.forEach(function(index, value) {
-    //         //     //     index.classList.add('hide');
-    //         //     //     setTimeout(function(){
-    //         //     // },200);
-    //         //     // index.classList.add('hide');
-    //         //     // console.log(value)
-    //         // });
-    //         activeProps.forEach(function(index, value) {
-    //             // setTimeout(function(){
-    //             // if(index.a)
-    //             console.log(index.getAttribute('data-interest'));
-    //             if(index.getAttribute('data-interest') == sortVal)
-    //             {
-    //                 index.style.display = 'inline';
-    //                 index.classList.add('activeProp')
-    //             }
-    //             else
-    //             {
-    //                 index.style.display = 'none';
-    //                 index.classList.remove('activeProp')
-    //             }
-    //             //     setTimeout(function(){
-    //             //         index.classList.remove('hide');
-
-    //             //     },120)
-    //             // },350);// index.classList.add('hide');
-    //             // console.log(value)
-    //         });
-    //         break;
-    //     case 'bed':
-    //         // console.log(rangeValue);
-    //         var elems = document.querySelectorAll('[data-bed="' + rangeValue + '"]');
-    //         restElems.forEach(function(index, value) {
-    //             //     index.classList.add('hide');
-    //             //     setTimeout(function(){
-    //             index.style.display = 'none';
-    //             index.classList.remove('activeProp')
-    //             // },200);
-    //             // index.classList.add('hide');
-    //             // console.log(value)
-    //         });
-    //         elems.forEach(function(index, value) {
-    //             // setTimeout(function(){
-    //             index.style.display = 'inline';
-    //             index.classList.add('activeProp');
-    //             //     setTimeout(function(){
-    //             //         index.classList.remove('hide');
-
-    //             //     },120)
-    //             // },350);// index.classList.add('hide');
-    //             // console.log(value)
-    //         });
-    //         break;
-    //     case 'bath':
-    //         // code block
-    //         break;
-    //     case 'living':
-    //         // code block
-    //         break;
-    //     case 'garage':
-    //         // code block
-    //         break;
-    //     default:
-    //         // code block
-    // }
-
-
+    // console.log(sortType);
+    if (sortType) {
+        //Search by property
+        clearSearch();
+        var params = 'na=' + propName + '&be=0&ba=0&li=0&ga=0';
+        fetchData(params);
+    } else {
+        //Search by sorts
+        var params = 'be=' + beds + '&ba=' + baths + '&li=' + livings + '&ga=' + garages + '&na=0';
+        fetchData(params);
+    }
 }
 
+function autocomplete(inp, arr) {
+    /*the autocomplete function takes two arguments,
+    the text field element and an array of possible autocompleted values:*/
+    var currentFocus;
+    /*execute a function when someone writes in the text field:*/
+    inp.addEventListener("input", function(e) {
+        var a, b, i, val = this.value;
+        /*close any already open lists of autocompleted values*/
+        closeAllLists();
+        if (!val) { return false; }
+        currentFocus = -1;
+        /*create a DIV element that will contain the items (values):*/
+        a = document.createElement("DIV");
+        a.setAttribute("id", this.id + "autocomplete-list");
+        a.setAttribute("class", "autocomplete-items");
+        /*append the DIV element as a child of the autocomplete container:*/
+        this.parentNode.appendChild(a);
+        /*for each item in the array...*/
+        for (i = 0; i < arr.length; i++) {
+            var pos = arr[i].toUpperCase().indexOf(val.toUpperCase());
+            /*check if the item starts with the same letters as the text field value:*/
+            if (pos > -1) {
+                /*create a DIV element for each matching element:*/
+                b = document.createElement("DIV");
+                /*make the matching letters bold:*/
+                b.innerHTML = arr[i].substr(0, pos);
+                b.innerHTML += "<strong>" + arr[i].substr(pos, val.length) + "</strong>";
+                b.innerHTML += arr[i].substr(pos + val.length);
+                /*insert a input field that will hold the current array item's value:*/
+                b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                /*execute a function when someone clicks on the item value (DIV element):*/
+                b.addEventListener("click", function(e) {
+                    /*insert the value for the autocomplete text field:*/
+                    inp.value = this.getElementsByTagName("input")[0].value;
+                    /*close the list of autocompleted values,
+                    (or any other open lists of autocompleted values:*/
+                    closeAllLists();
+                });
+                a.appendChild(b);
+            }
+        }
+    });
+    /*execute a function presses a key on the keyboard:*/
+    inp.addEventListener("keydown", function(e) {
+        var x = document.getElementById(this.id + "autocomplete-list");
+        if (x) x = x.getElementsByTagName("div");
+        if (e.keyCode == 40) {
+            /*If the arrow DOWN key is pressed,
+            increase the currentFocus variable:*/
+            currentFocus++;
+            /*and and make the current item more visible:*/
+            addActive(x);
+        } else if (e.keyCode == 38) { //up
+            /*If the arrow UP key is pressed,
+            decrease the currentFocus variable:*/
+            currentFocus--;
+            /*and and make the current item more visible:*/
+            addActive(x);
+        } else if (e.keyCode == 13) {
+            /*If the ENTER key is pressed, prevent the form from being submitted,*/
+            e.preventDefault();
+            if (currentFocus > -1) {
+                /*and simulate a click on the "active" item:*/
+                if (x) x[currentFocus].click();
+            }
+        }
+    });
+
+    function addActive(x) {
+        /*a function to classify an item as "active":*/
+        if (!x) return false;
+        /*start by removing the "active" class on all items:*/
+        removeActive(x);
+        if (currentFocus >= x.length) currentFocus = 0;
+        if (currentFocus < 0) currentFocus = (x.length - 1);
+        /*add class "autocomplete-active":*/
+        x[currentFocus].classList.add("autocomplete-active");
+    }
+
+    function removeActive(x) {
+        /*a function to remove the "active" class from all autocomplete items:*/
+        for (var i = 0; i < x.length; i++) {
+            x[i].classList.remove("autocomplete-active");
+        }
+    }
+
+    function closeAllLists(elmnt) {
+        /*close all autocomplete lists in the document,
+        except the one passed as an argument:*/
+        var x = document.getElementsByClassName("autocomplete-items");
+        for (var i = 0; i < x.length; i++) {
+            if (elmnt != x[i] && elmnt != inp) {
+                x[i].parentNode.removeChild(x[i]);
+            }
+        }
+    }
+    /*execute a function when someone clicks in the document:*/
+    document.addEventListener("click", function(e) {
+        closeAllLists(e.target);
+    });
+}
+/*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+if (pgName == 'listings.php') {
+    autocomplete(document.getElementById("autoComp"), searchList);
+}
 
 // loadPropertyBox();
+
+function fetchData(params) {
+    const Http = new XMLHttpRequest();
+    const url = '/admin/action/actionFetchSortBy.php?' + params;
+    Http.open("GET", url);
+    Http.send();
+
+    Http.onreadystatechange = (e) => {
+        // console.log(Http.status)
+        if (Http.readyState == 4 && Http.status == 200) {
+            // console.log(Http.responseText);
+            listId = [];
+            document.getElementById('contentList').innerHTML = '';
+            var responseData = Http.responseText;
+            // console.log(responseData)
+            responseData = JSON.parse(responseData);
+            loadPropertyBox(responseData);
+
+        }
+    }
+}
+
+window.addEventListener("scroll", function() { onScrollDiv() });
+window.addEventListener("DOMContentLoaded", function() { onScrollDiv() });
+
+function onScrollDiv() {
+  var images = document.querySelectorAll('.lazyload');
+  for (var i=0, nb=images.length ; i <nb ; i++) {
+    var img = images[i]var rect = img.getBoundingClientRect();
+    var isVisible = ((rect.top - window.innerHeight) < 500 && (rect.bottom) > -50 ) ? true : false ;
+
+    if (isVisible) {
+      if (!img.src) {
+        img.src = img.dataset.src;
+      }
+    }
+  }
+}

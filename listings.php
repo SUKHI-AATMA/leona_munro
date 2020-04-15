@@ -6,6 +6,10 @@
 <script type="text/javascript">
     var listingsData = <?php echo json_encode($dataAll); ?>;
     var listId = [];
+    var searchList = []
+    listingsData.forEach(function(index,value){
+        searchList.push(index.project_name);
+    })
     // console.log(listingsData);
 </script>
 <!doctype html>
@@ -80,7 +84,7 @@
     <a id="listing" name="listing"></a>
     <section class="search">
         <div class="container">
-            <div class="s"><input type="text" placeholder="Search address of property"><button></button></div>
+            <div class="s"><input type="text" placeholder="Search address of property" id="autoComp"><button onclick="sortBySaleType('search')"></button></div>
         </div>
     </section>
     <section class="listing" >
@@ -110,28 +114,28 @@
                 <div class=" range sortBed"><label for="">Bed</label>
                     <div class="range-slider">
                         <p class="range_vals"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>+</span></p>
-                        <input class="range-slider__range" type="range" value="0" min="0" max="6"  onchange="sortBySaleType('bed')" id='bed'>
+                        <input class="range-slider__range" type="range" value="0" min="0" max="6" id='bed'>
                         <span class="range-slider__value">100</span>
                     </div>
                 </div>
                 <div class=" range sortBath"><label for="">Bath</label>
                     <div class="range-slider">
                         <p class="range_vals"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>+</span></p>
-                        <input class="range-slider__range" type="range" value="0" min="0" max="6" onchange="sortBySaleType('bath')" id='bath'>
+                        <input class="range-slider__range" type="range" value="0" min="0" max="6" id='bath'>
                         <span class="range-slider__value">100</span>
                     </div>
                 </div>
                 <div class=" range sortLiving"><label for="">Living</label>
                     <div class="range-slider">
                         <p class="range_vals"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>+</span></p>
-                        <input class="range-slider__range" type="range" value="0" min="0" max="6" onchange="sortBySaleType('living')" id='living'>
+                        <input class="range-slider__range" type="range" value="0" min="0" max="6" id='living'>
                         <span class="range-slider__value">100</span>
                     </div>
                 </div>
                 <div class=" range sortGarage"><label for="">Garage</label>
                     <div class="range-slider">
                         <p class="range_vals"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>+</span></p>
-                        <input class="range-slider__range" type="range" value="0" min="0" max="6" onchange="sortBySaleType('garage')" id='garage'>
+                        <input class="range-slider__range" type="range" value="0" min="0" max="6" id='garage'>
                         <span class="range-slider__value">100</span>
                     </div>
                 </div>
@@ -169,10 +173,10 @@
                                 Option 4
                             </option>
                         </select></label></div>
-                <div class="links"><a href="javascript:;" class="button">View Properties</a><a href="javascript:;" class="secondaryBtn">Clear Search</a></div>
+                <div class="links"><a href="javascript:;" class="button" onclick="sortBySaleType()">View Properties</a><a href="javascript:;" class="secondaryBtn" onclick="clearSearch()">Clear Search</a></div>
             </div>
             <div class="propertyList">
-                <div class="noProperty">Results not matching your sort criteria. <a href="javascript:;" class="secondaryBtn">Clear Search</a></div>
+                <div class="noProperty" id="noProperty">Results not matching your sort criteria. <a href="javascript:;" class="secondaryBtn" onclick="clearSearch()">Clear Search</a></div>
                 <div id="contentList">
                     <?php if(!empty($data)): ?>
                     <?php foreach ($data as $key => $value) : ?>
@@ -196,7 +200,7 @@
                     <?php endforeach; ?> 
                     <?php endif; ?>
                 </div>
-                <div class="loadMore" id="loadMore"><a href="javascript:;" class="secondaryBtn" onclick="loadPropertyBox()"> Load More Listings</a></div>
+                <div class="loadMore" id="loadMore"><a href="javascript:;" class="secondaryBtn" onclick="loadPropertyBox(listingsData)"> Load More Listings</a></div>
             </div>
         </div>
     </section>

@@ -2,8 +2,8 @@
 
 session_start();
 // $protocol = ($_SERVER['HTTP_HOST'] == 'leonamunro') ? "https://" : "http://";
-// $protocol = ($_SERVER['HTTP_HOST'] !== 'localhost') ? "https://" : "http://";
-$protocol = "http://";
+$protocol = ($_SERVER['HTTP_HOST'] !== 'localhost') ? "https://" : "http://";
+// $protocol = "http://";
 $domainName = $_SERVER['HTTP_HOST'].'/';
 
 define('http_Site', $protocol.$domainName);
