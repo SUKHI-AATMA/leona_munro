@@ -16,7 +16,7 @@
 <body>
     <header>
         <div class="container">
-            <div class="logo"><a href="/"><img src="<?php echo http_Site; ?>images/leona-munro-logo-rust.png" alt=""></a></div>
+            <div class="logo"><a href="/"><img class="lazyload" data-src="<?php echo http_Site; ?>images/leona-munro-logo-rust.png" alt=""></a></div>
             <nav>
                 <ul>
                     <li><a href="/">Home</a></li>
@@ -33,15 +33,15 @@
                 <p>Contact Me</p>
                 <div>Make your next move</div>
                 <div class="links">
-                    <a href="javascript:;"><img src="<?php echo http_Site; ?>images/svg/icon-contact-phone.svg" alt=""></a>
-                    <a href="javascript:;"><img src="<?php echo http_Site; ?>images/svg/icon-contact-email.svg" alt=""></a>
+                    <a href="javascript:;"><img class="lazyload" data-src="<?php echo http_Site; ?>images/svg/icon-contact-phone.svg" alt=""></a>
+                    <a href="javascript:;"><img class="lazyload" data-src="<?php echo http_Site; ?>images/svg/icon-contact-email.svg" alt=""></a>
                 </div>
             </div>
-            <div class="rgtSec"><img src="<?php echo http_Site; ?>images/cn-banner.jpg" alt=""></div>
+            <div class="rgtSec"><img class="lazyload" data-src="<?php echo http_Site; ?>images/cn-banner.jpg" alt=""></div>
         </div>
     </section>
     <section class="banner meetingbanner">
-        <img src="<?php echo http_Site; ?>images/cn-banner-meeting.jpg" alt="">
+        <img class="lazyload" data-src="<?php echo http_Site; ?>images/cn-banner-meeting.jpg" alt="">
     </section>
     <section class="contactSetion">
         <div class="container">
@@ -49,13 +49,13 @@
                 <h3 class="title">Contact Me</h3>
                 <div class="phNo"><a href="tel:027568123">027 568 123</a></div>
                 <div class="social">
-                    <a href="https://linkedin.com/" class="linkedin"><img src="<?php echo http_Site; ?>images/svg/icon-linkedin.svg" alt=""></a>
-                    <a href="https://www.skype.com/" class="skype"><img src="<?php echo http_Site; ?>images/svg/icon-skype.svg" alt=""></a>
-                    <a href="https://twitter.com/" class="twitter"><img src="<?php echo http_Site; ?>images/svg/icon-twitter.svg" alt=""></a>
+                    <a href="https://linkedin.com/" class="linkedin"><img class="lazyload" data-src="<?php echo http_Site; ?>images/svg/icon-linkedin.svg" alt=""></a>
+                    <a href="https://www.skype.com/" class="skype"><img class="lazyload" data-src="<?php echo http_Site; ?>images/svg/icon-skype.svg" alt=""></a>
+                    <a href="https://twitter.com/" class="twitter"><img class="lazyload" data-src="<?php echo http_Site; ?>images/svg/icon-twitter.svg" alt=""></a>
                 </div>
             </div>
             <div class="rgtSec">
-                <div class="logo"><a href="javascript:;"><img src="<?php echo http_Site; ?>images/leona-munro-logo-gray.png" alt=""></a></div>
+                <div class="logo"><a href="javascript:;"><img class="lazyload" data-src="<?php echo http_Site; ?>images/leona-munro-logo-gray.png" alt=""></a></div>
                 <div class="form">
                     <form action="email.php" name="myForm" onsubmit="return(validate());" method="get">
                         <p>

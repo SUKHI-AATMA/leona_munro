@@ -16,7 +16,7 @@
 <body>
     <header>
         <div class="container">
-            <div class="logo"><a href="/"><img src="<?php echo http_Site; ?>images/leona-munro-logo-rust.png" alt=""></a></div>
+            <div class="logo"><a href="/"><img class="lazyload" data-src="<?php echo http_Site; ?>images/leona-munro-logo-rust.png" alt=""></a></div>
             <nav>
                 <ul>
                     <li><a href="/">Home</a></li>
@@ -28,7 +28,7 @@
         </div>
     </header>
     <section class="banner aboutBanner">
-        <div class="img"><img src="<?php echo http_Site; ?>images/abt-banner.jpg" alt=""></div>
+        <div class="img"><img class="lazyload" data-src="<?php echo http_Site; ?>images/abt-banner.jpg" alt=""></div>
         <div class="lftSec">
             <p>About Me</p>
             <div>Sub Title</div>
@@ -54,14 +54,14 @@
                 <div class="links"><a href="contact.php" class="button">Contact Me</a>
                     <p>Make your next move</p>
                 </div>
-                <img src="<?php echo http_Site; ?>images/abt-image.jpg" alt="">
+                <img class="lazyload" data-src="<?php echo http_Site; ?>images/abt-image.jpg" alt="">
             </div>
         </div>
     </section>
-    <section class="sellHome"><img src="<?php echo http_Site; ?>images/abt-selling.jpg" alt=""></section>
+    <section class="sellHome"><img class="lazyload" data-src="<?php echo http_Site; ?>images/abt-selling.jpg" alt=""></section>
     <section class="aboutme">
         <div class="container">
-            <div class="lftSec"><img src="<?php echo http_Site; ?>images/hm-about-me.jpg" alt=""></div>
+            <div class="lftSec"><img class="lazyload" data-src="<?php echo http_Site; ?>images/hm-about-me.jpg" alt=""></div>
             <div class="rgtSec">
                 <div class="title">About Me Leona Munro Title Area</div>
                 <p>Professionalism and integrity are words often bandied around by real estate agents.</p>
@@ -74,23 +74,23 @@
         <div class="container">
             <div class="icons">
                 <div class="icon">
-                    <img src="<?php echo http_Site; ?>images/svg/icon-hand-house.svg" alt="">
+                    <img class="lazyload" data-src="<?php echo http_Site; ?>images/svg/icon-hand-house.svg" alt="">
                     <p>Benefits for working with Leona</p>
                 </div>
                 <div class="icon">
-                    <img src="<?php echo http_Site; ?>images/svg/icon-tick-house.svg" alt="">
+                    <img class="lazyload" data-src="<?php echo http_Site; ?>images/svg/icon-tick-house.svg" alt="">
                     <p>Lorem lipsum</p>
                 </div>
                 <div class="icon">
-                    <img src="<?php echo http_Site; ?>images/svg/icon-sold-listing-sign.svg" alt="">
+                    <img class="lazyload" data-src="<?php echo http_Site; ?>images/svg/icon-sold-listing-sign.svg" alt="">
                     <p>Lorem lipsum</p>
                 </div>
                 <div class="icon">
-                    <img src="<?php echo http_Site; ?>images/svg/icon-open-door.svg" alt="">
+                    <img class="lazyload" data-src="<?php echo http_Site; ?>images/svg/icon-open-door.svg" alt="">
                     <p>Lorem lipsum</p>
                 </div>
                 <div class="icon">
-                    <img src="<?php echo http_Site; ?>images/svg/icon-key-sold-house-sign.svg" alt="">
+                    <img class="lazyload" data-src="<?php echo http_Site; ?>images/svg/icon-key-sold-house-sign.svg" alt="">
                     <p>Lorem lipsum</p>
                 </div>
             </div>
@@ -99,7 +99,7 @@
     </section>
     <div class="steps">
         <div class="container">
-            <img src="<?php echo http_Site; ?>images/abt-steps.jpg" alt="">
+            <img class="lazyload" data-src="<?php echo http_Site; ?>images/abt-steps.jpg" alt="">
         </div>
     </div>
     <div class="package">
@@ -182,13 +182,13 @@
                 <h3 class="title">Contact Me</h3>
                 <div class="phNo"><a href="tel:027568123">027 568 123</a></div>
                 <div class="social">
-                    <a href="https://linkedin.com/" class="linkedin"><img src="<?php echo http_Site; ?>images/svg/icon-linkedin.svg" alt=""></a>
-                    <a href="https://www.skype.com/" class="skype"><img src="<?php echo http_Site; ?>images/svg/icon-skype.svg" alt=""></a>
-                    <a href="https://twitter.com/" class="twitter"><img src="<?php echo http_Site; ?>images/svg/icon-twitter.svg" alt=""></a>
+                    <a href="https://linkedin.com/" class="linkedin"><img class="lazyload" data-src="<?php echo http_Site; ?>images/svg/icon-linkedin.svg" alt=""></a>
+                    <a href="https://www.skype.com/" class="skype"><img class="lazyload" data-src="<?php echo http_Site; ?>images/svg/icon-skype.svg" alt=""></a>
+                    <a href="https://twitter.com/" class="twitter"><img class="lazyload" data-src="<?php echo http_Site; ?>images/svg/icon-twitter.svg" alt=""></a>
                 </div>
             </div>
             <div class="rgtSec">
-                <div class="logo"><a href="javascript:;"><img src="<?php echo http_Site; ?>images/leona-munro-logo-gray.png" alt=""></a></div>
+                <div class="logo"><a href="javascript:;"><img class="lazyload" data-src="<?php echo http_Site; ?>images/leona-munro-logo-gray.png" alt=""></a></div>
                 <div class="form">
                     <form action="email.php" name="myForm" onsubmit="return(validate());" method="POST">
                         <p>

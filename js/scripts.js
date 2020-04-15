@@ -131,14 +131,14 @@ function loadPropertyBox(dataList) {
 
                 listContent += `<a href="details.php?name=` + key.uniquename + `" data-interest="` + key.interest + `" data-bed="` + key.beds + `" data-bath="` + key.toilet + `" data-living="` + key.seating + `" data-garage="` + key.parking + `" class="activeProp">
                         <div class="propertyBox">
-                            <div class="propertyImage"><img src="admin/upload/profileImage/` + key.project_img + `" alt="` + key.project_name + `"></div>
+                            <div class="propertyImage"><img class="lazyload" data-src="admin/upload/profileImage/` + key.project_img + `" alt="` + key.project_name + `"></div>
                             <div class="propertySaleType">` + key.interest + `</div>
                             <div class="propertyTitle">` + key.project_name + `</div>
                             <div class="propertyExtraDetails">
-                                <p class="bed"><img src="images/svg/icon-bed.svg" alt=""><span>` + key.beds + `</span></p>
-                                <p class="bath"><img src="images/svg/icon-bath.svg" alt=""><span>` + key.toilet + `</span></p>
-                                <p class="garage"><img src="images/svg/icon-parking.svg" alt=""><span>` + key.parking + `</span></p>
-                                <p class="living"><img src="images/svg/icon-living.svg" alt=""><span>` + key.seating + `</span></p>
+                                <p class="bed"><img class="lazyload" data-src="images/svg/icon-bed.svg" alt=""><span>` + key.beds + `</span></p>
+                                <p class="bath"><img class="lazyload" data-src="images/svg/icon-bath.svg" alt=""><span>` + key.toilet + `</span></p>
+                                <p class="garage"><img class="lazyload" data-src="images/svg/icon-parking.svg" alt=""><span>` + key.parking + `</span></p>
+                                <p class="living"><img class="lazyload" data-src="images/svg/icon-living.svg" alt=""><span>` + key.seating + `</span></p>
                             </div>
                         </div>
                     </a>`
@@ -331,7 +331,8 @@ window.addEventListener("DOMContentLoaded", function() { onScrollDiv() });
 function onScrollDiv() {
   var images = document.querySelectorAll('.lazyload');
   for (var i=0, nb=images.length ; i <nb ; i++) {
-    var img = images[i]var rect = img.getBoundingClientRect();
+    var img = images[i];
+    var rect = img.getBoundingClientRect();
     var isVisible = ((rect.top - window.innerHeight) < 500 && (rect.bottom) > -50 ) ? true : false ;
 
     if (isVisible) {

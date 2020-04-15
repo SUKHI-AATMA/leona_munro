@@ -19,7 +19,7 @@
 <body>
     <header>
         <div class="container">
-            <div class="logo"><a href="/"><img src="images/leona-munro-logo-rust.png" alt=""></a></div>
+            <div class="logo"><a href="/"><img class="lazyload" data-src="images/leona-munro-logo-rust.png" alt=""></a></div>
             <nav>
                 <ul>
                     <li><a href="/">Home</a></li>
@@ -36,12 +36,12 @@
                 <p>Exceptional design.<br>
                     Extraordinary service.</p>
             </div>
-            <div class="rgtSec"><img src="images/hm-banner.png" alt=""></div>
+            <div class="rgtSec"><img class="lazyload" data-src="images/hm-banner.png" alt=""></div>
         </div>
     </section>
     <section class="aboutme">
         <div class="container">
-            <div class="lftSec"><img src="images/hm-about-me.jpg" alt=""></div>
+            <div class="lftSec"><img class="lazyload" data-src="images/hm-about-me.jpg" alt=""></div>
             <div class="rgtSec">
                 <div class="title">About Me Leona Munro Title Area</div>
                 <p>Professionalism and integrity are words often bandied around by real estate agents.</p>
@@ -61,15 +61,15 @@
                     <div class="slide slide-1">
                         <a href="<?php echo http_Site.'details.php?name='.$value->uniquename; ?>">
                             <div class="propertyBox">
-                                <div class="propertyImage"><img src="<?php echo http_Site.'admin/upload/profileImage/'.$value->project_img; ?>" alt="<?php echo ucfirst($value->project_name); ?>"></div>
+                                <div class="propertyImage"><img class="lazyload" data-src="<?php echo http_Site.'admin/upload/profileImage/'.$value->project_img; ?>" alt="<?php echo ucfirst($value->project_name); ?>"></div>
                                 <div class="propertySaleType"><?php echo ucwords($value->interest); ?></div>
                                 <div class="propertyTitle"><?php echo ucwords($value->project_name); ?></div>
                                 <div class="propertyExtraDetails">
-                                    <p class="bed"><img src="images/svg/icon-bed.svg" alt=""><span><?php echo $value->beds; ?></span></p>
-                                    <p class="bath"><img src="images/svg/icon-bath.svg" alt=""><span><?php echo $value->toilet; ?></span></p>
-                                    <p class="garage"><img src="images/svg/icon-parking.svg" alt=""><span><?php echo $value->parking; ?></span></p>
-                                    <p class="living"><img src="images/svg/icon-living.svg" alt=""><span><?php echo $value->seating; ?></span></p>
-                                    <!-- <p class="area"><img src="images/svg/icon-property-lot-size.svg" alt=""><span>1</span></p> -->
+                                    <p class="bed"><img class="lazyload" data-src="images/svg/icon-bed.svg" alt=""><span><?php echo $value->beds; ?></span></p>
+                                    <p class="bath"><img class="lazyload" data-src="images/svg/icon-bath.svg" alt=""><span><?php echo $value->toilet; ?></span></p>
+                                    <p class="garage"><img class="lazyload" data-src="images/svg/icon-parking.svg" alt=""><span><?php echo $value->parking; ?></span></p>
+                                    <p class="living"><img class="lazyload" data-src="images/svg/icon-living.svg" alt=""><span><?php echo $value->seating; ?></span></p>
+                                    <!-- <p class="area"><img class="lazyload" data-src="images/svg/icon-property-lot-size.svg" alt=""><span>1</span></p> -->
                                 </div>
                             </div>
                         </a>
@@ -137,13 +137,13 @@
                 <h3 class="title">Contact Me</h3>
                 <div class="phNo"><a href="tel:027568123">027 568 123</a></div>
                 <div class="social">
-                    <a href="https://linkedin.com/" class="linkedin"><img src="images/svg/icon-linkedin.svg" alt=""></a>
-                    <a href="https://www.skype.com/" class="skype"><img src="images/svg/icon-skype.svg" alt=""></a>
-                    <a href="https://twitter.com/" class="twitter"><img src="images/svg/icon-twitter.svg" alt=""></a>
+                    <a href="https://linkedin.com/" class="linkedin"><img class="lazyload" data-src="images/svg/icon-linkedin.svg" alt=""></a>
+                    <a href="https://www.skype.com/" class="skype"><img class="lazyload" data-src="images/svg/icon-skype.svg" alt=""></a>
+                    <a href="https://twitter.com/" class="twitter"><img class="lazyload" data-src="images/svg/icon-twitter.svg" alt=""></a>
                 </div>
             </div>
             <div class="rgtSec">
-                <div class="logo"><a href="javascript:;"><img src="images/leona-munro-logo-gray.png" alt=""></a></div>
+                <div class="logo"><a href="javascript:;"><img class="lazyload" data-src="images/leona-munro-logo-gray.png" alt=""></a></div>
                 <div class="form">
                     <form action="email.php" name="myForm" onsubmit="return(validate());" method="POST">
                         <p>

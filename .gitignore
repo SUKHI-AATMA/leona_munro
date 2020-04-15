@@ -3,3 +3,5 @@ admin/upload/profileImage
 admin/upload/resizedAdditionalImages
 model_base.php
 @design
+@old_files
+admin/@old_files

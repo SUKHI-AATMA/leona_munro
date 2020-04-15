@@ -16,9 +16,9 @@ Class Model_Base {
 
     
 
-    public function __construct($servername = "148.72.232.172:3306", $username = "leona", $password = "Jug8#0z9", $dbname = "leonamunro") {
+    // public function __construct($servername = "148.72.232.172:3306", $username = "leona", $password = "Jug8#0z9", $dbname = "leonamunro") {
     // public function __construct($servername = "localhost", $username = "Leonamunro", $password = "Vipers11!!", $dbname = "leonamunro") {
-    // public function __construct($servername = "localhost", $username = "root", $password = "", $dbname = "leonamunro") {
+    public function __construct($servername = "localhost", $username = "root", $password = "", $dbname = "leonamunro") {
         $dbObject = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
         $this->db = $dbObject;
     }
@@ -57,10 +57,10 @@ Class Model_Base {
     }
 
 
-    public static function connectdb($servername = "148.72.232.172:3306", $username = "leona", $password = "Jug8#0z9", $dbname = "leonamunro") {
+    // public static function connectdb($servername = "148.72.232.172:3306", $username = "leona", $password = "Jug8#0z9", $dbname = "leonamunro") {
     //public static function connectdb($servername = "localhost", $username = "Leonamunro", $password = "Vipers11!!", $dbname = "leonamunro") {
 
-    // public static function connectdb($servername = "localhost", $username = "root", $password = "", $dbname = "leonamunro") {
+    public static function connectdb($servername = "localhost", $username = "root", $password = "", $dbname = "leonamunro") {
         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
         return $conn;
 

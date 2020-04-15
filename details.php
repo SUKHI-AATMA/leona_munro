@@ -26,7 +26,7 @@
 <body class="detailsPg">
     <header>
         <div class="container">
-            <div class="logo"><a href="/"><img src="<?php echo http_Site; ?>images/leona-munro-logo-rust.png" alt=""></a></div>
+            <div class="logo"><a href="/"><img class="lazyload" data-src="<?php echo http_Site; ?>images/leona-munro-logo-rust.png" alt=""></a></div>
             <nav>
                 <ul>
                     <li><a href="/">Home</a></li>
@@ -40,13 +40,13 @@
     <section class="gallery">
         <div class="container">
             <div class="gallery">
-                <div class="bigImage"><img src="<?php echo http_Site.'admin/upload/additionalImages/'.$images[0]; ?>" alt="<?php echo ucwords($data[0]->project_name); ?>" id="bigImg"></div>
+                <div class="bigImage"><img class="lazyload" data-src="<?php echo http_Site.'admin/upload/additionalImages/'.$images[0]; ?>" alt="<?php echo ucwords($data[0]->project_name); ?>" id="bigImg"></div>
                 <div class="thumbs">
                     <div class="gallery" id="gallery">
                         <?php if(count($images) > 0): ?>
                         <?php for($i=0;$i<count($images);$i++): ?>
                         <?php $small_images = ($data[0]->small_images != '') ? explode(',', $data[0]->small_images) : ""; //print_r($small_images); exit(); ?>
-                        <div class="slide slide-1"><img src="<?php echo http_Site.'admin/upload/resizedAdditionalImages/'.$small_images[$i]; ?>" alt="<?php echo ucwords($data[0]->project_name); ?>" data-img="<?php echo http_Site.'admin/upload/additionalImages/'.$images[$i]; ?>" onclick="openImg(this);"></div>
+                        <div class="slide slide-1"><img class="lazyload" data-src="<?php echo http_Site.'admin/upload/resizedAdditionalImages/'.$small_images[$i]; ?>" alt="<?php echo ucwords($data[0]->project_name); ?>" data-img="<?php echo http_Site.'admin/upload/additionalImages/'.$images[$i]; ?>" onclick="openImg(this);"></div>
                         <?php endfor; ?>
                         <?php endif; ?>
                     </div>
@@ -60,22 +60,22 @@
             <p class="propertyTitle"><?php echo ucwords($data[0]->project_name); ?></p>
             <div class="propertyExtraDetails">
                 <?php if($data[0]->beds != "" && $data[0]->beds != 0) { ?>
-                <p class="bed"><img src="<?php echo http_Site; ?>images/svg/icon-bed.svg" alt=""><span><?php echo $data[0]->beds; ?></span></p>
+                <p class="bed"><img class="lazyload" data-src="<?php echo http_Site; ?>images/svg/icon-bed.svg" alt=""><span><?php echo $data[0]->beds; ?></span></p>
                 <?php } ?>
                 <?php if($data[0]->toilet != "" && $data[0]->toilet != 0) { ?>
-                <p class="bath"><img src="<?php echo http_Site; ?>images/svg/icon-bath.svg" alt=""><span><?php echo $data[0]->toilet; ?></span></p>
+                <p class="bath"><img class="lazyload" data-src="<?php echo http_Site; ?>images/svg/icon-bath.svg" alt=""><span><?php echo $data[0]->toilet; ?></span></p>
                 <?php } ?>
                 <?php if($data[0]->parking != "" && $data[0]->parking != 0) { ?>
-                <p class="garage"><img src="<?php echo http_Site; ?>images/svg/icon-parking.svg" alt=""><span><?php echo $data[0]->parking; ?></span></p>
+                <p class="garage"><img class="lazyload" data-src="<?php echo http_Site; ?>images/svg/icon-parking.svg" alt=""><span><?php echo $data[0]->parking; ?></span></p>
                 <?php } ?>
                 <?php if($data[0]->seating != "" && $data[0]->seating != 0) { ?>
-                <p class="living"><img src="<?php echo http_Site; ?>images/svg/icon-living.svg" alt=""><span><?php echo $data[0]->seating; ?></span></p>
+                <p class="living"><img class="lazyload" data-src="<?php echo http_Site; ?>images/svg/icon-living.svg" alt=""><span><?php echo $data[0]->seating; ?></span></p>
                 <?php } ?>
                 <?php if($data[0]->carpet_area != "" && $data[0]->carpet_area != 0) { ?>
-                <p class="area"><img src="<?php echo http_Site; ?>images/svg/icon-floorspace.svg" alt=""><span><?php echo $data[0]->carpet_area; ?>m<sup>2</sup></span></p>
+                <p class="area"><img class="lazyload" data-src="<?php echo http_Site; ?>images/svg/icon-floorspace.svg" alt=""><span><?php echo $data[0]->carpet_area; ?>m<sup>2</sup></span></p>
                 <?php } ?>
                 <?php if($data[0]->area != "" && $data[0]->area != 0) { ?>
-                <p class="area"><img src="<?php echo http_Site; ?>images/svg/icon-property-lot-size.svg" alt=""><span><?php echo $data[0]->area; ?>m<sup>2</sup></span></p>
+                <p class="area"><img class="lazyload" data-src="<?php echo http_Site; ?>images/svg/icon-property-lot-size.svg" alt=""><span><?php echo $data[0]->area; ?>m<sup>2</sup></span></p>
                 <?php } ?>
             </div>
             <div class="propertyDesc">
@@ -84,7 +84,7 @@
             <?php if(!empty($documentData)): ?>
             <div class="propertyDocuments">
                 <?php foreach ($documentData as $key => $value) : ?>
-                <a href="<?php echo $value->link; ?>" target="_blank" class="document"><img src="<?php echo http_Site; ?>images/svg/icon-pdf-download.svg" alt=""><?php echo $value->docName; ?></a>
+                <a href="<?php echo $value->link; ?>" target="_blank" class="document"><img class="lazyload" data-src="<?php echo http_Site; ?>images/svg/icon-pdf-download.svg" alt=""><?php echo $value->docName; ?></a>
                 <?php endforeach; ?>
             </div>
             <?php endif; ?>
@@ -100,15 +100,15 @@
                     <div class="slide">
                         <a href="<?php echo http_Site.'details.php?name='.$value->uniquename; ?>">
                             <div class="propertyBox">
-                                <div class="propertyImage"><img src="<?php echo http_Site.'admin/upload/profileImage/'.$value->project_img; ?>" alt="<?php echo ucfirst($value->project_name); ?>"></div>
+                                <div class="propertyImage"><img class="lazyload" data-src="<?php echo http_Site.'admin/upload/profileImage/'.$value->project_img; ?>" alt="<?php echo ucfirst($value->project_name); ?>"></div>
                                 <div class="propertySaleType"><?php echo ucwords($value->interest); ?></div>
                                 <div class="propertyTitle"><?php echo ucwords($value->project_name); ?></div>
                                 <div class="propertyExtraDetails">
-                                    <p class="bed"><img src="<?php echo http_Site; ?>images/svg/icon-bed.svg" alt=""><span><?php echo $value->beds; ?></span></p>
-                                    <p class="bath"><img src="<?php echo http_Site; ?>images/svg/icon-bath.svg" alt=""><span><?php echo $value->toilet; ?></span></p>
-                                    <p class="garage"><img src="<?php echo http_Site; ?>images/svg/icon-parking.svg" alt=""><span><?php echo $value->parking; ?></span></p>
-                                    <p class="living"><img src="<?php echo http_Site; ?>images/svg/icon-living.svg" alt=""><span><?php echo $value->seating; ?></span></p>
-                                    <!-- <p class="area"><img src="<?php echo http_Site; ?>images/svg/icon-property-lot-size.svg" alt=""><span>1</span></p> -->
+                                    <p class="bed"><img class="lazyload" data-src="<?php echo http_Site; ?>images/svg/icon-bed.svg" alt=""><span><?php echo $value->beds; ?></span></p>
+                                    <p class="bath"><img class="lazyload" data-src="<?php echo http_Site; ?>images/svg/icon-bath.svg" alt=""><span><?php echo $value->toilet; ?></span></p>
+                                    <p class="garage"><img class="lazyload" data-src="<?php echo http_Site; ?>images/svg/icon-parking.svg" alt=""><span><?php echo $value->parking; ?></span></p>
+                                    <p class="living"><img class="lazyload" data-src="<?php echo http_Site; ?>images/svg/icon-living.svg" alt=""><span><?php echo $value->seating; ?></span></p>
+                                    <!-- <p class="area"><img class="lazyload" data-src="<?php echo http_Site; ?>images/svg/icon-property-lot-size.svg" alt=""><span>1</span></p> -->
                                 </div>
                             </div>
                         </a>
@@ -126,13 +126,13 @@
                 <h3 class="title">Contact Me</h3>
                 <div class="phNo"><a href="tel:027568123">027 568 123</a></div>
                 <div class="social">
-                    <a href="https://linkedin.com/" class="linkedin"><img src="<?php echo http_Site; ?>images/svg/icon-linkedin.svg" alt=""></a>
-                    <a href="https://www.skype.com/" class="skype"><img src="<?php echo http_Site; ?>images/svg/icon-skype.svg" alt=""></a>
-                    <a href="https://twitter.com/" class="twitter"><img src="<?php echo http_Site; ?>images/svg/icon-twitter.svg" alt=""></a>
+                    <a href="https://linkedin.com/" class="linkedin"><img class="lazyload" data-src="<?php echo http_Site; ?>images/svg/icon-linkedin.svg" alt=""></a>
+                    <a href="https://www.skype.com/" class="skype"><img class="lazyload" data-src="<?php echo http_Site; ?>images/svg/icon-skype.svg" alt=""></a>
+                    <a href="https://twitter.com/" class="twitter"><img class="lazyload" data-src="<?php echo http_Site; ?>images/svg/icon-twitter.svg" alt=""></a>
                 </div>
             </div>
             <div class="rgtSec">
-                <div class="logo"><a href="javascript:;"><img src="<?php echo http_Site; ?>images/leona-munro-logo-gray.png" alt=""></a></div>
+                <div class="logo"><a href="javascript:;"><img class="lazyload" data-src="<?php echo http_Site; ?>images/leona-munro-logo-gray.png" alt=""></a></div>
                 <div class="form">
                     <form action="email.php" name="myForm" onsubmit="return(validate());" method="POST">
                         <p>
