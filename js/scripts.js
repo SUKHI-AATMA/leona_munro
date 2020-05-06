@@ -2,6 +2,7 @@ var mobile = 'false',
     doc = document,
     win = window,
     ww = win.innerWidth || doc.documentElement.clientWidth || doc.body.clientWidth,
+    isMobile = (ww > 768) ? false : true,
     fw = getFW(ww),
     initFns = {},
     sliders = new Object(),
@@ -17,7 +18,47 @@ function getFW(width) {
     return width < sm ? 150 : width >= sm && width < md ? 200 : width >= md && width < lg ? 300 : 400;
 }
 window.addEventListener('resize', function() { fw = getFW(ww); });
-var options = {
+
+if (isMobile) {
+    var navi = doc.getElementsByTagName('nav')[0];
+    navi.addEventListener("click", function(e) {
+        navi.classList.contains('active') ? navi.classList.remove('active') : navi.classList.add('active');
+    });
+    if (document.getElementById('sort') != null) {
+        document.getElementById('sort').addEventListener('click', function() {
+            document.getElementById('sortDiv').style.display = 'block';
+            document.getElementById('sort').style.display = 'none';
+        });
+    }
+}
+
+var options = (isMobile) ? ({
+    'testimonial': {
+        container: '',
+        items: 1,
+        slideBy: 1,
+        mouseDrag: true,
+        controls: true,
+        controlsText: ['<img src="images/carousel-arrow-left.svg" width="30px" height="30px">', '<img src="images/carousel-arrow-right.svg" width="30px" height="30px">'],
+    },
+    'featured': {
+        container: '',
+        items: 1,
+        slideBy: 1,
+        mouseDrag: true,
+        controls: true,
+        controlsText: ['<img src="images/carousel-arrow-left.svg" width="30px" height="30px">', '<img src="images/carousel-arrow-right.svg" width="30px" height="30px">'],
+    },
+    'gallery': {
+        // axis: "horizontal",
+        container: '',
+        items: 1,
+        slideBy: 1,
+        mouseDrag: true,
+        controls: true,
+        controlsText: ['<img src="images/carousel-arrow-left.svg" width="30px" height="30px">', '<img src="images/carousel-arrow-right.svg" width="30px" height="30px">'],
+    }
+}) : ({
     'testimonial': {
         container: '',
         items: 2,
@@ -39,19 +80,26 @@ var options = {
         slideBy: 1,
         mouseDrag: true,
         controlsText: ['<img src="images/carousel-arrow-left.svg" width="30px" height="30px">', '<img src="images/carousel-arrow-right.svg" width="30px" height="30px">'],
-        controlsPosition: "bottom"
+        controlsPosition: "bottom",
     }
-};
-for (var i in options) {
-    var item = options[i];
-    item.container = '#' + i;
-    if (doc.querySelector(item.container)) {
-        // console.log(item.container);
-        sliders[i] = tns(options[i]);
-    } else if (i.indexOf('responsive') >= 0) {
-        if (isTestPage && initFns[i]) { initFns[i](); }
+});
+console.log(options);
+
+window.addEventListener("load", function() { initSlider() });
+
+function initSlider() {
+    for (var i in options) {
+        var item = options[i];
+        item.container = '#' + i;
+        if (doc.querySelector(item.container)) {
+            // console.log(item.container);
+            sliders[i] = tns(options[i]);
+        } else if (i.indexOf('responsive') >= 0) {
+            // if (isTestPage && initFns[i]) { initFns[i](); }
+        }
     }
 }
+
 
 function validateEmail() {
     var emailID = document.myForm.email.value;
@@ -109,7 +157,21 @@ function validate() {
 //Gallery Open image 
 function openImg(imgs) {
     var expandImg = document.getElementById("bigImg");
-    expandImg.src = imgs.dataset.img;
+    expandImg.style.opacity = '0';
+    setTimeout(function() {
+        expandImg.src = imgs.dataset.img;
+
+        // console.log(loaded);
+        var loadedInterval = setInterval(function() {
+            var loaded = expandImg.complete;
+            if (loaded) {
+                expandImg.style.opacity = '1';
+                clearInterval(loadedInterval);
+            }
+            console.log(loaded);
+        }, 100);
+
+    }, 550);
 };
 
 function scrollToListing() {
@@ -131,14 +193,14 @@ function loadPropertyBox(dataList) {
 
                 listContent += `<a href="details.php?name=` + key.uniquename + `" data-interest="` + key.interest + `" data-bed="` + key.beds + `" data-bath="` + key.toilet + `" data-living="` + key.seating + `" data-garage="` + key.parking + `" class="activeProp">
                         <div class="propertyBox">
-                            <div class="propertyImage"><img class="lazyload" data-src="admin/upload/profileImage/` + key.project_img + `" alt="` + key.project_name + `"></div>
+                            <div class="propertyImage"><img class="lazyload" data-src="` + urlpath + `admin/upload/profileImage/` + key.project_img + `" alt="` + key.project_name + `"></div>
                             <div class="propertySaleType">` + key.interest + `</div>
                             <div class="propertyTitle">` + key.project_name + `</div>
                             <div class="propertyExtraDetails">
-                                <p class="bed"><img class="lazyload" data-src="images/svg/icon-bed.svg" alt=""><span>` + key.beds + `</span></p>
-                                <p class="bath"><img class="lazyload" data-src="images/svg/icon-bath.svg" alt=""><span>` + key.toilet + `</span></p>
-                                <p class="garage"><img class="lazyload" data-src="images/svg/icon-parking.svg" alt=""><span>` + key.parking + `</span></p>
-                                <p class="living"><img class="lazyload" data-src="images/svg/icon-living.svg" alt=""><span>` + key.seating + `</span></p>
+                                <p class="bed"><img class="lazyload" data-src="` + urlpath + `images/svg/icon-bed.svg" alt=""><span>` + key.beds + `</span></p>
+                                <p class="bath"><img class="lazyload" data-src="` + urlpath + `images/svg/icon-bath.svg" alt=""><span>` + key.toilet + `</span></p>
+                                <p class="garage"><img class="lazyload" data-src="` + urlpath + `images/svg/icon-parking.svg" alt=""><span>` + key.parking + `</span></p>
+                                <p class="living"><img class="lazyload" data-src="` + urlpath + `images/svg/icon-living.svg" alt=""><span>` + key.seating + `</span></p>
                             </div>
                         </div>
                     </a>`
@@ -154,6 +216,7 @@ function loadPropertyBox(dataList) {
         document.getElementById('noProperty').classList.add('show');
         document.getElementById('loadMore').classList.add("hide");
     }
+    onScrollDiv();
 }
 
 function clearSearch() {
@@ -170,6 +233,21 @@ function clearSearch() {
     document.getElementById('loadMore').classList.remove("hide");
     document.getElementById('noProperty').classList.remove('show')
     loadPropertyBox(listingsData)
+}
+
+// Get the input field
+var searchInput = document.getElementById("autoComp");
+if (searchInput) {
+    // Execute a function when the user releases a key on the keyboard
+    searchInput.addEventListener("keyup", function(event) {
+        // Number 13 is the "Enter" key on the keyboard
+        if (event.keyCode === 13) {
+            // Cancel the default action, if needed
+            event.preventDefault();
+            // Trigger the button element with a click
+            document.getElementById("searchBtn").click();
+        }
+    });
 }
 
 function sortBySaleType(sortType) {
@@ -191,8 +269,17 @@ function sortBySaleType(sortType) {
         fetchData(params);
     } else {
         //Search by sorts
-        var params = 'be=' + beds + '&ba=' + baths + '&li=' + livings + '&ga=' + garages + '&na=0';
-        fetchData(params);
+        if (beds != 0 || baths != 0 || livings != 0 || garages != 0) {
+            var params = 'be=' + beds + '&ba=' + baths + '&li=' + livings + '&ga=' + garages + '&na=0';
+            fetchData(params);
+        }
+        if (beds == 0 && baths == 0 && livings == 0 && garages == 0) {
+            clearSearch();
+        }
+    }
+    if (isMobile) {
+        document.getElementById('sortDiv').style.display = 'none';
+        document.getElementById('sort').style.display = 'block';
     }
 }
 
@@ -310,7 +397,7 @@ function fetchData(params) {
     Http.open("GET", url);
     Http.send();
 
-    Http.onreadystatechange = (e) => {
+    Http.onreadystatechange = function(e) {
         // console.log(Http.status)
         if (Http.readyState == 4 && Http.status == 200) {
             // console.log(Http.responseText);
@@ -329,16 +416,82 @@ window.addEventListener("scroll", function() { onScrollDiv() });
 window.addEventListener("DOMContentLoaded", function() { onScrollDiv() });
 
 function onScrollDiv() {
-  var images = document.querySelectorAll('.lazyload');
-  for (var i=0, nb=images.length ; i <nb ; i++) {
-    var img = images[i];
-    var rect = img.getBoundingClientRect();
-    var isVisible = ((rect.top - window.innerHeight) < 500 && (rect.bottom) > -50 ) ? true : false ;
+    var images = document.querySelectorAll('.lazyload');
+    var anim = document.querySelectorAll('.animated');
+    for (var i = 0, nb = images.length; i < nb; i++) {
+        var img = images[i];
+        var rect = img.getBoundingClientRect();
+        var isVisible = ((rect.top - window.innerHeight) < 500 && (rect.bottom) > -50) ? true : false;
 
-    if (isVisible) {
-      if (!img.src) {
-        img.src = img.dataset.src;
-      }
+        if (isVisible) {
+            if (!img.src) {
+                img.src = img.dataset.src;
+                img.removeAttribute('data-src');
+                img.classList.remove('lazyload');
+            }
+        }
     }
-  }
+    for (var i = 0, nbs = anim.length; i < nbs; i++) {
+        var animELe = anim[i];
+        var rect = animELe.getBoundingClientRect();
+        var isVisible = ((rect.top - window.innerHeight) < 0 && (rect.bottom) > -50) ? true : false;
+
+        // console.log(isVisible);
+        if (isVisible) {
+            if (animELe.hasAttribute('data-anim')) {
+                var classL = animELe.getAttribute('data-anim');
+                animELe.classList.add(classL);
+                animELe.removeAttribute('data-anim');
+            }
+        }
+    }
 }
+var readMore = document.getElementsByClassName('readMore')[0];
+if (readMore) {
+    readMore.addEventListener("click", function(e) {
+        readMore.style.display = 'none';
+        var mrTxt = document.querySelectorAll('.moreTxt');
+        mrTxt.forEach(function(index, value) {
+            // console.log(index);
+            index.classList.remove('moreTxt');
+        });
+        var epl = document.querySelectorAll('.eppl');
+        epl.forEach(function(index, value) {
+            // console.log(index);
+            index.classList.add('moreTxt');
+        });
+
+
+
+        // document.querySelectorAll('.eppl').style.display = 'inline-block';
+    });
+}
+
+// function isInViewport(elem) {
+
+//     var elementTop = elem.offset().top;
+//     var elementBottom = elementTop + elem.outerHeight();
+
+//     var viewportTop = $(window).scrollTop();
+//     var viewportBottom = viewportTop + $(window).height();
+//     return elementBottom > viewportTop && elementTop < viewportBottom;
+// }
+// // function lazyLoad() {
+// //     $('.lazy').each(function () {
+// //         if (isInViewport($(this)) == true) {
+// //             $(this).attr('src', $(this).attr('data-src'))
+// //             $(this).removeAttr('data-src').removeClass('lazy')
+// //         };
+// //     })
+// // }
+// window.addEventListener('scroll', function () {
+//     if ($(".alime-portfolio-area").length && $('.lazy').length) {
+//         lazyLoad();
+//         $('.alime-portfolio').isotope({
+//             itemSelector: '.single_gallery_item ',
+//             masonry: {
+//                 gutter: 0
+//             }
+//         });
+//     }
+// });

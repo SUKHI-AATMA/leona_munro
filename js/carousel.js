@@ -85,6 +85,7 @@ function moveRight() {
         var firstSlide = carouselContent.firstElementChild;
         firstSlide.addEventListener('transitionend', activateAgain);
         moveSlidesRight();
+        onScrollDiv();
     }
 }
 
@@ -106,6 +107,7 @@ function moveLeft() {
         var firstSlide = carouselContent.firstElementChild;
         firstSlide.addEventListener('transitionend', replaceToEnd);
         moveSlidesLeft();
+        onScrollDiv();
     }
 }
 

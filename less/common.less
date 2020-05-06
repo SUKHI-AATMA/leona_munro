@@ -17,6 +17,7 @@ a {
 
 p {
     font-size: 1.5em;
+    line-height: 1.75em;
 }
 
 img {
@@ -24,6 +25,116 @@ img {
 }
 
 /*Common Classes*/
+.desktop {
+    display: block !important;
+}
+
+.mobile {
+    display: none !important;
+}
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+    font-family: "fontello";
+    font-style: normal;
+    font-weight: normal;
+    speak: none;
+
+    display: inline-block;
+    text-decoration: inherit;
+    width: 1em;
+    margin-right: .2em;
+    text-align: center;
+    /* opacity: .8; */
+
+    /* For safety - reset parent styles, that can break glyph codes*/
+    font-variant: normal;
+    text-transform: none;
+
+    /* fix buttons height, for twitter bootstrap */
+    line-height: 1em;
+
+    /* Animation center compensation - margins should be symmetric */
+    /* remove if not needed */
+    margin-left: .2em;
+
+    /* you can be more comfortable with increased icons size */
+    /* font-size: 120%; */
+
+    /* Font smoothing. That was taken from TWBS */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Uncomment for 3D effect */
+    /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+
+.icon-edit:before {
+    content: '\e800';
+}
+
+/* '' */
+.icon-ok-circled:before {
+    content: '\e801';
+}
+
+/* '' */
+.icon-plus:before {
+    content: '\e802';
+}
+
+/* '' */
+.icon-trash-empty:before {
+    content: '\e804';
+}
+
+/* '' */
+.icon-check-empty:before {
+    content: '\f096';
+}
+
+/* '' */
+.icon-sort:before {
+    content: '\f0dc';
+}
+
+/* '' */
+.icon-ok-squared:before {
+    content: '\f14a';
+}
+
+/* '' */
+.icon-sort-name-up:before {
+    content: '\f15d';
+}
+
+/* '' */
+.icon-file-pdf:before {
+    content: '\f1c1';
+}
+
+/* '' */
+.icon-circle-thin:before {
+    content: '\f1db';
+}
+
+/* '' */
+
+.icon-instagram:before {
+    content: '\e803';
+}
+
+/* '' */
+.icon-facebook-squared:before {
+    content: '\f308';
+}
+
+/* '' */
+.icon-linkedin-squared:before {
+    content: '\f30c';
+}
+
+/* '' */
 .noProperty {
     background: @rust;
     color: #fff;
@@ -36,9 +147,11 @@ img {
     width: calc(100% - 60px);
     display: none;
     max-height: 84px;
+
     &.show {
         display: flex;
     }
+
     .secondaryBtn {
         align-items: center;
         border-color: rgba(255, 255, 255, 0.8);
@@ -91,6 +204,10 @@ img {
     &:hover {
         box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.3);
         transform: translate(0, -5px);
+
+        &:after {
+            display: none;
+        }
     }
 
     &:after {
@@ -130,14 +247,14 @@ img {
 
         input {
             border: 1px solid #e9e9e9;
-            color: #e9e9e9;
+            color: #a09f9f;
             display: flex;
             font-size: 2em;
             padding: 10px 25px;
             width: 100%;
 
             &::placeholder {
-                color: #e9e9e9;
+                color: #a09f9f;
             }
         }
 
@@ -232,6 +349,7 @@ img {
 /*header*/
 header {
     display: flex;
+    width: 100%;
 
     .container {
         align-items: center;
@@ -345,6 +463,7 @@ section.contactSetion {
 
             img {
                 opacity: 0.2;
+                width: 100%;
             }
         }
     }
@@ -379,6 +498,7 @@ section.contactSetion {
                     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
                     margin: 0 0 38px;
                     padding: 15px 15px;
+                    border-radius: 5px;
                 }
 
                 .button {
@@ -431,6 +551,7 @@ section.contactSetion {
 
         p {
             font-size: 3em;
+            line-height: unset;
         }
     }
 
@@ -621,6 +742,7 @@ section.contactSetion {
 
             p:last-child {
                 font-weight: @fw200;
+                line-height: 1.2;
                 margin: 30px 0 0;
 
                 span {
@@ -717,7 +839,7 @@ section.featured {
             box-shadow: 0px 0px 10px 0px rgba(204, 204, 204, 1);
             display: flex;
             flex-direction: column;
-            max-height: 700px;
+            max-height: 770px;
             margin: 0 0 6% 6%;
             padding: 25px;
             width: 20%;
@@ -780,6 +902,16 @@ section.featured {
                 &.hide {
                     opacity: 0;
                 }
+            }
+        }
+    }
+
+    &.sold {
+        .propertyList {
+            width: 100%;
+
+            .propertyBox {
+                margin: 0 0px 80px 70px;
             }
         }
     }
@@ -885,6 +1017,7 @@ section.featured {
         font-size: 2.2em;
         font-weight: @fw700;
         color: #fff;
+        z-index: 1;
     }
 }
 
@@ -955,14 +1088,15 @@ section.about {
     .container {
         display: flex;
         flex-direction: row;
-        margin: 50px auto;
+        margin: 50px auto 0;
 
         .lftSec {
-            display: flex;
+            float: left;
+            /*display: flex;
             flex-direction: column;
-            justify-content: center;
-            padding: 0 10% 0 0;
-            width: 50%;
+            justify-content: center;*/
+            padding: 0;
+            width: 100%;
 
             .title {
                 width: 60%;
@@ -974,38 +1108,76 @@ section.about {
 
 
             .content p {
+                /*display: inline-block;*/
                 margin: 0 0 30px;
-                display: flex;
+                /*display: flex;
+                flex-direction: column;*/
             }
-        }
-    }
-
-    .rgtSec {
-        display: flex;
-        position: relative;
-        width: 50%;
-
-        img {
-            width: 100%;
-        }
-
-        .links {
-            position: absolute;
-            top: 15%;
-            left: 10%;
 
             a {
-                width: 75%;
-                margin: 0 12.5% 7%;
-                justify-content: center;
-                padding: 13px 25px;
+                display: flex;
+                width: 15%;
+                font-size: 1.2em;
+                /*padding: 4px;*/
+                margin: 10px 0 60px;
+            }
+        }
+
+        .rgtSec {
+            float: right;
+            /*display: flex;*/
+            position: relative;
+            width: 50%;
+
+            img {
+                position: relative;
+                z-index: 0;
+                width: 100%;
             }
 
-            p {
-                color: @rust;
+            .links {
+                position: absolute;
+                top: 15%;
+                left: 10%;
+                z-index: 1;
+
+                a {
+                    width: 80%;
+                    margin: 0 12.5% 7%;
+                    justify-content: center;
+                    padding: 13px 25px;
+                }
+
+                p {
+                    color: @rust;
+                }
+            }
+        }
+
+        &.btmSec {
+            flex-direction: column;
+            margin: 0 auto;
+
+            .content p {
+                margin: 0 0 30px;
+                display: flex;
+
+                a {
+                    color: #000;
+                    text-decoration: underline;
+                }
             }
         }
     }
+}
+
+.moreTxt {
+    display: none !important;
+}
+
+.eppl {
+    display: inline-block;
+    width: 14px;
 }
 
 .sellHome {
@@ -1081,10 +1253,57 @@ section.about {
 
 .steps {
     display: flex;
-    margin: 100px 0;
+    margin: 100px 0 200px;
 
-    img {
+    .container {
+        display: flex;
+        justify-content: space-around;
+/*        max-width: 1900px;
         width: 100%;
+*/
+        .step {
+            display: flex;
+            flex-direction: row;
+            width: 15%;
+
+            &:nth-child(even) {
+                transform: translate(0, 100px);
+            }
+
+            span {
+                font-family: @as;
+                font-size: 80px;
+                margin: 0 20px 0 0;
+                color: #dac4bf;
+            }
+
+            div {
+                display: flex;
+                position: relative;
+
+                img {
+                    position: relative;
+                    width: 100%;
+                }
+
+                strong {
+                    color: #fff;
+                    font-weight: 200;
+                    display: flex;
+                    position: absolute;
+                    top: 41%;
+                    left: 10%;
+                    font-size: 1.4em;
+                    text-align: center;
+                    width: 80%;
+                    z-index: 1;
+                    height: 70px;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+        }
+
     }
 }
 
@@ -1156,14 +1375,18 @@ section.about {
         display: flex;
         flex-direction: row;
         height: 600px;
+        margin: 0;
 
         .bigImage {
+            background: url('/images/loader.svg') no-repeat center #ccc;
             display: flex;
             width: 60%;
             overflow: hidden;
 
             img {
+                opacity: 1;
                 width: 100%;
+                transition: opacity linear 0.5s;
             }
         }
 
@@ -1172,11 +1395,12 @@ section.about {
             width: 30%;
             margin: 0 0 0 3%;
             flex-direction: column;
+            // overflow: hidden;
 
             img {
                 cursor: pointer;
                 display: block;
-                margin: 0 0 19px 0;
+                margin: 0 0 21px 0;
                 width: 100%;
             }
 
@@ -1283,6 +1507,7 @@ section.about {
 
             p {
                 margin: 0 0 40px 0;
+                text-align: justify;
             }
 
         }

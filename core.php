@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-// $protocol = ($_SERVER['HTTP_HOST'] == 'leonamunro') ? "https://" : "http://";
+// $protocol = ($_SERVER['HTTP_HOST'] == 'leonamunro.co.nz/') ? "https://" : "http://";
 // $protocol = ($_SERVER['HTTP_HOST'] !== 'localhost') ? "https://" : "http://";
 $protocol = "http://";
 $domainName = $_SERVER['HTTP_HOST'].'/';

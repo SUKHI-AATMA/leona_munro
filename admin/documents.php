@@ -40,56 +40,50 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
     endif;
 
 ?>
-  <div class="container">
+  <div class="container bodyContent">
     <div class="title-wrap">    
-      <h3>Project Documents :<?php echo ucwords($data[0]->project_name); ?> </h3>
+      <h3 class="title">Project Documents :<?php echo ucwords($data[0]->project_name); ?> </h3>
     </div>
-    <form class="form-horizontal">
+    <form>
       <input type="hidden" name="count" id="countForm" value="1" data-projectname="<?php echo $data[0]->uniquename; ?>" />
       <?php if(empty($documentData)): ?>
         
-        <div class="form-row">
-          <div class="form-roww docs">
-            <div class="col-sm-3">
+          <div class="row col3">
+            <div class="">
               <input type="file" id="videoUploadFile" class="form-control documentUpload">
               <input type="hidden" class="linkFile" id="docFileVal_0" id="docFileVal_0" value=""> </div>
-            <div class="col-sm-3">
+            <div class="">
               <input type="text" class="form-control txtFile" id="docText_0" placeholder="Enter Document name"> </div>
-            <div class="col-sm-5">
+            <div class="">
               <textarea class="form-control descpFile" id="docDescp_0" placeholder="Enter short description" rows="1"></textarea>
             </div>
           </div>
-        </div>
-
+        
       <?php else: ?>
       <?php foreach ($documentData as $key => $value) : ?>
-      <div class="form-row docs">
-        <div class="col-sm-3">
+      <div class="row">
+        <div >
           <input type="file" class="form-control documentUpload">
           <input type="hidden" class="linkFile" id="docFileVal_<?php echo $key; ?>" value="<?php echo $value->link; ?>"> </div>
-        <div class="col-sm-3">
+        <div >
           <input type="text" class="form-control txtFile" value="<?php echo $value->docName; ?>">
 
         </div>
-        <div class="col-sm-4">
-          <textarea class="form-control descpFile" rows="1">
-            <?php echo $value->description; ?> </textarea>
+        <div >
+          <textarea class="form-control descpFile" rows="1"><?php echo $value->description; ?> </textarea>
         </div>
-        <div class="col-sm-2">
-          <a href='<?php echo $value->link; ?>' target="_blank">[ DOCUMENT ]</a> 
-          <a href="#" class="removeImg far fa-trash-alt">Remove</a>
+        <div>
+          <a href='<?php echo $value->link; ?>' target="_blank">View document</a>&nbsp;|&nbsp;<a href="javascript:;" class="removeImg"><span class="icon-trash-empty"></span>Remove</a>
         </div>
       </div>
       <?php endforeach; ?>
       <?php endif; ?>
       
-      <div class="form-group" id="addDivMore">
-        <div class="col-sm-12">
-          <a href="#" id="addMore" class="btn btn-primary">
-            <span class="far fa-plus-square"></span>&nbsp;&nbsp;&nbsp;Add more</a>&nbsp;&nbsp;&nbsp;
-          <button type="submit" class="btn btn-primary" id="btnSaveDocs">Save</button>&nbsp;&nbsp;&nbsp;
-          <a href="<?php echo http_Site.'admin/projects.php'; ?>" class="btn btn-info" role="button">Upload document later</a>
-        </div>
+      <div class="row" id="addDivMore">
+          <button type="submit" class="button" id="btnSaveDocs">Save</button>&nbsp;&nbsp;&nbsp;
+          <a href="#" id="addMore" class="secondaryBtn"><span class="icon-plus"></span>&nbsp;Add more</a>&nbsp;
+          <a href="<?php echo http_Site.'admin/projects.php'; ?>" class="linkBtn" role="button">Upload document later</a>
+        
       </div>
     </form>
     <script>
@@ -193,7 +187,9 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
         var count = $('.docs').length;
         $("#countForm").val(count + 1);
         var formMoreDocs = $('#addDivMore');
-        var html = '   <div class="form-row docs">  ' + '                 <div class="col-sm-3">  ' + '                 <input type="file" class="form-control documentUpload">  ' + '                 <input type="hidden" class="linkFile" name="docFileVal_' + count + '" id="docFileVal_' + count + '" value="">  ' + '               </div>  ' + '               <div class="col-sm-3">  ' + '                 <input type="text" class="form-control txtFile" id="docText_' + count + '" placeholder="Enter Document name">  ' + '               </div>  ' + '               <div class="col-sm-5">  ' + '                   <textarea class="form-control descpFile" id="docDescp_' + count + '" placeholder="Enter short description" rows="1"></textarea>  ' + '               </div>  ' + '               <div class="col-sm-1">  ' + '                   <a href="#" class="removeImg far fa-trash-alt" style="font-size: 17px; margin: 8px;"></a>  ' + '               </div>  ' + '          </div>  ';
+        // var html = '   <div class="form-row docs">  ' + '                 <div class="col-sm-3">  ' + '                 <input type="file" class="form-control documentUpload">  ' + '                 <input type="hidden" class="linkFile" name="docFileVal_' + count + '" id="docFileVal_' + count + '" value="">  ' + '               </div>  ' + '               <div class="col-sm-3">  ' + '                 <input type="text" class="form-control txtFile" id="docText_' + count + '" placeholder="Enter Document name">  ' + '               </div>  ' + '               <div class="col-sm-5">  ' + '                   <textarea class="form-control descpFile" id="docDescp_' + count + '" placeholder="Enter short description" rows="1"></textarea>  ' + '               </div>  ' + '               <div class="col-sm-1">  ' + '                   <a href="#" class="removeImg far fa-trash-alt" style="font-size: 17px; margin: 8px;"></a>  ' + '               </div>  ' + '          </div>  ';
+
+        var html = '<div class="row"><div> <input type="file" class="form-control documentUpload"> <input type="hidden" class="linkFile" name="docFileVal_' + count + '" id="docFileVal_' + count + '" value=""> </div><div> <input type="text" class="form-control txtFile" id="docText_' + count + '" placeholder="Enter Document name"> </div><div> <textarea class="form-control descpFile" id="docDescp_' + count + '" placeholder="Enter short description" rows="1"></textarea> </div><div> <a href="#" class="removeImg"><span class="icon-trash-empty"></span></a> </div></div>';
         $(html).insertBefore(formMoreDocs);
       });
       $("body").on("click", ".removeImg", function(e) {

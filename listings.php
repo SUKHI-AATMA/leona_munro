@@ -20,32 +20,18 @@
     <title>Leona Munro</title>
     <meta name="description" content="Leona Munro">
     <meta name="author" content="Leona Munro">
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/tiny-slider.css"> -->
-    <style type="text/css">
-    </style>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <link rel="stylesheet" href="css/style.css?v=1.0">
 </head>
 
 <body>
-    <header>
-        <div class="container">
-            <div class="logo"><a href="/"><img class="lazyload" data-src="<?php echo http_Site; ?>images/leona-munro-logo-rust.png" alt=""></a></div>
-            <nav>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="listings.php">Listings</a></li>
-                    <li><a href="about.php">About Me</a></li>
-                    <li><a href="contact.php" class="button">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <?php include 'include_header.php'; ?>
     <section class="banner listing">
         <div class="container">
             <div class="lftSec">
-                <p>Committed to Delivering<br>Outstanding Service</p>
-                <div>It’s not just about the result. It’s how you go about getting it.</div>
-                <div class="links">
+                <p><span class="animated" data-anim="slideInUp">Committed to Delivering</span><br><span class="animated delay-200s" data-anim="slideInUp">Outstanding Service</span></p>
+                <div class="animated delay-400s" data-anim="slideInUp">It’s not just about the result. It’s how you go about getting it.</div>
+                <div class="links animated delay-600s" data-anim="slideInUp">
                     <a href="javascript:;" class="button" onclick="scrollToListing(this)">View Properties</a><a href="contact.php" class="secondaryBtn">Contact Me</a>
                 </div>
             </div>
@@ -55,9 +41,9 @@
     <?php if(!empty($featured_data)): ?>
     <section class="featured listing">
         <div class="container">
-            <div class="title">My Featured Listing</div>
+            <div class="title animated" data-anim="slideInUp">Featured Listings</div>
             <div class="featuredList">
-                <div class="featured" id="featured">
+                <div class="featured animated" data-anim="fadeIn" id="featured">
                     <?php foreach ($featured_data as $key => $value) : ?>
                     <div class="slide slide-1">
                         <a href="<?php echo http_Site.'details.php?name='.$value->uniquename; ?>">
@@ -82,14 +68,15 @@
     </section>
     <?php endif; ?>
     <a id="listing" name="listing"></a>
-    <section class="search">
+    <section class="search animated" data-anim="slideInUp">
         <div class="container">
-            <div class="s"><input type="text" placeholder="Search address of property" id="autoComp"><button onclick="sortBySaleType('search')"></button></div>
+            <div class="s"><input type="text" placeholder="Search address of property" id="autoComp"><button onclick="sortBySaleType('search')" id="searchBtn"></button></div>
         </div>
     </section>
-    <section class="listing" >
+    <section class="listing">
         <div class="container">
-            <div class="sort">
+            <a href="javascript:;" class="mobile sort button icon-sort-name-up" id="sort">Sort properties</a>
+            <div class="sort animated" data-anim="slideInUp" id="sortDiv">
                 <div class="dropdown">
                     <label class="custom-select" for="sort">
                         <select id="sort" name="options" onchange="sortBySaleType('sort')">
@@ -183,7 +170,7 @@
                     <script>
                         listId.push('<?php echo $value->id; ?>');
                     </script>
-                    <a href="<?php echo http_Site.'details.php?name='.$value->uniquename; ?>" data-interest="<?php echo $value->interest; ?>" data-bed="<?php echo $value->beds; ?>" data-bath="<?php echo $value->toilet; ?>" data-living="<?php echo $value->seating; ?>" data-garage="<?php echo $value->parking; ?>" class="activeProp">
+                    <a href="<?php echo http_Site.'details.php?name='.$value->uniquename; ?>" data-interest="<?php echo $value->interest; ?>" data-bed="<?php echo $value->beds; ?>" data-bath="<?php echo $value->toilet; ?>" data-living="<?php echo $value->seating; ?>" data-garage="<?php echo $value->parking; ?>" class="activeProp animated" data-anim="slideInUp">
                         <div class="propertyBox">
                             <div class="propertyImage"><img class="lazyload" data-src="<?php echo http_Site.'admin/upload/profileImage/'.$value->project_img; ?>" alt="<?php echo ucfirst($value->project_name); ?>"></div>
                             <div class="propertySaleType"><?php echo ucwords($value->interest); ?></div>
@@ -200,51 +187,12 @@
                     <?php endforeach; ?> 
                     <?php endif; ?>
                 </div>
-                <div class="loadMore" id="loadMore"><a href="javascript:;" class="secondaryBtn" onclick="loadPropertyBox(listingsData)"> Load More Listings</a></div>
+                <div class="loadMore animated" data-anim="slideInUp" id="loadMore"><a href="javascript:;" class="secondaryBtn" onclick="loadPropertyBox(listingsData)"> Load More Listings</a></div>
             </div>
         </div>
     </section>
-    <section class="contactSetion">
-        <div class="container">
-            <div class="lftSec">
-                <h3 class="title">Contact Me</h3>
-                <div class="phNo"><a href="tel:027568123">027 568 123</a></div>
-                <div class="social">
-                    <a href="https://linkedin.com/" class="linkedin"><img class="lazyload" data-src="<?php echo http_Site; ?>images/svg/icon-linkedin.svg" alt=""></a>
-                    <a href="https://www.skype.com/" class="skype"><img class="lazyload" data-src="<?php echo http_Site; ?>images/svg/icon-skype.svg" alt=""></a>
-                    <a href="https://twitter.com/" class="twitter"><img class="lazyload" data-src="<?php echo http_Site; ?>images/svg/icon-twitter.svg" alt=""></a>
-                </div>
-            </div>
-            <div class="rgtSec">
-                <div class="logo"><a href="javascript:;"><img class="lazyload" data-src="<?php echo http_Site; ?>images/leona-munro-logo-gray.png" alt=""></a></div>
-                <div class="form">
-                    <form action="email.php" name="myForm" onsubmit="return(validate());" method="POST">
-                        <p>
-                            <label for="name">Name</label><input name="name" id="name" type="text">
-                        </p>
-                        <p>
-                            <label for="email">Email</label><input name="email" id="email" type="text">
-                        </p>
-                        <p>
-                            <label for="message">Message</label><textarea name="message" id="message" cols="30" rows="5"></textarea>
-                        </p>
-                        <p><input type="submit" class="button" id="submitContactForm" value="Contact Me"><label for="" class="error" id="error"></label></p>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-    <footer>
-        <div class="container">
-            <div class="copy">© Copyright Leona Munro <script>
-                document.write(new Date().getFullYear())
-                </script>
-            </div>
-        </div>
-    </footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
-    <script src="js/scripts.js"></script>
-    <script src="js/range-slider.js"></script>
+    <?php include 'include_contactSection.php'; ?>
+    <?php include 'include_footer.php'; ?>
 </body>
 
 </html>

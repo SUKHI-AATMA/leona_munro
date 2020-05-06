@@ -7,70 +7,73 @@
     <title>Leona Munro</title>
     <meta name="description" content="Leona Munro">
     <meta name="author" content="Leona Munro">
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/tiny-slider.css"> -->
-    <style type="text/css">
-    </style>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <link rel="stylesheet" href="css/style.css?v=1.0">
 </head>
 
 <body>
-    <header>
-        <div class="container">
-            <div class="logo"><a href="/"><img class="lazyload" data-src="<?php echo http_Site; ?>images/leona-munro-logo-rust.png" alt=""></a></div>
-            <nav>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="listings.php">Listings</a></li>
-                    <li><a href="about.php">About Me</a></li>
-                    <li><a href="contact.php" class="button">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <?php include 'include_header.php'; ?>
     <section class="banner aboutBanner">
-        <div class="img"><img class="lazyload" data-src="<?php echo http_Site; ?>images/abt-banner.jpg" alt=""></div>
+        <div class="img"><img class="desktop animated" data-anim="fadeIn" src="<?php echo http_Site; ?>images/abt-banner.jpg" alt=""><img class="mobile animated" data-anim="fadeIn" src="<?php echo http_Site; ?>images/abt-banner_m.jpg" alt=""></div>
         <div class="lftSec">
-            <p>About Me</p>
-            <div>Sub Title</div>
+            <p class="animated" data-anim="slideInUp">About Me</p>
+            <div class="animated delay-300s" data-anim="slideInUp">Actions and the sales she achieves for her clients speak louder than mere words</div>
             <div class="links">
-                <a href="javascript:;" class="button">Read More</a>
-                <a href="contact.php" class="secondaryBtn">Contact Me</a>
+                <a href="#aboutLeona" class="button animated delay-400s" data-anim="slideInUp">Read More</a>
+                <a href="contact.php" class="secondaryBtn animated delay-500s" data-anim="slideInUp">Contact Me</a>
             </div>
         </div>
     </section>
+    <a id="aboutLeona" name="aboutLeona"></a>
     <section class="about">
         <div class="container">
             <div class="lftSec">
-                <div class="title">
+                <div class="title animated" data-anim="slideInUp">
                     About Leona Munro
                 </div>
                 <div class="content">
-                    <p>It's not just about the result. It's how you go about getting it. It's not just about the result. It's how you go about getting it. It's not just about the result.</p>
-                    <p>It's how you go about getting it. It's not just about the result. It's how you go about getting it. I</p>
-                    <p>It's not just about the result. It’s how you go about getting it.</p>
-                </div>
-            </div>
-            <div class="rgtSec">
-                <div class="links"><a href="contact.php" class="button">Contact Me</a>
+                    <div class="rgtSec">
+                <div class="links animated" data-anim="slideInUp"><a href="contact.php" class="button">Contact Me</a>
                     <p>Make your next move</p>
                 </div>
-                <img class="lazyload" data-src="<?php echo http_Site; ?>images/abt-image.jpg" alt="">
+                <img class="lazyload animated" data-anim="fadeIn" data-src="<?php echo http_Site; ?>images/abt-image.jpg" alt="">
+            </div>
+                    <p class="animated" data-anim="slideInUp">Professionalism and integrity are words often bandied around by real estate agents. However, Leona Munro asks to be defined by her actions and her results.</p>
+                    <p class="animated" data-anim="slideInUp">Leona’s actions and the sales she achieves for her clients speak louder than mere words. She is a Ray White multi-award winning agent recognised time-and-again for her exceptional customer service and attention to detail. This means whether you’re a seller or a buyer working with Leona is a collaborative process rewarded with outstanding results.</p>
+                    <p class="animated" data-anim="slideInUp">Dunedin born and bred, Leona truly goes further to ensure every property she sells is presented at its best, encouraging buyer interest and maximising sales results. She won't rush a property to market, Leona works with sellers using her impeccable<b class="eppl">...</b><span class="moreTxt"> sense of style and understanding of the local real estate market to ensure every house she sells looks outstanding for photos and open homes. Over more than 15 years specialising in the Dunedin property market, Leona has developed a specialist team of tradespeople to assist making houses sale ready. Not only is Leona's team reliable (which in itself is worth gold) but they also offer sellers competitive pricing - and in many cases wholesale rates.</span></p>
+                    <a href="javascript:;" class="secondaryBtn readMore">Read More</a>
+                    
+                </div>
+            </div>
+            
+        </div>
+        <div class="container btmSec moreTxt">
+            <div class="content">
+                
+                <p>Leona's eye for detail which helps guide sellers in property presentation is again brought to the fore when it comes to marketing the home. Sure, in a busy market like Dunedin any agent can sell a house but Leona, supported by her assistant Mike Burn, maximises the number of people visiting each house over a campaign of at least two weeks to ensure the best result.</p>
+                <p>Open homes overseen by Leona and Mike are proof of attention to detail. Leona and Mike are warm and welcoming to everyone visiting the property and - more importantly – follow up every single open home visitor. They provide detailed information packs at the open home and then work with potential buyers to ensure they are a in a good position to make an offer, that may mean once again using her connections to introduce buyers to mortgage brokers and lawyers. Experience and knowledge comes to the fore with Leona's understanding of real estate sales legislation and contractual obligations, another way she supports sellers and buyers and ensuring she provides a stress free experience for her clients.</p>
+                <p>Weekly reports with feedback throughout the open home and sales process ensure sellers receive buyer feedback and clear guidance on value of their property. Then, there's the actual sale, Leona is known for turning on ‘something extra' for auctions - she's had bagpipers play, on another occasion she served champagne and nibbles and has had coffee trucks on hand for sustenance.</p>
+                <p>All this attention to detail, practical support and Dunedin real estate sales knowledge are why Leona Munro consistently receives a customer satisfaction ratings of 10 of out 10 - in other words top marks at 100%. Leona Munro is judged upon her results and that's the way she prefers it. Leona's satisfied sellers are the ones who provide the words:</p>
+                <p>"Third time around the block with Leona. Once as a buyer and twice as a seller. Bends over backwards, goes the extra mile and delivers beyond expectations." Paul & Esther, 9 Pencarrow Street.</p>
+                <p>"Leona was very friendly and went out of her way to be helpful to us at a very stressful time. If all agents were like her there wouldn't be any negative comments made about real estate." Merlin & Dianne, 13A Forfar Street.</p>
+                <p>For more reviews from satisfied sellers&nbsp;<a href="#testimonialsLM">check here</a>.</p>
+                <p>Or to speak directly to Leona and organise an assessment of your home call etc.&nbsp;<a href="contact.html">click Here</a></p>
             </div>
         </div>
     </section>
-    <section class="sellHome"><img class="lazyload" data-src="<?php echo http_Site; ?>images/abt-selling.jpg" alt=""></section>
+    <section class="sellHome"><img class="lazyload animated" data-anim="fadeIn" data-src="<?php echo http_Site; ?>images/abt-selling.jpg" alt=""></section>
     <section class="aboutme">
         <div class="container">
-            <div class="lftSec"><img class="lazyload" data-src="<?php echo http_Site; ?>images/hm-about-me.jpg" alt=""></div>
+            <div class="lftSec"><img class="lazyload animated" data-anim="fadeIn" data-src="<?php echo http_Site; ?>images/hm-about-me.jpg" alt=""></div>
             <div class="rgtSec">
-                <div class="title">About Me Leona Munro Title Area</div>
-                <p>Professionalism and integrity are words often bandied around by real estate agents.</p>
-                <p>However, Leona Munro asks to be defined by her actions and her results.</p>
-                <p>Leona’s actions and the sales she achieves for her clients speak louder than mere words.</p>
+                <div class="title animated" data-anim="slideInUp">About Leona</div>
+                <p class="animated" data-anim="slideInUp">Professionalism and integrity are words often bandied around by real estate agents. However, Leona Munro asks to be defined by her actions and her results.</p>
+                <p class="animated" data-anim="slideInUp">Leona’s actions and the sales she achieves for her clients speak louder than mere words. She is a Ray White multi-award winning agent recognised time-and-again for her exceptional customer service and attention to detail. This means whether you’re a seller or a buyer working with Leona is a collaborative process rewarded with outstanding results.</p>
             </div>
+            
         </div>
     </section>
-    <section class="services">
+    <!-- <section class="services">
         <div class="container">
             <div class="icons">
                 <div class="icon">
@@ -96,13 +99,17 @@
             </div>
             <div class="links"><a href="contact.php" class="button">Contact Me</a></div>
         </div>
-    </section>
+    </section> -->
     <div class="steps">
-        <div class="container">
-            <img class="lazyload" data-src="<?php echo http_Site; ?>images/abt-steps.jpg" alt="">
+        <div class="container animated" data-anim="slideInUp">
+            <div class="step"><span>1</span><div><img src="images/steps.png" alt=""><strong>Chat</strong></div></div>
+            <div class="step"><span>2</span><div><img src="images/steps.png" alt=""><strong>Appraisal</strong></div></div>
+            <div class="step"><span>3</span><div><img src="images/steps.png" alt=""><strong>Plan</strong></div></div>
+            <div class="step"><span>4</span><div><img src="images/steps.png" alt=""><strong>Taking to market</strong></div></div>
+            <div class="step"><span>5</span><div><img src="images/steps.png" alt=""><strong>Sold</strong></div></div>
         </div>
     </div>
-    <div class="package">
+    <!-- <div class="package">
         <div class="container">
             <div class="pkg">
                 <p class="pkgTitle">Package Title</p>
@@ -132,90 +139,53 @@
                 <div class="links"><a href="javascript:;" class="secondaryBtn">Learn More</a></div>
             </div>
         </div>
-    </div>
-    <section class="testimonials abt">
+    </div> -->
+    <a id="testimonialsLM" name="testimonialsLM"></a>
+    <section class="testimonials">
         <div class="container">
-            <div class="title">Testimonials</div>
+            <div class="title animated" data-anim="slideInUp">Testimonials</div>
             <div class="base" id="testimonial">
                 <div class="item">
                     <div>
-                        <p>“ We felt Leona communicated well with us like a friend would and was honest. We felt comfortable at all times.”</p>
-                        <p>- Steve & Barb<span>(10 Windsor Place)</span></p>
+                        <p data-anim="slideInUp" class="animated">“Leona was very friendly and went out of her way to be helpful to us at a very stressful time. If all agents were like her there wouldn't be any negative comments made about real estate.”</p>
+                        <p data-anim="slideInUp" class="animated">- Merlin & Dianne<span>(13A Forfar Street)</span></p>
                     </div>
                 </div>
                 <div class="item">
                     <div>
-                        <p>“Third time around the block with Leona. Once as a buyer and twice as a seller. Bends over backwards. goes the extra mile and delivers beyond expectations”</p>
-                        <p>- Paul & Esther<span>(9 Pencorrow Street)</span></p>
+                        <p data-anim="slideInUp" class="animated">“Third time around the block with Leona. Once as a buyer and twice as a seller. Bends over backwards, goes the extra mile and delivers beyond expectations.”</p>
+                        <p data-anim="slideInUp" class="animated">- Paul & Esther<span>(9 Pencorrow Street)</span></p>
                     </div>
                 </div>
                 <div class="item">
                     <div>
-                        <p>“ We felt Leona communicated well with us like a friend would and was honest. We felt comfortable at all times.”</p>
-                        <p>- Steve & Barb<span>(10 Windsor Place)</span></p>
+                        <p data-anim="slideInUp" class="animated">“Leona was very friendly and went out of her way to be helpful to us at a very stressful time. If all agents were like her there wouldn't be any negative comments made about real estate.”</p>
+                        <p data-anim="slideInUp" class="animated">- Merlin & Dianne<span>(13A Forfar Street)</span></p>
                     </div>
                 </div>
                 <div class="item">
                     <div>
-                        <p>“Third time around the block with Leona. Once as a buyer and twice as a seller. Bends over backwards. goes the extra mile and delivers beyond expectations”</p>
-                        <p>- Paul & Esther<span>(9 Pencorrow Street)</span></p>
+                        <p data-anim="slideInUp" class="animated">“Third time around the block with Leona. Once as a buyer and twice as a seller. Bends over backwards, goes the extra mile and delivers beyond expectations.”</p>
+                        <p data-anim="slideInUp" class="animated">- Paul & Esther<span>(9 Pencorrow Street)</span></p>
                     </div>
                 </div>
                 <div class="item">
                     <div>
-                        <p>“ We felt Leona communicated well with us like a friend would and was honest. We felt comfortable at all times.”</p>
-                        <p>- Steve & Barb<span>(10 Windsor Place)</span></p>
+                        <p data-anim="slideInUp" class="animated">“Leona was very friendly and went out of her way to be helpful to us at a very stressful time. If all agents were like her there wouldn't be any negative comments made about real estate.”</p>
+                        <p data-anim="slideInUp" class="animated">- Merlin & Dianne<span>(13A Forfar Street)</span></p>
                     </div>
                 </div>
                 <div class="item">
                     <div>
-                        <p>“Third time around the block with Leona. Once as a buyer and twice as a seller. Bends over backwards. goes the extra mile and delivers beyond expectations”</p>
-                        <p>- Paul & Esther<span>(9 Pencorrow Street)</span></p>
+                        <p data-anim="slideInUp" class="animated">“Third time around the block with Leona. Once as a buyer and twice as a seller. Bends over backwards, goes the extra mile and delivers beyond expectations.”</p>
+                        <p data-anim="slideInUp" class="animated">- Paul & Esther<span>(9 Pencorrow Street)</span></p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <section class="contactSetion">
-        <div class="container">
-            <div class="lftSec">
-                <h3 class="title">Contact Me</h3>
-                <div class="phNo"><a href="tel:027568123">027 568 123</a></div>
-                <div class="social">
-                    <a href="https://linkedin.com/" class="linkedin"><img class="lazyload" data-src="<?php echo http_Site; ?>images/svg/icon-linkedin.svg" alt=""></a>
-                    <a href="https://www.skype.com/" class="skype"><img class="lazyload" data-src="<?php echo http_Site; ?>images/svg/icon-skype.svg" alt=""></a>
-                    <a href="https://twitter.com/" class="twitter"><img class="lazyload" data-src="<?php echo http_Site; ?>images/svg/icon-twitter.svg" alt=""></a>
-                </div>
-            </div>
-            <div class="rgtSec">
-                <div class="logo"><a href="javascript:;"><img class="lazyload" data-src="<?php echo http_Site; ?>images/leona-munro-logo-gray.png" alt=""></a></div>
-                <div class="form">
-                    <form action="email.php" name="myForm" onsubmit="return(validate());" method="POST">
-                        <p>
-                            <label for="name">Name</label><input name="name" id="name" type="text">
-                        </p>
-                        <p>
-                            <label for="email">Email</label><input name="email" id="email" type="text">
-                        </p>
-                        <p>
-                            <label for="message">Message</label><textarea name="message" id="message" cols="30" rows="5"></textarea>
-                        </p>
-                        <p><input type="submit" class="button" id="submitContactForm" value="Contact Me"><label for="" class="error" id="error"></label></p>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-    <footer>
-        <div class="container">
-            <div class="copy">© Copyright Leona Munro <script>
-                document.write(new Date().getFullYear())
-                </script>
-            </div>
-        </div>
-    </footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
-    <script src="js/scripts.js"></script>
+    <?php include 'include_contactSection.php'; ?>
+    <?php include 'include_footer.php'; ?>
 </body>
 
 </html>

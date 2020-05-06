@@ -1,36 +1,27 @@
 <?php   include 'head.php';
 include '../model_base.php';  
-if(!empty($_SESSION) && array_key_exists("username", $_SESSION)): $data = Model_Base::query("Select project_name, uniquename, beds, area, featured, date_added, status from projects");?>
-<div class="container">
+if(!empty($_SESSION) && array_key_exists("username", $_SESSION)): $data = Model_Base::query("Select project_name, uniquename, beds, toilet, parking, seating, sold from projects");?>
+<div class="container bodyContent">
     <div class="title-wrap">
         <h3 class="title">
             <span>Projects</span>
-            <a href="<?php echo http_Site.'admin/create.php' ?>" class="btn btn-default" role="button">Add new project</a>
+            <a href="<?php echo http_Site.'admin/create.php' ?>" class="button" role="button">Add new project</a>
         </h3>
     </div>
-    <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+    <table id="example" cellspacing="0" width="100%">
         <thead>
             <tr>
                 <th>Sr.no</th>
-                <th>Project name</th>
-                <th>Beds</th>
-                <th>Area</th>
-                <th>Featured</th>
-                <th>Date added</th>
+                <th>Project name <span class="sort"></span></th>
+                <th>Beds <span class="sort"></span></th>
+                <th>Bathroom <span class="sort"></span></th>
+                <th>Garage <span class="sort"></span></th>
+                <th>Living <span class="sort"></span></th>
+                <th>Sold <span class="sort"></span></th>
                 <th>Action</th>
             </tr>
         </thead>
-        <tfoot>
-            <tr>
-                <th>Sr.no</th>
-                <th>Project name</th>
-                <th>Beds</th>
-                <th>Area</th>
-                <th>Featured</th>
-                <th>Date added</th>
-                <th>Action</th>
-            </tr>
-        </tfoot>
+
         <tbody>
             <?php if(!empty($data)): ?>
             <?php foreach ($data as $key => $value) : ?>
@@ -45,23 +36,26 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)): $data = Model_
                     <?php echo $value->beds; ?>
                 </td>
                 <td>
-                    <?php echo $value->area; ?>
+                    <?php echo $value->toilet; ?>
                 </td>
                 <td>
-                    <?php echo ($value->featured == 1)?'yes':'no'; ?>
+                    <?php echo $value->parking; ?>
                 </td>
                 <td>
-                    <?php echo date('d-m-Y',strtotime($value->date_added)); ?>
+                    <?php echo $value->seating; ?>
                 </td>
                 <td>
-                    <a href="<?php echo '/admin/edit.php?name='.$value->uniquename; ?>" style=" font-size: 16px;" data-toggle="tooltip" data-placement="top" title="Edit">
-                        <span class="far fa-edit"></span>
+                    <?php echo ($value->sold == 1)?'yes':'no'; ?>
+                </td>
+                <td>
+                    <a href="<?php echo '/admin/edit.php?name='.$value->uniquename; ?>" data-toggle="tooltip" data-placement="top" title="Edit">
+                        <span class="icon-edit"></span>
                     </a>
-                    <a href="#" class="deleteProject" style="float: right; font-size: 16px;" data-toggle="tooltip" data-placement="top" title="Delete" data-uniquename="<?php echo $value->uniquename; ?>">
-                        <span class="far fa-trash-alt"></span>
+                    <a href="<?php echo '/admin/documents.php?name='.$value->uniquename; ?>" data-toggle="tooltip" data-placement="top" title="PDF" class="" data-uniquename="<?php echo $value->uniquename; ?>">
+                        <span class="icon-file-pdf"></span>
                     </a>
-                    <a href="<?php echo '/admin/documents.php?name='.$value->uniquename; ?>" style=" font-size: 16px;" data-toggle="tooltip" data-placement="top" title="PDF" class="" data-uniquename="<?php echo $value->uniquename; ?>">
-                        <span class="far fa-file-pdf"></span>
+                    <a href="#" class="deleteProject" data-toggle="tooltip" data-placement="top" title="Delete" data-uniquename="<?php echo $value->uniquename; ?>">
+                        <span class="icon-trash-empty"></span>
                     </a>
                 </td>
             </tr>
