@@ -85,8 +85,11 @@ var options = (isMobile) ? ({
     }
 });
 
-window.addEventListener("load", function() { 
-    initSlider()
+window.addEventListener("load", function() {
+    if(document.getElementsByClassName('featured').length)
+    {
+        initSlider();
+    }
     var pgNm = document.getElementsByTagName('body')[0].getAttribute('data-page');
     document.getElementById('pageNm').value = pgNm;
     // if(docuemtn.getElementsByClassName('thumbs'))
@@ -108,7 +111,7 @@ function initSlider() {
         } else if (i.indexOf('responsive') >= 0) {
             // if (isTestPage && initFns[i]) { initFns[i](); }
         }
-        if(item.container == "#gallery" && !isMobile)
+        if(document.getElementsByClassName('thumbs').length && !isMobile)
         {
             var slidesList = document.querySelectorAll('.slide'),
             thumbs = document.getElementsByClassName('thumbs')[0],
@@ -121,7 +124,7 @@ function initSlider() {
         if(slideNos < 4 && !isMobile)
         {
             document.getElementsByClassName('featured')[0].classList.add('lessSlides');
-        }
+        }    
     }
 }
 

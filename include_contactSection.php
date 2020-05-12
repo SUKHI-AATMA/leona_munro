@@ -12,8 +12,8 @@
         <div class="rgtSec">
             <div class="logo animated" data-anim="fadeIn"><a href="/"><img class="lazyload" data-src="<?php echo http_Site; ?>images/leona-munro-logo-gray.png" alt=""></a></div>
             <div class="form">
-                <form action="email.php" name="myForm" onsubmit="return(validate());" method="POST">
-                    <input id="pageNm" name="pageNm" type="hidden" value="">
+                <form action="thankyou.php" name="myForm" onsubmit="return(validate());" method="POST">
+                    <input id="pageNm" name="pageNm" type="hidden" value="Contact">
                     <p class="animated delay-200s" data-anim="slideInUp">
                         <label for="name">Name</label><input name="name" id="name" type="text">
                     </p>

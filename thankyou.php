@@ -15,9 +15,9 @@
     ini_set( 'display_errors', 1 );
     error_reporting( E_ALL );
     $from = $_POST['email'];
-    $to = "sawant1810@gmail.com";
+    $to = "leona.munro@raywhite.com";
     $subject = "New inquiry from: " . $_POST['name'];
-    $message = "Name: " . $_POST['name'] ."\r\n\r\nEmail: " .$_POST['email']."\r\n\r\nMessage: " .$_POST['message'];
+    $message = "Name: " . $_POST['name'] ."\r\n\r\nEmail: " .$_POST['email']."\r\n\r\nMessage: " .$_POST['message']."\r\n\r\nType: " .$_POST['pageNm'];
     $headers = "From: " . $from;
     mail($to,$subject,$message, $headers);
     // echo $html;
