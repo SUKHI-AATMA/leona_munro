@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/style.css?v=1.0">
 </head>
 
-<body>
+<body data-page="Contact">
     <?php include 'include_header.php'; ?>
     <section class="banner contactBanner">
         <div class="container">

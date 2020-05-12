@@ -87,6 +87,8 @@ var options = (isMobile) ? ({
 
 window.addEventListener("load", function() { 
     initSlider()
+    var pgNm = document.getElementsByTagName('body')[0].getAttribute('data-page');
+    document.getElementById('pageNm').value = pgNm;
     // if(docuemtn.getElementsByClassName('thumbs'))
     // {
     //     var slides = document.getElementsByClassName('tns-slide-active')[0]

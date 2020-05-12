@@ -8,6 +8,8 @@
                 <li><a href="listings.php">Listings</a></li>
                 <li><a href="sold.php">Sold</a></li>
                 <li><a href="about.php">About Me</a></li>
+                <li><a href="finance.php">Finance</a></li>
+                <li><a href="free_appraisal.php">Free Appraisal</a></li>
                 <li><a href="contact.php" class="button">Contact</a></li>
             </ul>
         </nav>
