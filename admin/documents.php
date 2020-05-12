@@ -48,7 +48,7 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
       <input type="hidden" name="count" id="countForm" value="1" data-projectname="<?php echo $data[0]->uniquename; ?>" />
       <?php if(empty($documentData)): ?>
         
-          <div class="row col3">
+          <div class="row col3 docs">
             <div class="">
               <input type="file" id="videoUploadFile" class="form-control documentUpload">
               <input type="hidden" class="linkFile" id="docFileVal_0" id="docFileVal_0" value=""> </div>
@@ -61,7 +61,7 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
         
       <?php else: ?>
       <?php foreach ($documentData as $key => $value) : ?>
-      <div class="row">
+      <div class="row docs">
         <div >
           <input type="file" class="form-control documentUpload">
           <input type="hidden" class="linkFile" id="docFileVal_<?php echo $key; ?>" value="<?php echo $value->link; ?>"> </div>
@@ -97,10 +97,10 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
         var descp = [];
        // var vidFileLength = $("#videoUploadFile")[0].files.length;
 
-        
-          var $linkFile = $('.documentUpload');
+        if (count > 0) {
+          var $linkFile = $('.linkFile');
           $linkFile.each(function() {
-            // console.log($(this).val())
+            console.log($(this).val())
             if ($(this).val() != '') {
               doc.push($(this).val());
             }
@@ -138,10 +138,10 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
                 window.location.href = "/admin/projects.php";
               }
             });
-                alert(21);
           } else {
             alert("Please fill all details to upload document")
           }
+        }
         
       });
       $("body").on("change", ".documentUpload", function(e) {
@@ -166,6 +166,8 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
           //       return false;
           //     } else {
           //       console.log(2);
+                // el.addClass('loader');
+                $('#btnSaveDocs').css({'opacity': 0.5});
                 $.ajax({
                   url: "/admin/action/uploadDocumentPrj.php",
                   type: "POST",
@@ -175,11 +177,14 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
                   data: form,
                   success: function(data) {
                     var data = JSON.parse(data);
+                    console.log(data);
                     if (data.status == "success") {
                       $("#docFileVal_" + count).val("/admin/documents/" + data.msg);
                     } else {
                       alert(data.msg)
                     }
+                    // el.removeClass('loader');
+                    $('#btnSaveDocs').css({'opacity': 1});
                   }
                 });
           //     }
@@ -193,12 +198,16 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
         var formMoreDocs = $('#addDivMore');
         // var html = '   <div class="form-row docs">  ' + '                 <div class="col-sm-3">  ' + '                 <input type="file" class="form-control documentUpload">  ' + '                 <input type="hidden" class="linkFile" name="docFileVal_' + count + '" id="docFileVal_' + count + '" value="">  ' + '               </div>  ' + '               <div class="col-sm-3">  ' + '                 <input type="text" class="form-control txtFile" id="docText_' + count + '" placeholder="Enter Document name">  ' + '               </div>  ' + '               <div class="col-sm-5">  ' + '                   <textarea class="form-control descpFile" id="docDescp_' + count + '" placeholder="Enter short description" rows="1"></textarea>  ' + '               </div>  ' + '               <div class="col-sm-1">  ' + '                   <a href="#" class="removeImg far fa-trash-alt" style="font-size: 17px; margin: 8px;"></a>  ' + '               </div>  ' + '          </div>  ';
 
-        var html = '<div class="row"><div> <input type="file" class="form-control documentUpload"> <input type="hidden" class="linkFile" name="docFileVal_' + count + '" id="docFileVal_' + count + '" value=""> </div><div> <input type="text" class="form-control txtFile" id="docText_' + count + '" placeholder="Enter Document name"> </div><div> <textarea class="form-control descpFile" id="docDescp_' + count + '" placeholder="Enter short description" rows="1"></textarea> </div><div> <a href="#" class="removeImg"><span class="icon-trash-empty"></span></a> </div></div>';
+        var html = '<div class="row docs"><div> <input type="file" class="form-control documentUpload"> <input type="hidden" class="linkFile" name="docFileVal_' + count + '" id="docFileVal_' + count + '" value=""> </div><div> <input type="text" class="form-control txtFile" id="docText_' + count + '" placeholder="Enter Document name"> </div><div> <textarea class="form-control descpFile" id="docDescp_' + count + '" placeholder="Enter short description" rows="1"></textarea> </div><div> <a href="#" class="removeImg"><span class="icon-trash-empty"></span></a> </div></div>';
         $(html).insertBefore(formMoreDocs);
       });
       $("body").on("click", ".removeImg", function(e) {
         e.preventDefault();
         $(this).parent().parent().remove();
+        if($('.docs').length == 0)
+        {
+          $('#addMore').trigger('click');
+        }
       });
     });
     </script>
