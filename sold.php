@@ -7,9 +7,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Leona Munro</title>
-    <meta name="description" content="Leona Munro">
-    <meta name="author" content="Leona Munro">
+    <?php include 'include_social.php'; ?>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <link rel="stylesheet" href="css/style.css?v=1.0">
 </head>
@@ -36,11 +34,12 @@
                 <div id="contentList">
                     <?php if(!empty($data)): ?>
                     <?php foreach ($data as $key => $value) : ?>
+
                     <!-- <script>
                         listId.push('<?php echo $value->id; ?>');
                     </script> -->
                     <a href="<?php echo http_Site.'details.php?name='.$value->uniquename; ?>" data-interest="<?php echo $value->interest; ?>" data-bed="<?php echo $value->beds; ?>" data-bath="<?php echo $value->toilet; ?>" data-living="<?php echo $value->seating; ?>" data-garage="<?php echo $value->parking; ?>" class="activeProp animated" data-anim="slideInUp">
-                        <div class="propertyBox">
+                        <div class="propertyBox <?php if($value->sold == '1') echo 'sold' ?>">
                             <div class="propertyImage"><img class="lazyload" data-src="<?php echo http_Site.'admin/upload/profileImage/'.$value->project_img; ?>" alt="<?php echo ucfirst($value->project_name); ?>"></div>
                             <div class="propertySaleType"><?php echo ucwords($value->interest); ?></div>
                             <div class="propertyTitle"><?php echo ucwords($value->project_name); ?></div>

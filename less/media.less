@@ -16,7 +16,8 @@
     }
 
     .listing.sold .container .propertyList .propertyBox {
-        margin: 0 0px 80px 70px;
+        margin: 0 30px 80px 30px;
+        width: 300px;
     }
 
     .listing .container .propertyList .loadMore {
@@ -37,7 +38,9 @@
         /*background: #cccccc;*/
 
         .thumbs {
-
+            img {
+                /*margin: 0 0 26px;*/
+            }
             /*background: #999;*/
             .tns-controls {
                 button {
@@ -65,6 +68,10 @@
     .steps .container .step div strong {
         height: 60px;
         font-size: 1.2em;
+    }
+
+    .listing.sold .container .propertyList #contentList {
+        justify-content: center;
     }
 
 }
@@ -207,6 +214,10 @@
     .steps .container .step div strong {
         height: 55px;
         font-size: 1em;
+    }
+
+    .listing.sold .container .propertyList #contentList {
+        justify-content: center;
     }
 }
 
@@ -367,7 +378,9 @@ iPad 3
     }
 
     header {
-        overflow: hidden;
+        position: relative;
+        /*overflow: hidden;*/
+        z-index: 1;
 
         .logo {
             width: 150px;
@@ -532,9 +545,11 @@ iPad 3
                         position: relative;
                         left: unset;
                         top: unset;
-                        background: #ccc;
+                        background: #a9a9a9;
                         padding: 10px;
                         width: 100%;
+                        font-size: 1.3em;
+                        font-weight: 400;
                     }
 
 
@@ -571,6 +586,10 @@ iPad 3
                                     width: 100%;
                                 }
                             }
+
+                            .button {
+                                border-radius: unset;
+                            }
                         }
                     }
                 }
@@ -584,6 +603,11 @@ iPad 3
                 }
             }
         }
+    }
+
+    section.about .container.btmSec .content p {
+        display: inline-block;
+        text-align: justify;
     }
 
     .banner {
@@ -659,6 +683,7 @@ iPad 3
         &.aboutBanner {
             display: flex;
             flex-direction: column;
+            margin: 0;
 
             .lftSec {
                 position: relative;
@@ -682,6 +707,8 @@ iPad 3
             }
 
             .img {
+                display: block;
+
                 .desktop {
                     display: none;
                 }
@@ -943,7 +970,7 @@ iPad 3
 
             .mobile.sort.button {
                 display: inline-block;
-                width: 50%;
+                width: 90%;
 
                 &:before {
                     margin: 0 5% 0 0;
@@ -1041,8 +1068,18 @@ iPad 3
                 margin: 0 auto;
                 width: 100%;
 
+                #gallery-ow,
+                #gallery-mw {
+                    height: auto !important
+                }
+
                 .tns-controls {
-                    bottom: -40px;
+                    bottom: -55px;
+                    padding: 5px 0;
+                    button {
+                        width: 10px;
+                        height: auto;
+                    }
                 }
 
                 #gallery {
@@ -1051,8 +1088,40 @@ iPad 3
             }
         }
     }
-
+    .details {
+        margin: 80px 0 0;
+    }
     section.featured.viewMoreProperties .links {
         margin: 0px 0 50px;
+    }
+
+    .aboutBanner {
+        .lftSec {
+            p {
+                color: @rust;
+                &:before {
+                    background: @rust;
+                }
+            }
+
+            div {
+                color: @rust;
+            }
+
+            .links {
+                a {
+
+                    &.button {
+                        background: @rust;
+                        color: #fff;
+                    }
+
+                    &.secondaryBtn {
+                        color: @rust;
+                        border-color: @rust;
+                    }
+                }
+            }
+        }
     }
 }

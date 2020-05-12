@@ -79,23 +79,46 @@ var options = (isMobile) ? ({
         items: 2,
         slideBy: 1,
         mouseDrag: true,
+        gutter: 30,
         controlsText: ['<img src="images/carousel-arrow-left.svg" width="30px" height="30px">', '<img src="images/carousel-arrow-right.svg" width="30px" height="30px">'],
         controlsPosition: "bottom",
     }
 });
-console.log(options);
 
-window.addEventListener("load", function() { initSlider() });
+window.addEventListener("load", function() { 
+    initSlider()
+    // if(docuemtn.getElementsByClassName('thumbs'))
+    // {
+    //     var slides = document.getElementsByClassName('tns-slide-active')[0]
+    //    vardocuemtn.getElementsByClassName('thumbs')[0] = slides.outerHeight();
+    // }
+    
+});
 
 function initSlider() {
     for (var i in options) {
         var item = options[i];
         item.container = '#' + i;
+        // console.log(doc.querySelector(item.container));
         if (doc.querySelector(item.container)) {
             // console.log(item.container);
             sliders[i] = tns(options[i]);
         } else if (i.indexOf('responsive') >= 0) {
             // if (isTestPage && initFns[i]) { initFns[i](); }
+        }
+        if(item.container == "#gallery" && !isMobile)
+        {
+            var slidesList = document.querySelectorAll('.slide'),
+            thumbs = document.getElementsByClassName('thumbs')[0],
+            slideHeight = thumbs.offsetHeight /2;
+            slidesList.forEach(function(elem){
+                elem.setAttribute('style',"height:"+slideHeight+'px')
+            });
+        }
+        var slideNos = document.getElementsByClassName('featured')[0].getAttribute('data-slides');
+        if(slideNos < 4 && !isMobile)
+        {
+            document.getElementsByClassName('featured')[0].classList.add('lessSlides');
         }
     }
 }

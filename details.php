@@ -14,9 +14,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Leona Munro</title>
-    <meta name="description" content="Leona Munro">
-    <meta name="author" content="Leona Munro">
+    <?php include 'include_social.php'; ?>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <style type="text/css">
     </style>
@@ -28,13 +26,16 @@
     <section class="gallery">
         <div class="container">
             <div class="gallery">
-                <div class="bigImage"><img class="lazyload" data-src="<?php echo http_Site.'admin/upload/additionalImages/'.$images[0]; ?>" alt="<?php echo ucwords($data[0]->project_name); ?>" id="bigImg"></div>
+                <div class="bigImage"><img class="lazyload" data-src="<?php echo http_Site.'admin/upload/additionalImages/'.trim(preg_replace('/\s+/', ' ', $images[0])); ?>" alt="<?php echo ucwords($data[0]->project_name); ?>" id="bigImg"></div>
                 <div class="thumbs">
                     <div class="gallery" id="gallery">
                         <?php if(count($images) > 0): ?>
                         <?php for($i=0;$i<count($images);$i++): ?>
-                        <?php $small_images = ($data[0]->small_images != '') ? explode(',', $data[0]->small_images) : ""; //print_r($small_images); exit(); ?>
-                        <div class="slide slide-1"><img class="lazyload" data-src="<?php echo http_Site.'admin/upload/resizedAdditionalImages/'.$small_images[$i]; ?>" alt="<?php echo ucwords($data[0]->project_name); ?>" data-img="<?php echo http_Site.'admin/upload/additionalImages/'.$images[$i]; ?>" onclick="openImg(this);"></div>
+                        <?php $small_images = ($data[0]->small_images != '') ? explode(',', $data[0]->small_images) : ""; 
+                        // echo trim($small_images[$i],"");
+                        //print_r($small_images); exit(); 
+                        ?>
+                        <div class="slide"><img class="lazyload" data-src="<?php echo http_Site.'admin/upload/resizedAdditionalImages/'.trim(preg_replace('/\s+/', ' ', $small_images[$i])); ?>" alt="<?php echo ucwords($data[0]->project_name); ?>" data-img="<?php echo http_Site.'admin/upload/additionalImages/'.trim(preg_replace('/\s+/', ' ', $images[$i])); ?>" onclick="openImg(this);"></div>
                         <?php endfor; ?>
                         <?php endif; ?>
                     </div>
@@ -79,11 +80,11 @@
         </div>
     </section>
     <?php if(!empty($featured_data)): ?>
-    <section class="featured viewMoreProperties">
+    <section class="featured viewMoreProperties" data-slides="<?php echo count($featured_data) ?>">
         <div class="container">
             <div class="title">View More Properties</div>
             <div class="featuredList">
-                <div class="featured" id="featured">
+                <div class="featured " id="featured">
                     <?php foreach ($featured_data as $key => $value) : ?>
                     <div class="slide">
                         <a href="<?php echo http_Site.'details.php?name='.$value->uniquename; ?>">

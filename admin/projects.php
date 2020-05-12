@@ -66,7 +66,9 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)): $data = Model_
 </div>
 <script>
 $(document).ready(function() {
-    $('#example').DataTable();
+    $('#example').DataTable({
+        paging: false,
+    });
     $(document).on('click', ".deleteProject", function(e) {
         e.preventDefault();
         var uniquename = $(this).data("uniquename");

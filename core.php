@@ -5,10 +5,8 @@ session_start();
 // $protocol = ($_SERVER['HTTP_HOST'] !== 'localhost') ? "https://" : "http://";
 $protocol = "http://";
 $domainName = $_SERVER['HTTP_HOST'].'/';
-
 define('http_Site', $protocol.$domainName);
 define('version', (mt_rand() / (mt_getrandmax() + 1)));
-//  (mt_rand() / (mt_getrandmax() + 1))
 ?>
 
 <script>

@@ -80,15 +80,15 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
       <?php endif; ?>
       
       <div class="row" id="addDivMore">
-          <button type="submit" class="button" id="btnSaveDocs">Save</button>&nbsp;&nbsp;&nbsp;
-          <a href="#" id="addMore" class="secondaryBtn"><span class="icon-plus"></span>&nbsp;Add more</a>&nbsp;
+          <a href="javascript:;"  class="button" id="btnSaveDocs">Save</a>&nbsp;&nbsp;&nbsp;
+          <a href="javascript:;" id="addMore" class="secondaryBtn"><span class="icon-plus"></span>&nbsp;Add more</a>&nbsp;
           <a href="<?php echo http_Site.'admin/projects.php'; ?>" class="linkBtn" role="button">Upload document later</a>
-        
       </div>
     </form>
     <script>
     $(document).ready(function() {
-      $("#btnSaveDocs").click(function(e) {
+      $("#btnSaveDocs").on('click',function(e) {
+      console.log(123);
         e.preventDefault();
         var count = $('.docs').length;
         var projectname = $('#countForm').data('projectname');
@@ -97,26 +97,29 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
         var descp = [];
        // var vidFileLength = $("#videoUploadFile")[0].files.length;
 
-        if (count > 0) {
-          var $linkFile = $('.linkFile');
+        
+          var $linkFile = $('.documentUpload');
           $linkFile.each(function() {
+            // console.log($(this).val())
             if ($(this).val() != '') {
               doc.push($(this).val());
             }
           });
           var $imgs = $('.txtFile');
           $imgs.each(function() {
+            // console.log($(this).val())
             if ($(this).val() != '') {
               txt.push($(this).val());
             }
           });
           var $descp = $('.descpFile');
           $descp.each(function() {
+            // console.log($(this).val())
             if ($(this).val() != '') {
               descp.push($(this).val());
             }
           });
-
+          // console.log(doc.length > 0 && txt.length > 0 && descp.length > 0);
           if (doc.length > 0 && txt.length > 0 && descp.length > 0) {
             $.ajax({
               "url":   "/admin/action/actionDocument.php",
@@ -135,10 +138,11 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
                 window.location.href = "/admin/projects.php";
               }
             });
+                alert(21);
           } else {
             alert("Please fill all details to upload document")
           }
-        }
+        
       });
       $("body").on("change", ".documentUpload", function(e) {
         var el = $(this);

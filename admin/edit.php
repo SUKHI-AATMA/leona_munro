@@ -36,7 +36,7 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
                 if($data[0]->project_img != "") {
             ?>
             <div id="divProfileImg" class="thumbs">
-                <img src="<?php echo http_Site."admin/upload/profileImage/".$data[0]->project_img; ?>" width="50" height="50" id="profileImgView" data-smaller="
+                <img src="<?php echo http_Site."admin/upload/profileImage/".trim(preg_replace('/\s+/', ' ', $data[0]->project_img)); ?>" width="50" height="50" id="profileImgView" data-smaller="
                 <?php echo http_Site."".$data[0]->project_img_small; ?>" />
             </div>
             <?php
@@ -48,7 +48,7 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
             <label class="control-label" for="pwd">Large Image:</label>
             <input type="file" class="form-control" id="uploadProfileImg" name="file[]" multiple="multiple">
             <input type="hidden" id='existingAdditionalImage' value="<?php echo $data[0]->images; ?>" />
-            <div class="thumbs">
+            <div id="profileImgProject" class="thumbs">
             <?php if($data[0]->images !=""): ?>
             <?php
             $imageData = explode(',', $data[0]->images);
@@ -56,8 +56,8 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
             for($i=0; $i<count($imageData); $i++):
             ?>
                 <div class="edit-img-wrap">
-                    <img src="<?php echo http_Site."admin/upload/additionalImages/".$imageData[$i]; ?>" class="locationImgView" data-resize="
-                    <?php echo $imageData[$i]; ?>" width="50" height="50" />
+                    <img src="<?php echo http_Site."admin/upload/additionalImages/".trim(preg_replace('/\s+/', ' ', $imageData[$i])); ?>" class="locationImgView" data-resize="
+                    <?php echo trim(preg_replace('/\s+/', ' ', $imageData[$i])); ?>" width="50" height="50" />
                     <a href="#" class="removeImg" data-toggle="tooltip" data-placement="top" title="Delete">
                         <span class="icon-trash-empty"></span>
                     </a>
@@ -71,14 +71,14 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
             <input type="file" class="form-control" id="resizedUploadProfileImg" name="file[]" multiple="multiple">
             <input type="hidden" id='existingResizedAdditionalImage' value="<?php echo $data[0]->small_images; ?>" />
             <div class="thumbs" id="resizedProfileImgProject">
-                            <?php if($data[0]->small_images !=""): ?>
+            <?php if($data[0]->small_images !=""): ?>
             <?php
                       $resize_imageData = explode(',', $data[0]->small_images);
                       for($i=0; $i<count($resize_imageData); $i++):
                   ?>
                   <div>
-                    <img src="<?php echo http_Site."admin/upload/resizedAdditionalImages/".$resize_imageData[$i]; ?>" class="resizedImgView" data-resize="
-                    <?php echo $resize_imageData[$i]; ?>" width="50" height="50" />
+                    <img src="<?php echo http_Site."admin/upload/resizedAdditionalImages/".trim(preg_replace('/\s+/', ' ', $resize_imageData[$i])); ?>" class="resizedImgView" data-resize="
+                    <?php echo trim(preg_replace('/\s+/', ' ', $resize_imageData[$i])); ?>" width="50" height="50" />
                     <a href="#" class="removeImg" data-toggle="tooltip" data-placement="top" title="Delete">
                         <span class="icon-trash-empty"></span>
                     </a>
@@ -171,6 +171,7 @@ $(document).ready(function() {
         } else {
             var form_data = new FormData();
             form_data.append("image", file);
+            $("#singleprofileImg").addClass('loader');
             $.ajax({
                 url: urlpath + "admin/action/uploadImg.php",
                 dataType: 'text',
@@ -187,6 +188,7 @@ $(document).ready(function() {
                     if (data.status == "success") {
                         $("#imgLoaderProfile").hide();
                         $("#divProfileImg").html('<img src="<?php echo http_Site; ?>admin/upload/profileImage/' + data.msg + '" width="50" height="50" id="profileImgView" data-smaller="' + data.smallimg + '"/>');
+                        $("#singleprofileImg").removeClass('loader');
                     } else {
                         alert(data.msg)
                         //alert(data)
@@ -318,6 +320,7 @@ $(document).ready(function() {
             form_data.append("files[]", document.getElementById('uploadProfileImg').files[x]);
             console.log(document.getElementById('uploadProfileImg').files[x]);
         }
+        $("#uploadProfileImg").addClass('loader');
         $.ajax({
             url: urlpath + "admin/action/imagemulti.php",
             dataType: 'text',
@@ -332,6 +335,7 @@ $(document).ready(function() {
             success: function(response) {
                 $("#imgLoaderMulti").hide();
                 $("#profileImgProject").append(response);
+                $("#uploadProfileImg").removeClass('loader');
             },
             error: function(response) {
                 console.log(response)
@@ -345,6 +349,7 @@ $(document).ready(function() {
         for (var x = 0; x < ins; x++) {
             form_data.append("files[]", document.getElementById('resizedUploadProfileImg').files[x]);
         }
+        $("#resizedUploadProfileImg").addClass('loader');
         $.ajax({
             url: urlpath + "admin/action/resizedMultiImages.php",
             dataType: 'text',
@@ -358,7 +363,8 @@ $(document).ready(function() {
             },
             success: function(response) {
                 $("#resizedImgLoaderMulti").hide();
-                $("#resizedMoreImages").append(response);
+                $("#resizedProfileImgProject").append(response);
+                $("#resizedUploadProfileImg").removeClass('loader');
             }
         });
     });

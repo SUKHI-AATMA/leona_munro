@@ -1,16 +1,18 @@
 <?php include 'core.php'; ?>
 <?php include 'model_base.php'; ?>
-<?php $featured_data = Model_Base::query("Select * from projects where featured=1 and status = 1 LIMIT 10"); ?>
+<?php 
+    $featured_data = Model_Base::query("Select * from projects where featured=1 and status = 1 LIMIT 10");
+?>
+
 <!Doctype html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <title>Leona Munro</title>
-    <meta name="description" content="Leona Munro">
-    <meta name="author" content="Leona Munro">
+     <?php include 'include_social.php'; ?>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <link rel="stylesheet" href="css/style.css?v=1.0">
+    
 </head>
 
 <body>
@@ -36,7 +38,7 @@
         </div>
     </section>
     <?php if(!empty($featured_data)): ?>
-    <section class="featured">
+    <section class="featured" data-slides="<?php echo count($featured_data) ?>">
         <div class="container">
             <div class="title animated delay-900s" data-anim="slideInUp">Featured Listings</div>
             <div class="featuredList animated delay-900s" data-anim="slideInUp">
@@ -67,8 +69,7 @@
     <section class="selling">
         <div class="container">
             <div class="title animated" data-anim="slideInUp">Selling Your Home</div>
-            <p class="animated" data-anim="slideInUp">Small paragraph from the selling your home section of the about me page.</p>
-            <p class="animated" data-anim="slideInUp">Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+            <p class="animated" data-anim="slideInUp">Leona and Mike follow up every single open home visitor. They provide detailed information packs at the open home and work with potential buyers to ensure they are in a good position to make an offer. Weekly reports with feedback throughout the open home and sales process ensure sellers receive buyer feedback and clear guidance on value of their property.</p>
             <p class="animated" data-anim="slideInUp"><a href="contact.php" class="secondaryBtn">Learn More</a></p>
         </div>
     </section>

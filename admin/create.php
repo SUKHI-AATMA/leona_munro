@@ -20,19 +20,19 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
         </div>
         <div class="row">
             <label class="" for="pwd">Profile Image:</label>
-            <input type="file" accept="image/*" id="singleprofileImg" class="loader">
+            <input type="file" accept="image/*" id="singleprofileImg">
             <div id="divProfileImg" class="thumbs"></div>
             <!-- <img src="../images/loader.svg" alt="" class="loader"> -->
         </div>
         <div class="row">
             <label class="" for="pwd">Large Image:</label>
-            <input type="file" id="uploadProfileImg" accept="image/*" name="file[]" multiple="multiple" class="loader">
+            <input type="file" id="uploadProfileImg" accept="image/*" name="file[]" multiple="multiple">
             <div id="profileImgProject" class="thumbs"></div>
             <!-- <img src="../images/loader.svg" alt="" class="loader"> -->
         </div>
         <div class="row">
             <label class="" for="pwd">Thumbnail images:</label>
-            <input type="file" id="resizedUploadProfileImg" accept="image/*" name="file[]" multiple="multiple" class="loader">
+            <input type="file" id="resizedUploadProfileImg" accept="image/*" name="file[]" multiple="multiple">
             <div id="resizedProfileImgProject" class="thumbs"></div>
             <!-- <img src="../images/loader.svg" alt="" class="loader"> -->
         </div>
@@ -127,10 +127,6 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
                 if (document.getElementById("singleprofileImg").files.length > 0) {
                     var profileImgView = document.getElementById("singleprofileImg").files[0]['name'];
                 }
-
-
-
-
                 var $imgs = $('img.locationImgView'),
 
                     arr = [];
@@ -263,7 +259,7 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
 
                             } else {
 
-                                alert(data.msg)
+                                alert(data.msg + ' 1');
 
                             }
 
@@ -292,7 +288,7 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
                     var form = new FormData();
                     // var compressedImg = compress_small(file);
                     form.append("image", file);
-
+                    $("#singleprofileImg").addClass('loader');
                     $.ajax({
 
                         url: "/admin/action/uploadImg.php",
@@ -324,7 +320,7 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
                                 $("#divProfileImg").html('');
 
                                 $("#divProfileImg").html('<img src="<?php echo http_Site; ?>admin/upload/profileImage/' + data.msg + '" width="50" height="50" id="profileImgView" data-smaller="' + data.msg + '"/>');
-
+                                $("#singleprofileImg").removeClass('loader');
                             } else {
 
                                 alert(data.msg)
@@ -399,7 +395,7 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
                     form_data.append("files[]", document.getElementById('resizedUploadProfileImg').files[x]);
 
                 }
-
+                $("#resizedUploadProfileImg").addClass('loader');
                 $.ajax({
 
                     url: "/admin/action/resizedMultiImages.php",
@@ -427,6 +423,7 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
                         $("#resizedImgLoaderMulti").hide();
 
                         $("#resizedProfileImgProject").append(response);
+                        $("#resizedUploadProfileImg").removeClass('loader');
 
                     }
 
@@ -448,7 +445,7 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
                     form_data.append("files[]", document.getElementById('uploadProfileImg').files[x]);
 
                 }
-                console.log(ins);
+                $("#uploadProfileImg").addClass('loader');
                 $.ajax({
 
                     url: "/admin/action/imagemulti.php",
@@ -476,6 +473,7 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
                         $("#imgLoaderMulti").hide();
 
                         $("#profileImgProject").append(response);
+                        $("#uploadProfileImg").removeClass('loader');
 
                     }
 

@@ -9,6 +9,9 @@ body {
     font-family: @ra;
     font-weight: @fw400;
     font-size: 87.5%;
+    &.index {
+        height: 100%;
+    }
 }
 
 a {
@@ -233,11 +236,16 @@ header {
 }
 
 .projects .container.bodyContent {
-    min-height: 561px;
+    min-height: unset;
+    height: unset;
+    padding: 50px;
 
     input,
     select {
         margin: 0 5px;
+    }
+    .dataTables_filter, .dataTables_info {
+        width: 100%;
     }
 }
 
@@ -473,7 +481,9 @@ header {
                 opacity: 0;
                 width: auto;
             }
-
+            &.loader {
+                background: url(/images/loader.svg) no-repeat 97% center;
+            }
             &[type="checkbox"] {
                 +span:before {
                     content: '\f096';

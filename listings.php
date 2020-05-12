@@ -17,9 +17,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Leona Munro</title>
-    <meta name="description" content="Leona Munro">
-    <meta name="author" content="Leona Munro">
+    <?php include 'include_social.php'; ?>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <link rel="stylesheet" href="css/style.css?v=1.0">
 </head>
@@ -39,13 +37,13 @@
         </div>
     </section>
     <?php if(!empty($featured_data)): ?>
-    <section class="featured listing">
+    <section class="featured listing" data-slides="<?php echo count($featured_data) ?>">
         <div class="container">
             <div class="title animated" data-anim="slideInUp">Featured Listings</div>
             <div class="featuredList">
                 <div class="featured animated" data-anim="fadeIn" id="featured">
                     <?php foreach ($featured_data as $key => $value) : ?>
-                    <div class="slide slide-1">
+                    <div class="slide">
                         <a href="<?php echo http_Site.'details.php?name='.$value->uniquename; ?>">
                             <div class="propertyBox">
                                 <div class="propertyImage"><img class="lazyload" data-src="<?php echo http_Site.'admin/upload/profileImage/'.$value->project_img; ?>" alt="<?php echo ucfirst($value->project_name); ?>"></div>
@@ -75,7 +73,7 @@
     </section>
     <section class="listing">
         <div class="container">
-            <a href="javascript:;" class="mobile sort button icon-sort-name-up" id="sort">Sort properties</a>
+            <a href="javascript:;" class="mobile sort button icon-sort-name-up animated" data-anim="slideInUp" id="sort">Sort properties</a>
             <div class="sort animated" data-anim="slideInUp" id="sortDiv">
                 <div class="dropdown">
                     <label class="custom-select" for="sort">
@@ -187,7 +185,9 @@
                     <?php endforeach; ?> 
                     <?php endif; ?>
                 </div>
+                <?php if (count($dataAll) > 8): ?>
                 <div class="loadMore animated" data-anim="slideInUp" id="loadMore"><a href="javascript:;" class="secondaryBtn" onclick="loadPropertyBox(listingsData)"> Load More Listings</a></div>
+                <?php endif; ?>
             </div>
         </div>
     </section>
