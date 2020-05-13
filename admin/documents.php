@@ -74,7 +74,7 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
           <textarea class="form-control descpFile" rows="1"><?php echo $value->description; ?> </textarea>
         </div>
         <div>
-          <a href='<?php echo $value->link; ?>' target="_blank">View document</a>&nbsp;|&nbsp;<a href="javascript:;" class="removeImg" data-uniquename="<?php echo $value->uniquename; ?>"><span class="icon-trash-empty"></span>Remove</a>
+          <a href='<?php echo $value->link; ?>' target="_blank">View document</a>&nbsp;|&nbsp;<a href="javascript:;" class="removeImg" data-uniqueid="<?php echo $value->id; ?>" data-uniquename="<?php echo $value->uniquename; ?>"><span class="icon-trash-empty"></span>Remove</a>
         </div>
       </div>
       <?php endforeach; ?>
@@ -200,12 +200,14 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
         var formMoreDocs = $('#addDivMore');
         // var html = '   <div class="form-row docs">  ' + '                 <div class="col-sm-3">  ' + '                 <input type="file" class="form-control documentUpload">  ' + '                 <input type="hidden" class="linkFile" name="docFileVal_' + count + '" id="docFileVal_' + count + '" value="">  ' + '               </div>  ' + '               <div class="col-sm-3">  ' + '                 <input type="text" class="form-control txtFile" id="docText_' + count + '" placeholder="Enter Document name">  ' + '               </div>  ' + '               <div class="col-sm-5">  ' + '                   <textarea class="form-control descpFile" id="docDescp_' + count + '" placeholder="Enter short description" rows="1"></textarea>  ' + '               </div>  ' + '               <div class="col-sm-1">  ' + '                   <a href="#" class="removeImg far fa-trash-alt" style="font-size: 17px; margin: 8px;"></a>  ' + '               </div>  ' + '          </div>  ';
 
-        var html = '<div class="row docs"><div> <input type="file" class="form-control documentUpload"> <input type="hidden" class="linkFile" name="docFileVal_' + count + '" id="docFileVal_' + count + '" value=""> </div><div> <input type="text" class="form-control txtFile" id="docText_' + count + '" placeholder="Enter Document name"> </div><div> <textarea class="form-control descpFile" id="docDescp_' + count + '" placeholder="Enter short description" rows="1"></textarea> </div><div> <a href="#" class="removeImg" data-uniquename=""><span class="icon-trash-empty"></span>Remove</a> </div></div>';
+        var html = '<div class="row docs"><div> <input type="file" class="form-control documentUpload"> <input type="hidden" class="linkFile" name="docFileVal_' + count + '" id="docFileVal_' + count + '" value=""> </div><div> <input type="text" class="form-control txtFile" id="docText_' + count + '" placeholder="Enter Document name"> </div><div> <textarea class="form-control descpFile" id="docDescp_' + count + '" placeholder="Enter short description" rows="1"></textarea> </div><div> <a href="#" class="removeImg" data-uniqueid ="" data-uniquename=""><span class="icon-trash-empty"></span>Remove</a> </div></div>';
         $(html).insertBefore(formMoreDocs);
       });
       $("body").on("click", ".removeImg", function(e) {
         e.preventDefault();
         var uniquename = $(this).data("uniquename");
+        var uniqueid = $(this).data("uniqueid");
+        
         if (uniquename != '') {
           var check = confirm("Are you sure to delete this Document?");
           if (check) {
@@ -213,7 +215,8 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
                     "url": "/admin/action/actionDeleteDocument.php",
                     "type": "POST",
                     "async": false,
-                    "data": { uniquename: uniquename },
+                    "data": { uniquename: uniquename,
+                              uniqueid: uniqueid },
                     "success": function(data) {
                         var data = JSON.parse(data);
                         if (data.status == "success") {
