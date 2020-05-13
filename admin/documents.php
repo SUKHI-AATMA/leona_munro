@@ -177,7 +177,7 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
                   data: form,
                   success: function(data) {
                     var data = JSON.parse(data);
-                    console.log(data);
+                    //console.log(data);
                     if (data.status == "success") {
                       $("#docFileVal_" + count).val("/admin/documents/" + data.msg);
                     } else {
