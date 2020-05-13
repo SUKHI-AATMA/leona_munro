@@ -1,10 +1,14 @@
 <?php
 
-//print_r($_FILES);exit();
-
 $target_dir = "../documents/";
+$random_number = rand();
+$tmpname =  $_FILES["fileToUpload"]["name"];
+$name = "doc-".$random_number;
+$ext = explode(".", $tmpname);
+$file_extension = end($ext);
+$file_name = $name.".".$file_extension;
 
-$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+$target_file = $target_dir . $file_name;
 
 $uploadOk = 1;
 
@@ -13,6 +17,7 @@ $response =array();
 $msg="";
 
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
 
 
 
@@ -46,7 +51,7 @@ if ($uploadOk == 0) {
     chmod($target_dir, 0755); 
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
 
-        $msg= basename( $_FILES["fileToUpload"]["name"]);
+        $msg= basename($file_name);
 
         $reponse["status"] ="success";
 
