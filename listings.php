@@ -1,8 +1,8 @@
 <?php include 'core.php'; ?>
 <?php include 'model_base.php'; ?>
-<?php $featured_data = Model_Base::query("Select * from projects where featured=1 and status = 1 LIMIT 10"); ?>
-<?php $data = Model_Base::query("Select * from projects where status = 1 and sold = 0 order by featured desc LIMIT 9");  ?>
-<?php $dataAll = Model_Base::query("Select * from projects where status = 1 and sold = 0 order by featured desc ");  ?>
+<?php $featured_data = Model_Base::query("Select * from projects where featured=1 and status = 1 order by date_added desc LIMIT 10"); ?>
+<?php $data = Model_Base::query("Select * from projects where status = 1 and sold = 0 order by date_added desc LIMIT 9");  ?>
+<?php $dataAll = Model_Base::query("Select * from projects where status = 1 and sold = 0 order by date_added desc ");  ?>
 <script type="text/javascript">
     var listingsData = <?php echo json_encode($dataAll); ?>;
     var listId = [];

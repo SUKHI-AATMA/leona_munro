@@ -1,3 +1,4 @@
+<img src="images/social-share-square.jpg?1" style="position: absolute;top: -25000px; left:0;" alt="">
 <header  class="animated" data-anim="slideInDown">
     <div class="container">
         <div class="logo"><a href="/"><img src="<?php echo http_Site; ?>images/leona-munro-logo-rust.png" alt=""></a></div>

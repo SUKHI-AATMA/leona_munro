@@ -14,11 +14,15 @@
     <section class="banner listing">
         <div class="container">
             <div class="lftSec">
-                <p><span class="animated" data-anim="slideInUp">Committed to Delivering</span><br><span class="animated delay-200s" data-anim="slideInUp">Outstanding Service</span></p>
-                <div class="animated delay-400s" data-anim="slideInUp">It’s not just about the result. It’s how you go about getting it.</div>
-                <div class="links animated delay-600s" data-anim="slideInUp">
-                    <a href="javascript:;" class="button" onclick="scrollToListing(this)">View Properties</a><a href="contact.php" class="secondaryBtn">Contact Me</a>
+                <p><span class="animated" data-anim="slideInUp">Are you looking to </span><br><span class="animated delay-200s" data-anim="slideInUp">sell your property</span></p>
+                <div class="animated delay-400s" data-anim="slideInUp">or just interested in the current market value?</div>
+                <div>
+                    <p>I provide an obligation-free appraisal outlining market conditions and comparative figures to make it easy for you to understand where your property sits in the market.</p>
+                    <p>Enter your details below and I will contact you shortly to arrange a convenient time to conduct a detailed property appraisal including a marketing package completely tailored to your specific needs and goals.</p>
                 </div>
+                <!-- <div class="links animated delay-600s" data-anim="slideInUp">
+                    <a href="javascript:;" class="button" onclick="scrollToListing(this)">View Properties</a><a href="contact.php" class="secondaryBtn">Contact Me</a>
+                </div> -->
             </div>
             <!-- <div class="rgtSec"><img class="lazyload" data-src="<?php echo http_Site; ?>images/hm-banner.png" alt=""></div> -->
         </div>

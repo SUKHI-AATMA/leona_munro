@@ -17,8 +17,8 @@
                 <p class="animated" data-anim="slideInUp">Contact Me</p>
                 <div class="animated delay-200s" data-anim="slideInUp">Make your next move</div>
                 <div class="links">
-                    <a href="javascript:;" class="animated delay-400s" data-anim="fadeIn"><img src="<?php echo http_Site; ?>images/svg/icon-contact-phone.svg" alt=""></a>
-                    <a href="javascript:;" class="animated delay-600s" data-anim="fadeIn"><img src="<?php echo http_Site; ?>images/svg/icon-contact-email.svg" alt=""></a>
+                    <a href="tel:0274550378" class="animated delay-400s" data-anim="fadeIn"><img src="<?php echo http_Site; ?>images/svg/icon-contact-phone.svg" alt=""></a>
+                    <a href="mailto:leona.munro@raywhite.com" class="animated delay-600s" data-anim="fadeIn"><img src="<?php echo http_Site; ?>images/svg/icon-contact-email.svg" alt=""></a>
                 </div>
             </div>
             <div class="rgtSec"><img class="lazyload animated" data-anim="fadeIn" data-src="<?php echo http_Site; ?>images/cn-banner.jpg" alt=""></div>

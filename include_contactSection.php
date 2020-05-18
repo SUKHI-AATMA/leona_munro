@@ -7,6 +7,7 @@
                 <a href="https://www.linkedin.com/in/leona-munro-6b0a1473/" class="linkedin animated delay-400s" data-anim="slideInUp"><img class="lazyload" data-src="<?php echo http_Site; ?>images/svg/icon-linkedin.svg" alt=""></a>
                 <a href="https://www.facebook.com/RWLeona/" class="facebook animated delay-500s" data-anim="slideInUp"><img class="lazyload" data-src="<?php echo http_Site; ?>images/svg/icon-fb.svg" alt=""></a>
                 <a href="https://www.instagram.com/rwleonamunro/" class="instagram animated delay-600s" data-anim="slideInUp"><img class="lazyload" data-src="<?php echo http_Site; ?>images/svg/icon-insta.svg" alt=""></a>
+                <a href="https://www.youtube.com/playlist?list=PLFcIrhsfvVqgtkDsbbeiqlRFGLuiJmyOf" class="youtube animated delay-600s" data-anim="slideInUp"><img class="lazyload" data-src="<?php echo http_Site; ?>images/svg/icon-youtube.svg" alt=""></a>
             </div>
         </div>
         <div class="rgtSec">

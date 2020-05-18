@@ -98,8 +98,8 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
         <div class="row flex col2">
             <label class="control-label col-sm-12" for="email">Area:</label>
             <label class="control-label col-sm-12" for="email">Carpet area:</label>
-            <input type="number" class="form-control" id="project_area" value="<?php echo $data[0]->area; ?>">
-            <input type="number" class="form-control" id="project_carpet_area" value="<?php echo $data[0]->carpet_area; ?>">
+            <input type="text" class="form-control" id="project_area" value="<?php echo $data[0]->area; ?>">
+            <input type="text" class="form-control" id="project_carpet_area" value="<?php echo $data[0]->carpet_area; ?>">
         </div>
         <div class="row flex col2">    
             <label class="control-label col-sm-12" for="email">Living:</label>

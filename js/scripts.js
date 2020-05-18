@@ -86,7 +86,7 @@ var options = (isMobile) ? ({
 });
 
 window.addEventListener("load", function() {
-    if(document.getElementsByClassName('featured').length)
+    if(document.getElementsByClassName('featured').length || document.getElementsByClassName('testimonials').length)
     {
         initSlider();
     }
@@ -120,11 +120,14 @@ function initSlider() {
                 elem.setAttribute('style',"height:"+slideHeight+'px')
             });
         }
-        var slideNos = document.getElementsByClassName('featured')[0].getAttribute('data-slides');
-        if(slideNos < 4 && !isMobile)
+        if(document.getElementsByClassName('featured').length)
         {
-            document.getElementsByClassName('featured')[0].classList.add('lessSlides');
-        }    
+            var slideNos = document.getElementsByClassName('featured')[0].getAttribute('data-slides');
+            if(slideNos < 4 && !isMobile)
+            {
+                document.getElementsByClassName('featured')[0].classList.add('lessSlides');
+            }
+        }
     }
 }
 
@@ -237,12 +240,16 @@ function loadPropertyBox(dataList) {
             }
         });
         if (listId.length == dataList.length) {
-            document.getElementById('loadMore').classList.add("hide");
+            if(document.getElementById('loadMore')) {
+                document.getElementById('loadMore').classList.add("hide");
+            }
         }
         document.getElementById('contentList').insertAdjacentHTML('beforeend', listContent);
     } else {
         document.getElementById('noProperty').classList.add('show');
-        document.getElementById('loadMore').classList.add("hide");
+        if(document.getElementById('loadMore')) {
+            document.getElementById('loadMore').classList.add("hide");
+        }
     }
     onScrollDiv();
 }
@@ -258,7 +265,10 @@ function clearSearch() {
     document.getElementById('garage').style.background = 'rgb(233, 233, 233)';
     listId = [];
     document.getElementById('contentList').innerHTML = '';
-    document.getElementById('loadMore').classList.remove("hide");
+    if(document.getElementById('loadMore'))
+    {
+        document.getElementById('loadMore').classList.remove("hide");
+    }
     document.getElementById('noProperty').classList.remove('show')
     loadPropertyBox(listingsData)
 }
@@ -290,13 +300,24 @@ function sortBySaleType(sortType) {
     // console.log(beds +' - '+ baths)
     var sortedList = [];
     // console.log(sortType);
-    if (sortType) {
+    if (sortType == 'search') {
+        // comsole.log('1');
         //Search by property
         clearSearch();
-        var params = 'na=' + propName + '&be=0&ba=0&li=0&ga=0';
-        fetchData(params);
+        if(propName != '')
+        {
+            var params = 'na=' + propName + '&be=0&ba=0&li=0&ga=0';
+            fetchData(params);
+        }
+        else
+        {
+            loadPropertyBox(listingsData);
+        }
     } else {
+        // comsole.log('2');
         //Search by sorts
+        document.getElementById('noProperty').classList.remove('show');
+        document.getElementById('autoComp').value = '';
         if (beds != 0 || baths != 0 || livings != 0 || garages != 0) {
             var params = 'be=' + beds + '&ba=' + baths + '&li=' + livings + '&ga=' + garages + '&na=0';
             fetchData(params);
@@ -304,6 +325,7 @@ function sortBySaleType(sortType) {
         if (beds == 0 && baths == 0 && livings == 0 && garages == 0) {
             clearSearch();
         }
+        scrollToListing()
     }
     if (isMobile) {
         document.getElementById('sortDiv').style.display = 'none';

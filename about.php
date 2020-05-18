@@ -71,8 +71,12 @@
         <div class="container">
             <div class="lftSec"><img class="lazyload animated" data-anim="fadeIn" data-src="<?php echo http_Site; ?>images/hm-about-me.jpg" alt=""></div>
             <div class="rgtSec">
-                <div class="title animated" data-anim="slideInUp">About Leona</div>
-                <p class="animated" data-anim="slideInUp">Professionalism and integrity are words often bandied around by real estate agents. However, Leona Munro asks to be defined by her actions and her results.</p>
+                <div class="title animated" data-anim="slideInUp">About   Leona and Mike</div>
+                <p class="animated" data-anim="slideInUp">Mike has been an integral part of my team for the last 5 years. He is also a
+                qualified salesperson and his customer service is second to none. He is very
+                approachable, has a great knowledge of the real estate industry and will be
+                only too willing to help with your enquiries. He works diligently behind the
+                scenes as well as assisting me in managing my clients as my right hand man.</p>
                 <p class="animated" data-anim="slideInUp">Leona’s actions and the sales she achieves for her clients speak louder than mere words. She is a Ray White multi-award winning agent recognised time-and-again for her exceptional customer service and attention to detail. This means whether you’re a seller or a buyer working with Leona is a collaborative process rewarded with outstanding results.</p>
             </div>
             

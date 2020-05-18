@@ -181,6 +181,7 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
                     var data = JSON.parse(data);
                     //console.log(data);
                     if (data.status == "success") {
+                      // location.reload(true);
                       $("#docFileVal_" + count).val("/admin/documents/" + data.msg);
                     } else {
                       alert(data.msg)
@@ -222,6 +223,7 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
                         if (data.status == "success") {
                             alert(data.msg);
                             // window.location.href = "/admin/projects.php";
+                            location.reload(true);
                             $(this).parent().parent().remove();
 
                         } else { alert(data.msg); }

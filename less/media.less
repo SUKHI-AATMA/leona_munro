@@ -483,9 +483,19 @@ iPad 3
     }
 
     footer {
-        .copy {
-            width: 100%;
-            justify-content: center;
+        .container{
+            display: flex;
+            flex-direction: column;
+            .copy {
+                justify-content: center;
+                width: 100%;
+            }
+            .developed {
+                justify-content: center;
+                img {
+                    width: 70px;
+                }
+            }
         }
     }
 
@@ -521,9 +531,11 @@ iPad 3
             display: block;
 
             .step {
-                width: 100%;
+                justify-content: center;
+                align-items: center;
                 transform: translate(0px, 0px) !important;
                 margin: 0 0 40px;
+                width: 100%;
 
                 &:nth-child(2n) {
                     flex-direction: row-reverse;
@@ -740,6 +752,10 @@ iPad 3
                         text-align: left;
                         line-height: 1.4;
                         margin: 10px 0 0;
+                        p {
+                            font-size: 1em;
+                            width: 100%;
+                        }
                     }
 
                     .links {
@@ -1027,16 +1043,22 @@ iPad 3
             .propertyTitle {
                 font-size: 1.6em;
                 line-height: 1.4em;
+                .sold {
+                    padding: 0px 19px;
+                }
             }
 
             .propertyExtraDetails {
                 margin: 20px 0;
+                flex-wrap: wrap;
             }
 
             .propertyExtraDetails p {
-                width: 25px;
-                height: 25px;
-                margin: 0 30px 20px 0;
+                width: 25%;
+                height: auto;
+                margin: 0 0 20px 0;
+                display: block;
+                text-align: center;
 
                 span {
                     line-height: 1;

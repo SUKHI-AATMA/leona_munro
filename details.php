@@ -6,7 +6,7 @@
   if(!empty($data)):
   $documentData = Model_Base::query("select * from project_document where uniquename = '{$_REQUEST['name']}'");
   $images = ($data[0]->images != '') ? explode(',', $data[0]->images) : "";
-  $featured_data = Model_Base::query("Select * from projects where featured=1 and status = 1 and uniquename != '{$_REQUEST['name']}' LIMIT 10");
+  $featured_data = Model_Base::query("Select * from projects where featured=1 and status = 1 and uniquename != '{$_REQUEST['name']}' order by date_added desc LIMIT 10");
   $reqName = $_REQUEST['name'];
 ?>
 <!doctype html>
@@ -14,7 +14,46 @@
 
 <head>
     <meta charset="utf-8">
-    <?php include 'include_social.php'; ?>
+    <!-- COMMON TAGS -->
+    <meta charset="utf-8">
+    <title><?php echo ucwords($data[0]->project_name); ?> | Leona Munro</title>
+    <!-- Search Engine -->
+    <meta name="description" content="Leona's actions and the sales she achieves for her clients speak louder than mere words. She is a Ray White multi-award winning agent recognised time-and-again for her exceptional customer service and attention to detail. This means whether you're a seller or a buyer working with Leona is a collaborative process rewarded with outstanding results.">
+    <meta name="image" content="https://leonamunro.co.nz/images/social-share.png">
+    <!-- Schema.org for Google -->
+    <meta itemprop="name" content="<?php echo ucwords($data[0]->project_name); ?> | Leona Munro">
+    <meta itemprop="description" content="Leona's actions and the sales she achieves for her clients speak louder than mere words. She is a Ray White multi-award winning agent recognised time-and-again for her exceptional customer service and attention to detail. This means whether you're a seller or a buyer working with Leona is a collaborative process rewarded with outstanding results.">
+    <meta itemprop="image" content="https://leonamunro.co.nz/images/social-share.png">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="<?php echo ucwords($data[0]->project_name); ?> | Leona Munro">
+    <meta name="twitter:description" content="Leona's actions and the sales she achieves for her clients speak louder than mere words. She is a Ray White multi-award winning agent recognised time-and-again for her exceptional customer service and attention to detail. This means whether you're a seller or a buyer working with Leona is a collaborative process rewarded with outstanding results.">
+    <meta name="twitter:image:src" content="https://leonamunro.co.nz/images/social-share-tw.png">
+    <!-- Open Graph general (Facebook, Pinterest & Google+) -->
+    <meta name="og:title" content="<?php echo ucwords($data[0]->project_name); ?> | Leona Munro">
+    <meta name="og:description" content="Leona's actions and the sales she achieves for her clients speak louder than mere words. She is a Ray White multi-award winning agent recognised time-and-again for her exceptional customer service and attention to detail. This means whether you're a seller or a buyer working with Leona is a collaborative process rewarded with outstanding results.">
+    <meta name="og:image" content="https://leonamunro.co.nz/images/social-share.png">
+    <meta name="og:url" content="https://leonamunro.co.nz">
+    <meta name="og:site_name" content="<?php echo ucwords($data[0]->project_name); ?> | Leona Munro">
+    <meta name="og:type" content="website">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="https://leonamunro.co.nz/images/icons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="https://leonamunro.co.nz/images/icons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://leonamunro.co.nz/images/icons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://leonamunro.co.nz/images/icons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://leonamunro.co.nz/images/icons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://leonamunro.co.nz/images/icons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://leonamunro.co.nz/images/icons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://leonamunro.co.nz/images/icons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://leonamunro.co.nz/images/icons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="https://leonamunro.co.nz/images/icons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://leonamunro.co.nz/images/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="https://leonamunro.co.nz/images/icons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://leonamunro.co.nz/images/icons/favicon-16x16.png">
+    <!-- <link rel="manifest" href="https://leonamunro.co.nz/images/icons/manifest.json"> -->
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="https://leonamunro.co.nz/images/icons/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <style type="text/css">
     </style>
@@ -46,7 +85,7 @@
     <section class="details">
         <div class="container">
             <p class="propertySaleType">Auction</p>
-            <p class="propertyTitle"><?php echo ucwords($data[0]->project_name); ?></p>
+            <p class="propertyTitle"><?php echo ucwords($data[0]->project_name); ?><?php if($data[0]->sold != 0) { ?><span class="sold">SOLD</span><?php } ?></p>
             <div class="propertyExtraDetails">
                 <?php if($data[0]->beds != "" && $data[0]->beds != 0) { ?>
                 <p class="bed"><img class="lazyload" data-src="<?php echo http_Site; ?>images/svg/icon-bed.svg" alt=""><span><?php echo $data[0]->beds; ?></span></p>

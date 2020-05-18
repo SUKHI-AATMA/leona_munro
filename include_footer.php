@@ -4,6 +4,7 @@
             document.write(new Date().getFullYear())
             </script>
         </div>
+        <div class="developed">Website by <a href="https://gummybear.co.nz/" target="_blank"><img src="images/gb-white.png" alt=""></a></div>
     </div>
 </footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>

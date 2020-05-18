@@ -45,8 +45,8 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
         <div class="row flex col2">
             <label class="" for="email">Area:</label>
             <label class="" for="email">Carpet Area:</label>
-            <input type="number" id="project_area" placeholder="Enter project area">
-            <input type="number" id="project_carpet_area" placeholder="Enter Carpet area">
+            <input type="text" id="project_area" placeholder="Enter project area">
+            <input type="text" id="project_carpet_area" placeholder="Enter Carpet area">
         </div>
         <div class="row flex col2">
             <label class="" for="email">Living:</label>

@@ -33,6 +33,7 @@ include '../../model_base.php';
     {
         $query .= "project_name = '" .$na ."' and ";
     }
+    $query .= "sold = 0";
     $substring = ' and ';
     // $str = "this string is a test string";
     if (substr($query,-strlen($substring))===$substring) $query = substr($query, 0, strlen($query)-strlen($substring));

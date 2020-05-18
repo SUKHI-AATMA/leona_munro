@@ -1,20 +1,11 @@
 <?php
-
-
-
 Class Model_Base {
-
-
-
     protected $db;
 
     protected $table = array();
 
     private $dataResult;
-
-
-
-    
+  
 
     // public function __construct($servername = "148.72.232.172:3306", $username = "leona", $password = "Jug8#0z9", $dbname = "leonamunro") {
     // public function __construct($servername = "localhost", $username = "Leonamunro", $password = "Vipers11!!", $dbname = "leonamunro") {

@@ -311,11 +311,13 @@ img {
         }
 
         &.propertyImage {
+            display: block;
             margin: -30px 0 0;
             overflow: hidden;
             transition: margin linear 0.3s;
 
             img {
+                height: auto;
                 width: 100%;
             }
         }
@@ -337,7 +339,7 @@ img {
             justify-content: space-between;
         }
 
-        
+
     }
 
     &:hover {
@@ -348,10 +350,12 @@ img {
             margin: -63px 0 0;
         }
     }
+
     &.sold {
         .propertyImage {
             overflow: hidden;
             position: relative;
+
             &:before {
                 background: @rust;
                 color: #fff;
@@ -431,7 +435,71 @@ footer {
     .copy {
         display: flex;
         padding: 15px 0;
+        align-items: center;
+        justify-content: center;
     }
+    .developed {
+        display: flex;
+        align-items: center;
+        font-size: 1em;
+        margin: 10px 0;
+        img {
+            margin: 0 0 0 20px;
+            width: 100px;
+        }
+        &:hover img {
+            /*animation: shake 0.5s;
+            animation-iteration-count: 1;*/
+        }
+    }
+
+    @keyframes shake {
+        0% {
+            transform: translate(1px, 1px) rotate(0deg);
+        }
+
+        10% {
+            transform: translate(-1px, -2px) rotate(-1deg);
+        }
+
+        20% {
+            transform: translate(-3px, 0px) rotate(1deg);
+        }
+
+        30% {
+            transform: translate(3px, 2px) rotate(0deg);
+        }
+
+        40% {
+            transform: translate(1px, -1px) rotate(1deg);
+        }
+
+        50% {
+            transform: translate(-1px, 2px) rotate(-1deg);
+        }
+
+        60% {
+            transform: translate(-3px, 1px) rotate(0deg);
+        }
+
+        70% {
+            transform: translate(3px, 1px) rotate(-1deg);
+        }
+
+        80% {
+            transform: translate(-1px, -1px) rotate(1deg);
+        }
+
+        90% {
+            transform: translate(1px, 2px) rotate(0deg);
+        }
+
+        100% {
+            transform: translate(1px, -2px) rotate(-1deg);
+        }
+    }
+
+    
 }
 
 /*contact section*/
@@ -580,12 +648,12 @@ section.contactSetion {
     }
 
     .rgtSec {
-        display: flex;
-        justify-content: center;
+        display: block;
+        text-align: center;
         width: 50%;
 
         img {
-            display: block;
+            height: auto;
             width: 70%;
         }
     }
@@ -601,7 +669,7 @@ section.contactSetion {
             text-align: left;
             width: 100%;
 
-            p {
+            >p {
                 position: relative;
 
                 &:before {
@@ -618,7 +686,15 @@ section.contactSetion {
             }
 
             div {
-                margin: 20px 0 0;
+                margin: 20px 0 30px;
+                font-size: 1.2em;
+
+                p {
+                    font-size: 1em;
+                    line-height: 1.4;
+                    margin: 0 0 30px;
+                    width: 70%;
+                }
             }
 
             .links {
@@ -990,7 +1066,7 @@ section.featured {
         .links {
             display: flex;
             justify-content: space-between;
-            width: 130px;
+            width: 140px;
 
             a {
                 align-items: center;
@@ -1025,6 +1101,7 @@ section.featured {
         justify-content: flex-end;
 
         img {
+            height: auto;
             transform: scaleX(-1);
             width: 100%;
         }
@@ -1036,8 +1113,10 @@ section.featured {
     margin: 30px 0 0;
     overflow: hidden;
     position: relative;
+    display: block;
 
     img {
+        height: auto;
         width: 100%;
     }
 
@@ -1122,12 +1201,13 @@ section.featured {
     }
 
     .img {
-        display: flex;
+        display: block;
         width: 100%;
 
         img {
+            height: auto;
             width: 100%;
-            display: block;
+            /*display: block;*/
         }
     }
 
@@ -1328,11 +1408,12 @@ section.about {
             }
 
             div {
-                display: flex;
+                display: block;
                 position: relative;
 
                 img {
                     position: relative;
+                    height: auto;
                     width: 100%;
                 }
 
@@ -1341,7 +1422,7 @@ section.about {
                     font-weight: 200;
                     display: flex;
                     position: absolute;
-                    top: 41%;
+                    top: 39%;
                     left: 10%;
                     font-size: 1.4em;
                     text-align: center;
@@ -1350,6 +1431,13 @@ section.about {
                     height: 70px;
                     justify-content: center;
                     align-items: center;
+                }
+            }
+            &:nth-child(4){
+                div {
+                    strong {
+                        top: 38%;
+                    }
                 }
             }
         }
@@ -1511,6 +1599,20 @@ section.about {
         .propertyTitle {
             color: @rust;
             font-size: 2.5em;
+            display: flex;
+            align-items: center;
+            line-height: 1.2;
+            margin: 10px 0;
+
+            .sold {
+                background: @rust;
+                color: #fff;
+                font-size: 0.5em;
+                margin: 0 0 0 25px;
+                padding: 6px 16px;
+                border-radius: 26px;
+                font-weight: 900;
+            }
         }
 
         .propertyExtraDetails {
@@ -1523,11 +1625,14 @@ section.about {
                 width: 50px;
                 height: 50px;
                 display: flex;
-                margin: 0 60px 40px 0;
+                margin: 0 0 40px 0;
                 flex-direction: column;
+                width: 110px;
+                justify-content: center;
+                align-items: center;
 
                 img {
-                    width: 100%;
+                    width: 50px;
                 }
 
                 span {
@@ -1559,9 +1664,11 @@ section.about {
                 margin: 0 0 40px 0;
                 text-align: justify;
             }
+
             a {
                 color: @rust;
             }
+
             ul {
                 font-size: 1.2em;
                 display: flex;
