@@ -1,4 +1,5 @@
-<?php include 'head.php'; ?>
+<?php ob_start();
+include 'head.php'; ?>
 <?php include '../model_base.php'; ?>
 <?php if(empty($_SESSION)): ?>
 <div class="container bodyContent">
@@ -59,7 +60,9 @@ $(document).ready(function() {
 </script>
 <?php else:
  header("Location:/admin/projects.php"); ?>
-<?php endif; ?>
+<?php endif;
+ob_end_flush();
+ ?>
 </body>
 
 </html>
