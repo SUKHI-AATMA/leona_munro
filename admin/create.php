@@ -198,10 +198,10 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
                     sold = 1;
 
                 }
-                if ($("input[name='interest']").is(":checked")) {
-                    var interest = $("input[name='interest']:checked").val();
-
-                }
+                // if ($("input[name='interest']").is(":checked")) {
+                //     var interest = $("input[name='interest']:checked").val();
+                // }
+                var interest = $("input[name='interest']:checked").length > 0 ? $("input[name='interest']:checked").val() : '';
 
                 if (!error) {
 

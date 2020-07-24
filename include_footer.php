@@ -2,7 +2,8 @@
     <div class="container">
         <div class="copy">© Copyright Leona Munro <script>
             document.write(new Date().getFullYear())
-            </script>
+            </script><br>
+            This is the private website for Leona Munro at Ray White Dunedin (Proven Realty Ltd) Licensed REA 2008
         </div>
         <div class="developed">Website by <a href="https://gummybear.co.nz/" target="_blank"><img src="images/gb-white.png" alt=""></a></div>
     </div>

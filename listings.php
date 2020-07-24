@@ -1,8 +1,17 @@
 <?php include 'core.php'; ?>
 <?php include 'model_base.php'; ?>
 <?php $featured_data = Model_Base::query("Select * from projects where featured=1 and status = 1 order by date_added desc LIMIT 10"); ?>
-<?php $data = Model_Base::query("Select * from projects where status = 1 and sold = 0 order by date_added desc LIMIT 9");  ?>
+<?php $dataNew = Model_Base::query("Select * from projects where status = 1 and sold = 0 order by date_added desc LIMIT 9");  ?>
+<?php $dataSold = Model_Base::query("Select * from projects where status = 1 and sold = 1 order by date_added desc LIMIT 9");  ?>
 <?php $dataAll = Model_Base::query("Select * from projects where status = 1 and sold = 0 order by date_added desc ");  ?>
+<?php 
+    if (!empty($dataNew)) {
+      $data = $dataNew;
+    } else {
+      $data = $dataSold;
+    } 
+?>
+
 <script type="text/javascript">
     var listingsData = <?php echo json_encode($dataAll); ?>;
     var listId = [];
@@ -169,7 +178,7 @@
                         listId.push('<?php echo $value->id; ?>');
                     </script>
                     <a href="<?php echo http_Site.'details.php?name='.$value->uniquename; ?>" data-interest="<?php echo $value->interest; ?>" data-bed="<?php echo $value->beds; ?>" data-bath="<?php echo $value->toilet; ?>" data-living="<?php echo $value->seating; ?>" data-garage="<?php echo $value->parking; ?>" class="activeProp animated" data-anim="slideInUp">
-                        <div class="propertyBox">
+                        <div class="propertyBox <?php if($value->sold == '1') echo 'sold' ?>">
                             <div class="propertyImage"><img class="lazyload" data-src="<?php echo http_Site.'admin/upload/profileImage/'.$value->project_img; ?>" alt="<?php echo ucfirst($value->project_name); ?>"></div>
                             <div class="propertySaleType"><?php echo ucwords($value->interest); ?></div>
                             <div class="propertyTitle"><?php echo ucwords($value->project_name); ?></div>

@@ -86,7 +86,7 @@ var options = (isMobile) ? ({
 });
 
 window.addEventListener("load", function() {
-    if(document.getElementsByClassName('featured').length || document.getElementsByClassName('testimonials').length)
+    if(document.getElementsByClassName('featured').length || document.getElementsByClassName('testimonials').length || document.getElementsByClassName('thumbs').length)
     {
         initSlider();
     }

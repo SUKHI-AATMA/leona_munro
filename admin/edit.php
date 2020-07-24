@@ -137,17 +137,17 @@ if(!empty($_SESSION) && array_key_exists("username", $_SESSION)):
         <div class="row">
             <label class="control-label" for="email">Show Interest:</label>
             <div class="row flex col4">
-                <label for="">
-                    <input type="radio" name="interest" value="negotiation" <?php echo ($data[0]->interest)=='negotiation' ? "checked" : ""; ?>> <span></span> Negotiation
+                <label for="negotiation">
+                    <input type="radio" name="interest" id="negotiation" value="negotiation" <?php echo ($data[0]->interest)=='negotiation' ? "checked" : ""; ?>> <span></span> Negotiation
                 </label>
-                <label for="">
-                    <input type="radio" name="interest" value="auction" <?php echo ($data[0]->interest)=='auction' ? "checked" : ""; ?>><span></span>Auction
+                <label for="auction">
+                    <input type="radio" name="interest" id="auction" value="auction" <?php echo ($data[0]->interest)=='auction' ? "checked" : ""; ?>><span></span>Auction
                 </label>
-                <label for="">
-                    <input type="radio" name="interest" value="tender" <?php echo ($data[0]->interest)=='tender' ? "checked" : ""; ?>><span></span>Tender
+                <label for="tender">
+                    <input type="radio" name="interest" id="tender" value="tender" <?php echo ($data[0]->interest)=='tender' ? "checked" : ""; ?>><span></span>Tender
                 </label>
-                <label for="">
-                    <input type="radio" name="interest" value="deadline" <?php echo ($data[0]->interest)=='deadline' ? "checked" : ""; ?>><span></span>Deadline
+                <label for="deadline">
+                    <input type="radio" name="interest" id="deadline" value="deadline" <?php echo ($data[0]->interest)=='deadline' ? "checked" : ""; ?>><span></span>Deadline
                 </label>
             </div>
         </div>
@@ -258,22 +258,26 @@ $(document).ready(function() {
             var project_map = $("#project_map").val();
         }
         var description = CKEDITOR.instances['description'].getData()
-        if ($('#check_featured').is(":checked")) {
-            featured = 1;
-        }
-        if ($('#check_sold').is(":checked")) {
-            sold = 1;
-        }
+        // if ($('#check_featured').is(":checked")) {
+        //     featured = 1;
+        // }
+        featured = $('#check_featured').is(":checked").length > 0 ? 1 : 0 ; 
+        // if ($('#check_sold').is(":checked")) {
+        //     sold = 1;
+        // }
         var draft = 0;
         if ($('#draft').is(":checked")) {
             draft = 1;
         }
-        if ($('#check_sold').is(":checked")) {
-            sold = 1;
-        }
-        if ($("input[name='interest']").is(":checked")) {
-            var interest = $("input[name='interest']:checked").val();
-        }
+        // if ($('#check_sold').is(":checked")) {
+        //     sold = 1;
+        // }
+        // if ($("input[name='interest']").is(":checked")) {
+        //     var interest = $("input[name='interest']:checked").val();
+        // }
+        sold = $('input[id=check_sold]:checked').length > 0  ? 1 : 0;
+        
+        var interest = $("input[name='interest']:checked").length > 0 ? $("input[name='interest']:checked").val() : '';
         if (!error) {
             $.ajax({
                 "url": "/admin/action/actionSaveProject.php",
@@ -300,7 +304,7 @@ $(document).ready(function() {
                     interest: interest
                 },
                 "success": function(data) {
-                    // console.log(data)
+                    console.log(data)
                     var data = JSON.parse(data);
                     if (data.status == "success") {
                         alert(data.msg)

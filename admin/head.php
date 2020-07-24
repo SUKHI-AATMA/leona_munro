@@ -35,7 +35,7 @@
 
     <header>
         <div class="container">
-            <div class="logo"><a href="/"><img src="/images/leona-munro-logo-rust.png" alt=""></a></div>
+            <div class="logo"><a href="<?php echo http_Site; ?>admin/"><img src="/images/leona-munro-logo-rust.png" alt=""></a></div>
             <nav>
                 <ul>
                     <?php if (!empty($_SESSION)): ?>
